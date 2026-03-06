@@ -1,0 +1,84 @@
+{
+  "projectType": "frontend",
+  "projectName": "Ankita Weds Anil",
+  "projectDescription": "A modern wedding website template with interactive features for event schedules, RSVPs, and guest information",
+  "theme": "almond",
+  "primaryColor": "#fcd404",
+  "lightColor": null,
+  "darkColor": null,
+  "navigation": {
+    "groups": [
+      {
+        "group": "Overview",
+        "pages": [
+          "introduction",
+          "getting-started"
+        ]
+      },
+      {
+        "group": "Features",
+        "pages": [
+          "features/event-schedule",
+          "features/couple-story",
+          "features/rsvp-system",
+          "features/live-stream",
+          "features/photo-gallery",
+          "features/interactive-quiz"
+        ]
+      },
+      {
+        "group": "Customization",
+        "pages": [
+          "customization/styling",
+          "customization/content",
+          "customization/forms",
+          "customization/countdown-timer"
+        ]
+      },
+      {
+        "group": "Components",
+        "pages": [
+          "components/html-structure",
+          "components/navigation-menu",
+          "components/event-cards",
+          "components/forms"
+        ]
+      },
+      {
+        "group": "Deployment",
+        "pages": [
+          "deployment/github-pages",
+          "deployment/custom-domain",
+          "deployment/testing"
+        ]
+      }
+    ]
+  },
+  "keyFeatures": [
+    "Responsive wedding website design",
+    "Event schedule with multiple ceremonies",
+    "Interactive couple quiz with scoring",
+    "Countdown timer to wedding date",
+    "RSVP and attendance confirmation forms",
+    "Live stream integration",
+    "Travel and accommodation coordination",
+    "Photo gallery integration",
+    "Mobile-friendly navigation",
+    "FAQ section"
+  ],
+  "publicApiSurface": [
+    "index.html - Main landing page",
+    "pages/the_couple.html - Couple story and quiz",
+    "pages/schedule.html - Wedding event schedule",
+    "pages/faqs.html - Frequently asked questions",
+    "pages/confirm_attendance.html - RSVP form",
+    "pages/live_stream.html - Live streaming page",
+    "pages/travel_and_accommodation.html - Travel information",
+    "pages/parking_and_transportation.html - Transportation details",
+    "pages/encomium.html - Memory tribute page",
+    "assets/js/timer.js - Countdown timer functionality",
+    "assets/js/quiz.js - Interactive quiz functionality",
+    "assets/css/main.css - Primary stylesheet",
+    "assets/sass/main.scss - SASS source files"
+  ]
+}
