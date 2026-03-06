@@ -1,0 +1,390 @@
+---
+title: 'Live Stream'
+description: 'Enable remote guests to watch your ceremony with embedded video streaming'
+icon: 'video'
+---
+
+The Live Stream feature allows guests who cannot attend in person to watch your wedding ceremony remotely via embedded video players.
+
+## Overview
+
+Live streaming has become essential for modern weddings, especially for:
+- Guests who cannot travel due to distance, health, or other constraints
+- Elderly family members who prefer to watch from home
+- Friends in different time zones
+- Creating a recorded memory of your ceremony
+
+## Basic Implementation
+
+The live stream page is intentionally simple to keep focus on the video:
+
+```html
+<article id="main">
+  <header>
+    <h2>Live Stream</h2>
+    <p>
+      For folks who wanted to be there with all their heart but 
+      couldn't make it; because life !
+    </p>
+  </header>
+  <section class="wrapper style5">
+    <div class="inner">
+      <section id="Live Stream">
+        <!-- Video player embedded here -->
+      </section>
+    </div>
+  </section>
+</article>
+```
+
+## YouTube Embed
+
+The template uses YouTube for video hosting, which is free and reliable.
+
+<Steps>
+  <Step title="Set Up YouTube Live">
+    1. Log in to YouTube Studio
+    2. Click "Create" → "Go Live"
+    3. Set up your stream details (title, description, privacy)
+    4. Choose "Stream" for professional camera setup
+    5. Get your stream key for your camera/encoder
+  </Step>
+
+  <Step title="Get the Video ID">
+    Your YouTube video URL looks like:
+    ```
+    https://www.youtube.com/watch?v=HsoEEDLu6hM
+    ```
+    The video ID is: `HsoEEDLu6hM`
+  </Step>
+
+  <Step title="Embed the Player">
+    Use the embed URL format with your video ID:
+
+    ```html
+    <iframe 
+      width="100%" 
+      height="315" 
+      src="https://www.youtube.com/embed/HsoEEDLu6hM" 
+      title="YouTube video player" 
+      frameborder="0" 
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+      allowfullscreen>
+    </iframe>
+    ```
+  </Step>
+
+  <Step title="Make it Responsive">
+    Use a wrapper for responsive video that maintains aspect ratio:
+
+    ```html
+    <div class="video-container">
+      <iframe 
+        src="https://www.youtube.com/embed/YOUR_VIDEO_ID" 
+        title="YouTube video player" 
+        frameborder="0" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+        allowfullscreen>
+      </iframe>
+    </div>
+
+    <style>
+    .video-container {
+      position: relative;
+      padding-bottom: 56.25%; /* 16:9 aspect ratio */
+      height: 0;
+      overflow: hidden;
+    }
+
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+    </style>
+    ```
+  </Step>
+</Steps>
+
+## Complete Example from Source
+
+```html
+<section class="wrapper style5">
+  <div class="inner">
+    <section id="Live Stream">
+      <iframe 
+        width="100%" 
+        height="315" 
+        src="https://www.youtube.com/embed/HsoEEDLu6hM" 
+        title="YouTube video player" 
+        frameborder="0" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+        allowfullscreen>
+      </iframe>
+    </section>
+  </div>
+</section>
+```
+
+## Alternative Streaming Platforms
+
+<CardGroup cols={2}>
+  <Card title="YouTube Live" icon="youtube">
+    **Best for:** Free, reliable, unlimited viewers
+    
+    **Embed code:**
+    ```html
+    <iframe 
+      src="https://www.youtube.com/embed/VIDEO_ID" 
+      width="100%" 
+      height="315" 
+      allowfullscreen>
+    </iframe>
+    ```
+  </Card>
+  
+  <Card title="Facebook Live" icon="facebook">
+    **Best for:** Guests already on Facebook
+    
+    **Embed code:**
+    ```html
+    <iframe 
+      src="https://www.facebook.com/plugins/video.php?href=VIDEO_URL" 
+      width="500" 
+      height="281" 
+      style="border:none;overflow:hidden" 
+      allowfullscreen>
+    </iframe>
+    ```
+  </Card>
+  
+  <Card title="Vimeo Live" icon="vimeo">
+    **Best for:** Ad-free, premium experience
+    
+    **Embed code:**
+    ```html
+    <iframe 
+      src="https://player.vimeo.com/video/VIDEO_ID" 
+      width="640" 
+      height="360" 
+      frameborder="0" 
+      allowfullscreen>
+    </iframe>
+    ```
+  </Card>
+  
+  <Card title="Zoom" icon="video">
+    **Best for:** Small, intimate ceremonies
+    
+    **Embed code:**
+    ```html
+    <iframe 
+      src="https://zoom.us/wc/join/MEETING_ID" 
+      width="100%" 
+      height="600" 
+      frameborder="0">
+    </iframe>
+    ```
+  </Card>
+</CardGroup>
+
+<Warning>
+  **Test Your Stream**: Do a full test run at your venue 1-2 days before the wedding to ensure strong internet connectivity and proper camera positioning.
+</Warning>
+
+## Enhanced Live Stream Page
+
+Add helpful information around the video player:
+
+```html
+<section class="wrapper style5">
+  <div class="inner">
+    <section id="Live Stream">
+      <h2>Watch Our Ceremony Live</h2>
+      
+      <div class="stream-info">
+        <p>
+          <strong>Ceremony Start Time:</strong> 9:00 AM EST<br />
+          <strong>Duration:</strong> Approximately 1 hour<br />
+          <strong>Time Zone Help:</strong> 
+          <a href="https://www.timeanddate.com/worldclock/converter.html" 
+             target="_blank">Check your local time</a>
+        </p>
+      </div>
+
+      <div class="video-container">
+        <iframe 
+          src="https://www.youtube.com/embed/VIDEO_ID" 
+          title="Wedding Live Stream" 
+          frameborder="0" 
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+          allowfullscreen>
+        </iframe>
+      </div>
+
+      <div class="stream-note">
+        <p>
+          <em>Can't watch live? Don't worry! The recording will be available 
+          here after the ceremony for 30 days.</em>
+        </p>
+      </div>
+    </section>
+  </div>
+</section>
+```
+
+## Styling the Stream Page
+
+Customize the appearance with CSS:
+
+```css
+.stream-info {
+  background: #f8f8f8;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.stream-info strong {
+  color: #25a186;
+  font-size: 1.1em;
+}
+
+.video-container {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+}
+
+.stream-note {
+  margin-top: 20px;
+  padding: 15px;
+  background: #e8f5f1;
+  border-left: 4px solid #25a186;
+  border-radius: 4px;
+}
+```
+
+## Homepage Link
+
+Make the live stream easily accessible from your homepage:
+
+```html
+<section id="banner">
+  <div class="inner">
+    <h2>We're Getting Married!</h2>
+    <h3>May 5 & 6, 2022</h3>
+    <ul class="actions special">
+      <li>
+        <a href="pages/live_stream.html" class="button">
+          Live Stream Link
+        </a>
+      </li>
+    </ul>
+  </div>
+</section>
+```
+
+## Technical Requirements
+
+<AccordionGroup>
+  <Accordion title="Internet Connection">
+    For streaming:
+    - **Minimum upload speed**: 5 Mbps
+    - **Recommended**: 10+ Mbps
+    - Use wired connection if possible
+    - Have a backup hotspot ready
+  </Accordion>
+
+  <Accordion title="Equipment Needed">
+    Basic setup:
+    - Smartphone with good camera (iPhone, Samsung, etc.)
+    - Tripod or stable mount
+    - External microphone (recommended)
+    - Power bank or charger
+    
+    Professional setup:
+    - DSLR or mirrorless camera
+    - Video encoder (BlackMagic, etc.)
+    - Lapel microphones
+    - Multiple camera angles (optional)
+  </Accordion>
+
+  <Accordion title="Camera Positioning">
+    Best practices:
+    - Position at the back of the venue for full view
+    - Ensure camera can see both bride and groom
+    - Test audio quality (ceremony audio is crucial)
+    - Consider hiring a videographer familiar with live streaming
+  </Accordion>
+
+  <Accordion title="Privacy Settings">
+    YouTube options:
+    - **Public**: Anyone can find and watch
+    - **Unlisted**: Only people with the link can watch (recommended)
+    - **Private**: Only invited users can watch
+    
+    Choose "Unlisted" for semi-private streaming where only wedding guests with your website link can access.
+  </Accordion>
+</AccordionGroup>
+
+## Pre-Stream Checklist
+
+<Steps>
+  <Step title="One Week Before">
+    - Set up streaming account
+    - Test equipment at home
+    - Create the event/stream
+    - Update website with stream link
+    - Send reminder email to remote guests
+  </Step>
+
+  <Step title="Day Before">
+    - Test stream at actual venue
+    - Check internet speed
+    - Verify camera angles
+    - Test audio levels
+    - Assign someone to monitor stream
+  </Step>
+
+  <Step title="Day Of">
+    - Arrive early to set up (2+ hours)
+    - Start stream 15 minutes early
+    - Have someone monitor chat/comments
+    - Check stream quality on mobile device
+    - Keep backup equipment ready
+  </Step>
+</Steps>
+
+<Info>
+  **Assign a Stream Manager**: Designate a tech-savvy friend or hire someone specifically to monitor the stream during your ceremony, so you can focus on getting married.
+</Info>
+
+## Post-Wedding
+
+After the ceremony:
+
+1. **Keep the recording available** for guests who missed the live stream
+2. **Edit and trim** the recording to remove pre-ceremony setup
+3. **Add to your website** as a permanent video embed
+4. **Download a backup** of the video file
+5. **Send the link** to guests who couldn't attend
+
+<Tip>
+  Consider keeping the ceremony recording available for 30-90 days, then take it down or switch to a private video to maintain some exclusivity of the moment.
+</Tip>

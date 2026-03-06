@@ -1,0 +1,263 @@
+---
+title: Set Up a Custom Domain
+description: Configure a custom domain name for your wedding website hosted on GitHub Pages
+---
+
+Using a custom domain makes your wedding website more memorable and professional. Instead of `username.github.io`, your guests can visit `yournames.com`.
+
+## Prerequisites
+
+- Your website deployed on GitHub Pages
+- A domain name (you'll need to purchase one if you don't have it)
+
+## Domain Configuration Process
+
+<Steps>
+  <Step title="Purchase a Domain">
+    You'll need to buy a domain from a domain registrar:
+
+    ### Popular Domain Registrars
+
+    <CardGroup cols={2}>
+      <Card title="Namecheap" icon="link">
+        Affordable pricing, easy to use
+        
+        Starting at $8-15/year
+      </Card>
+      <Card title="Google Domains" icon="link">
+        Simple interface, reliable
+        
+        Starting at $12/year
+      </Card>
+      <Card title="GoDaddy" icon="link">
+        Popular, many features
+        
+        Starting at $10-20/year
+      </Card>
+      <Card title="Cloudflare" icon="link">
+        At-cost pricing, includes CDN
+        
+        Starting at $8-10/year
+      </Card>
+    </CardGroup>
+
+    ### Choosing a Domain Name
+
+    Popular formats for wedding websites:
+    - `firstnamewedsecondname.com` (e.g., `ankitawedsanil.com`)
+    - `firstname-and-secondname.com`
+    - `firstnamelastname.com`
+    - `the-lastname-wedding.com`
+
+    <Tip>
+      `.com` domains are most common, but `.love`, `.wedding`, or `.events` can be unique alternatives!
+    </Tip>
+  </Step>
+
+  <Step title="Create CNAME File">
+    In your GitHub repository, create a file named `CNAME` (all caps, no extension) in the root directory.
+
+    <CodeGroup>
+      ```txt CNAME
+      ankitawedsanil.com
+      www.ankitawedsanil.com
+      ```
+    </CodeGroup>
+
+    This file tells GitHub Pages which custom domain(s) to use for your site.
+
+    ### Adding CNAME via Git
+
+    <CodeGroup>
+      ```bash Terminal
+      # Create CNAME file
+      echo "yourdomain.com" > CNAME
+      echo "www.yourdomain.com" >> CNAME
+
+      # Commit and push
+      git add CNAME
+      git commit -m "Add custom domain"
+      git push
+      ```
+    </CodeGroup>
+
+    ### Adding CNAME via GitHub Web
+
+    1. Go to your repository on GitHub
+    2. Click **Add file** > **Create new file**
+    3. Name it `CNAME`
+    4. Add your domain name(s), one per line
+    5. Click **Commit new file**
+
+    <Note>
+      Replace `yourdomain.com` with your actual domain name. Include both the root domain and www subdomain for flexibility.
+    </Note>
+  </Step>
+
+  <Step title="Configure DNS Settings">
+    Log in to your domain registrar and configure DNS records:
+
+    ### Add A Records
+
+    Point your root domain to GitHub Pages servers:
+
+    | Type | Name | Value | TTL |
+    |------|------|-------|-----|
+    | A | @ | 185.199.108.153 | 3600 |
+    | A | @ | 185.199.109.153 | 3600 |
+    | A | @ | 185.199.110.153 | 3600 |
+    | A | @ | 185.199.111.153 | 3600 |
+
+    ### Add CNAME Record
+
+    Point your www subdomain to your GitHub Pages URL:
+
+    | Type | Name | Value | TTL |
+    |------|------|-------|-----|
+    | CNAME | www | username.github.io | 3600 |
+
+    <Warning>
+      DNS changes can take 24-48 hours to propagate fully, though they often work within a few hours.
+    </Warning>
+
+    ### Example: Namecheap DNS Settings
+
+    <CodeGroup>
+      ```txt Advanced DNS
+      A Record    @      185.199.108.153
+      A Record    @      185.199.109.153
+      A Record    @      185.199.110.153
+      A Record    @      185.199.111.153
+      CNAME       www    username.github.io.
+      ```
+    </CodeGroup>
+  </Step>
+
+  <Step title="Update GitHub Pages Settings">
+    1. Go to your repository on GitHub
+    2. Navigate to **Settings** > **Pages**
+    3. Under **Custom domain**, enter your domain name
+    4. Click **Save**
+    5. Wait for DNS check to complete (green checkmark will appear)
+    6. Enable **Enforce HTTPS** (recommended for security)
+
+    <Info>
+      It may take a few minutes for GitHub to verify your DNS configuration. If it fails initially, wait an hour and try again as DNS records propagate.
+    </Info>
+  </Step>
+</Steps>
+
+## Domain Configuration Examples
+
+### Example 1: Root Domain Only
+
+If you want your site accessible at `yourdomain.com`:
+
+<CodeGroup>
+  ```txt CNAME
+  yourdomain.com
+  ```
+</CodeGroup>
+
+### Example 2: Root and WWW (Recommended)
+
+For both `yourdomain.com` and `www.yourdomain.com`:
+
+<CodeGroup>
+  ```txt CNAME
+  yourdomain.com
+  www.yourdomain.com
+  ```
+</CodeGroup>
+
+### Example 3: Subdomain Only
+
+For a subdomain like `wedding.yourdomain.com`:
+
+<CodeGroup>
+  ```txt CNAME
+  wedding.yourdomain.com
+  ```
+</CodeGroup>
+
+## Verification Steps
+
+After configuration, verify your setup:
+
+<Steps>
+  <Step title="Check DNS Propagation">
+    Use [DNS Checker](https://dnschecker.org) to see if your DNS records have propagated globally.
+  </Step>
+
+  <Step title="Test Domain Access">
+    Try accessing your site using:
+    - `http://yourdomain.com`
+    - `https://yourdomain.com`
+    - `http://www.yourdomain.com`
+    - `https://www.yourdomain.com`
+
+    All should redirect to your GitHub Pages site.
+  </Step>
+
+  <Step title="Verify HTTPS">
+    Ensure the padlock icon appears in your browser's address bar, indicating a secure connection.
+  </Step>
+</Steps>
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="Domain not connecting after 48 hours">
+    - Verify DNS records are correct (use DNS Checker tool)
+    - Ensure CNAME file exists in repository root
+    - Check that GitHub Pages custom domain is saved in settings
+    - Try removing and re-adding the custom domain in GitHub settings
+  </Accordion>
+
+  <Accordion title="HTTPS not available">
+    - Wait 24 hours after initial DNS configuration
+    - Ensure DNS records are properly configured
+    - Try unchecking and re-checking "Enforce HTTPS" in GitHub settings
+    - Remove and re-add custom domain if issue persists
+  </Accordion>
+
+  <Accordion title="WWW not working">
+    - Verify CNAME record points to `username.github.io`
+    - Ensure www is listed in your CNAME file
+    - Check DNS propagation for www subdomain specifically
+  </Accordion>
+
+  <Accordion title="Certificate error or security warning">
+    - Wait for GitHub to issue SSL certificate (can take 24 hours)
+    - Verify custom domain is properly saved in GitHub settings
+    - Clear browser cache and try again
+  </Accordion>
+</AccordionGroup>
+
+## Best Practices
+
+<CardGroup cols={2}>
+  <Card title="Use HTTPS" icon="lock">
+    Always enable "Enforce HTTPS" for secure guest connections
+  </Card>
+  <Card title="Test Both Versions" icon="globe">
+    Verify both root domain and www subdomain work correctly
+  </Card>
+  <Card title="Keep Records Updated" icon="refresh">
+    Save your DNS configuration for future reference
+  </Card>
+  <Card title="Monitor Expiration" icon="calendar">
+    Set reminders to renew your domain before it expires
+  </Card>
+</CardGroup>
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card title="Test Your Website" icon="check-circle" href="./testing">
+    Thoroughly test your site before sharing with guests
+  </Card>
+  <Card title="GitHub Pages Guide" icon="github" href="./github-pages">
+    Learn more about deploying to GitHub Pages
+  </Card>
+</CardGroup>

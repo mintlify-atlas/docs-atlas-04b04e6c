@@ -1,0 +1,333 @@
+---
+title: 'Styling Your Wedding Site'
+description: 'Customize colors, fonts, and layouts using CSS and SASS'
+---
+
+This wedding template uses a combination of CSS and SASS to provide flexible styling options. Learn how to customize the visual appearance to match your wedding theme.
+
+## Understanding the Style Structure
+
+The template uses a modular SASS architecture that compiles to CSS:
+
+<CardGroup cols={2}>
+  <Card title="Source Files" icon="code">
+    SASS files in `assets/sass/` with variables and mixins
+  </Card>
+  <Card title="Compiled Output" icon="file-code">
+    Production CSS in `assets/css/main.css`
+  </Card>
+</CardGroup>
+
+### File Organization
+
+```bash
+assets/
+├── css/
+│   └── main.css          # Compiled CSS (production)
+└── sass/
+    ├── main.scss         # Main SASS entry point
+    └── libs/
+        ├── _vars.scss    # Color & typography variables
+        ├── _mixins.scss  # Reusable SASS mixins
+        └── _breakpoints.scss  # Responsive breakpoints
+```
+
+## Changing Colors
+
+The template uses a palette system defined in `assets/sass/libs/_vars.scss`:
+
+<Tabs>
+  <Tab title="SASS Variables">
+    ```scss
+    // Main color palette
+    $palette: (
+      bg:          #2e3842,  // Background color
+      fg:          #fff,     // Text color
+      fg-bold:     #fff,     // Bold text
+      fg-light:    rgba(255,255,255,0.5),  // Light text
+      border:      #fff,     // Border color
+      
+      // Accent colors for different sections
+      accent1: (
+        bg:        #21b2a6,  // Teal
+        fg-bold:   #ffffff
+      ),
+      
+      accent2: (
+        bg:        #00ffcc,  // Bright cyan
+        fg-bold:   #ffffff
+      ),
+      
+      accent3: (
+        bg:        #00f0ff,  // Sky blue
+        fg-bold:   #ffffff
+      ),
+      
+      accent4: (
+        bg:        #76ddff,  // Light blue
+        fg-bold:   #ffffff
+      ),
+      
+      accent5: (
+        bg:        #505393,  // Purple
+        fg-bold:   #ffffff
+      ),
+      
+      accent6: (
+        bg:        #ed4933,  // Red/coral
+        fg-bold:   #ffffff
+      ),
+      
+      accent7: (
+        bg:        #ffffff,  // White
+        fg-bold:   #2E3842
+      )
+    );
+    ```
+  </Tab>
+  <Tab title="Direct CSS">
+    ```css
+    /* Edit in assets/css/main.css */
+    
+    body {
+      background: #2e3842;  /* Main background */
+    }
+    
+    body, input, select, textarea {
+      color: #fff;  /* Text color */
+      font-family: "Open Sans", Helvetica, sans-serif;
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+      color: #fff;  /* Heading color */
+      font-weight: 800;
+    }
+    
+    strong, b {
+      color: #fff;  /* Bold text color */
+      font-weight: 600;
+    }
+    ```
+  </Tab>
+</Tabs>
+
+<Steps>
+  <Step title="Choose Your Approach">
+    Decide whether to edit SASS files (recommended for major changes) or CSS directly (quick tweaks)
+  </Step>
+  
+  <Step title="Update Color Values">
+    Modify the hex codes in `_vars.scss` or `main.css` to your wedding colors
+  </Step>
+  
+  <Step title="Compile SASS (if using SASS)">
+    Run the SASS compiler to generate updated CSS:
+    ```bash
+    sass assets/sass/main.scss assets/css/main.css
+    ```
+  </Step>
+  
+  <Step title="Test Your Changes">
+    Open your website in a browser to preview the new color scheme
+  </Step>
+</Steps>
+
+<Note>
+If you're making quick edits, modifying `main.css` directly is faster. For comprehensive theming, edit the SASS variables and recompile.
+</Note>
+
+## Customizing Typography
+
+The template uses **Open Sans** from Google Fonts with specific weights:
+
+### Font Configuration
+
+```scss
+// Font settings in _vars.scss
+$font: (
+  family:         ('Open Sans', Helvetica, sans-serif),
+  family-fixed:   ('Courier New', monospace),
+  weight:         400,      // Regular text
+  weight-bold:    600,      // Bold text
+  weight-extrabold: 800     // Headers
+);
+```
+
+### Changing the Font Family
+
+<Steps>
+  <Step title="Choose Your Font">
+    Select a font from [Google Fonts](https://fonts.google.com/) or use a custom font file
+  </Step>
+  
+  <Step title="Add Font Import">
+    In `main.css` or `main.scss`, add the import at the top:
+    ```css
+    @import url('https://fonts.googleapis.com/css?family=Playfair+Display:400,600,800');
+    ```
+  </Step>
+  
+  <Step title="Update Font Family">
+    Replace the font family in your styles:
+    ```css
+    body, input, select, textarea {
+      font-family: "Playfair Display", serif;
+    }
+    ```
+  </Step>
+</Steps>
+
+### Font Size Adjustments
+
+```css
+/* Base font size */
+body, input, select, textarea {
+  font-size: 15pt;  /* Increase for larger text */
+  letter-spacing: 0.075em;
+}
+
+/* Heading sizes */
+h2 {
+  font-size: 1.35em;
+  line-height: 1.75em;
+}
+
+h3 {
+  font-size: 1.15em;
+  line-height: 1.75em;
+}
+```
+
+## Responsive Breakpoints
+
+The template includes responsive design with predefined breakpoints:
+
+```scss
+// Breakpoints in _vars.scss
+@include breakpoints((
+  xlarge:   ( 1281px,  1680px ),  // Large desktops
+  large:    ( 981px,   1280px ),  // Standard desktops
+  medium:   ( 737px,   980px  ),  // Tablets
+  small:    ( 481px,   736px  ),  // Large phones
+  xsmall:   ( null,    480px  )   // Small phones
+));
+```
+
+### Customizing Mobile Styles
+
+```css
+/* Desktop styles (default) */
+body {
+  font-size: 15pt;
+}
+
+/* Tablet and below */
+@media screen and (max-width: 736px) {
+  body {
+    font-size: 11pt;
+    letter-spacing: 0.0375em;
+  }
+}
+```
+
+<Warning>
+Always test your styling changes across different screen sizes to ensure responsive behavior is maintained.
+</Warning>
+
+## Layout Customization
+
+### Adjusting Section Spacing
+
+```css
+/* Element margins */
+p {
+  margin: 0 0 2em 0;  /* Bottom margin */
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0 0 1em 0;  /* Heading margin */
+}
+```
+
+### Modifying Link Styles
+
+```css
+a {
+  transition: color 0.2s ease, border-bottom-color 0.2s ease;
+  border-bottom: dotted 1px;  /* Underline style */
+  color: inherit;
+  text-decoration: none;
+}
+
+a:hover {
+  border-bottom-color: transparent;  /* Remove underline on hover */
+}
+```
+
+## Common Customization Examples
+
+<Tabs>
+  <Tab title="Wedding Theme Colors">
+    ```css
+    /* Romantic Rose Gold Theme */
+    body {
+      background: #fff5f5;
+    }
+    
+    h1, h2, h3 {
+      color: #b76e79;
+    }
+    
+    .button.primary {
+      background-color: #d4af37;
+    }
+    ```
+  </Tab>
+  
+  <Tab title="Modern Minimalist">
+    ```css
+    /* Clean Modern Theme */
+    body {
+      background: #ffffff;
+      color: #333333;
+    }
+    
+    h1, h2, h3 {
+      color: #000000;
+      font-weight: 300;
+    }
+    ```
+  </Tab>
+  
+  <Tab title="Elegant Navy">
+    ```css
+    /* Navy & Gold Theme */
+    body {
+      background: #1a2a3a;
+    }
+    
+    h1, h2, h3 {
+      color: #d4af37;
+    }
+    
+    a {
+      color: #d4af37;
+    }
+    ```
+  </Tab>
+</Tabs>
+
+<Tip>
+Use browser developer tools (F12) to experiment with CSS changes in real-time before applying them to your files.
+</Tip>
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card title="Update Content" icon="pencil" href="/customization/content">
+    Learn how to change text and content
+  </Card>
+  <Card title="Countdown Timer" icon="clock" href="/customization/countdown-timer">
+    Customize the wedding countdown
+  </Card>
+</CardGroup>

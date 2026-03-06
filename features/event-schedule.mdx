@@ -1,0 +1,205 @@
+---
+title: 'Event Schedule'
+description: 'Display your wedding events in a beautiful, organized schedule table'
+icon: 'calendar'
+---
+
+The Event Schedule feature allows you to display all wedding events with dates, times, locations, and descriptions in a clean, responsive table format.
+
+## Overview
+
+The schedule page uses an HTML table structure to organize multiple events across different days. Each event includes:
+- Date and time information
+- Event name and cultural context
+- Venue location within the wedding site
+- Dress code recommendations
+- Detailed descriptions of ceremonies
+
+## Implementation
+
+<Steps>
+  <Step title="Create the Page Structure">
+    Set up the basic HTML structure with a header and main article section:
+
+    ```html
+    <article id="main">
+      <header>
+        <h2>Schedule</h2>
+        <p>Find the detailed list of events, location inside the venue and hints on the dress code.</p>
+      </header>
+      <section class="wrapper style5">
+        <div class="inner">
+          <!-- Schedule content goes here -->
+        </div>
+      </section>
+    </article>
+    ```
+  </Step>
+
+  <Step title="Build the Schedule Table">
+    Create a table with date and description columns:
+
+    ```html
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Event rows go here -->
+        </tbody>
+      </table>
+    </div>
+    ```
+  </Step>
+
+  <Step title="Add Event Rows">
+    Each event is a table row with date and detailed information:
+
+    ```html
+    <tr>
+      <td>Thursday, May 5th, 2022</td>
+      <td>
+        <b>Vara Pooja & Sangeeth</b> <br />
+        The Sanskrit word sangeet roughly translates to "sung together". 
+        Traditionally, this ceremony was meant for the female guests on both 
+        sides of the family to come together for a night of song.<br />
+        <br />
+        <b>Time </b> : <i>5:00 PM onwards </i> |
+        <b>Location </b> : <i>Nakshathra</i> |
+        <b>Dress Code </b> : <i>Colorful, Festive Attire</i>
+      </td>
+    </tr>
+    ```
+  </Step>
+
+  <Step title="Add Embedded Forms (Optional)">
+    You can embed Google Forms or other signup sheets for event participation:
+
+    ```html
+    <section id="Sign Up Sheet">
+      <iframe 
+        src="https://docs.google.com/forms/d/e/YOUR_FORM_ID/viewform?embedded=true" 
+        width="100%" 
+        height="1400" 
+        frameborder="0" 
+        marginheight="0" 
+        marginwidth="0">
+        Loading…
+      </iframe>
+    </section>
+    ```
+  </Step>
+</Steps>
+
+## Full Example from Source
+
+Here's a complete example showing multiple events across two days:
+
+```html
+<section>
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Thursday, May 5th, 2022</td>
+          <td>
+            <b>Tiffin and Hot Beverages</b> <br />
+            <b>Time </b> : <i>4:00 PM onwards </i> |
+            <b>Location </b> : <i>Swadista</i>
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>
+            <b>Dinner</b> <br />
+            <b>Time </b> : <i>8:00 PM onwards </i> |
+            <b>Location </b> : <i>Swadista</i>
+          </td>
+        </tr>
+        <tr>
+          <td>Friday, May 6th, 2022</td>
+          <td>
+            <b>Wedding</b> <br />
+            The muhurtham time that the priest determines thereby dictates 
+            the start of the Hindu marriage ceremony.<br />
+            <br />
+            <b>Time </b> : <i>9:00 AM</i> |
+            <b>Location </b> : <i>Rudraksha</i> |
+            <b>Dress Code </b> : <i>Traditional Indian Attire</i>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+```
+
+## Customization Options
+
+<CardGroup cols={2}>
+  <Card title="Event Details" icon="list">
+    Customize what information to display:
+    - Event names and types
+    - Start times (or time ranges)
+    - Venue locations
+    - Dress codes
+    - Cultural explanations
+  </Card>
+  <Card title="Styling" icon="palette">
+    The table inherits from your CSS:
+    - `.table-wrapper` for responsive behavior
+    - `.wrapper.style5` for section styling
+    - Custom colors and fonts
+  </Card>
+</CardGroup>
+
+<Note>
+  **Pro Tip:** Leave the date column empty for subsequent events on the same day to create a cleaner, more readable schedule.
+</Note>
+
+## Best Practices
+
+<AccordionGroup>
+  <Accordion title="Group Events by Day">
+    List all events for a single day together, only showing the date once in the first row. This makes the schedule easier to scan and more visually organized.
+  </Accordion>
+
+  <Accordion title="Provide Cultural Context">
+    For traditional ceremonies, include brief explanations of their significance. This helps guests understand the importance of each event and what to expect.
+  </Accordion>
+
+  <Accordion title="Be Clear About Timing">
+    Use phrases like "onwards" for flexible start times, or specify exact times for ceremonies that must begin promptly.
+  </Accordion>
+
+  <Accordion title="Link to Related Pages">
+    Add anchor links to signup forms, RSVP pages, or additional details about specific events.
+  </Accordion>
+</AccordionGroup>
+
+## Responsive Design
+
+The `.table-wrapper` class ensures the schedule table is responsive on mobile devices:
+
+```css
+.table-wrapper {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+```
+
+On smaller screens, users can scroll horizontally to see all event details without layout breaking.
+
+<Info>
+  The schedule table automatically adapts to mobile devices, allowing guests to view your event timeline on any device.
+</Info>

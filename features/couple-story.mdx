@@ -1,0 +1,283 @@
+---
+title: 'Couple Story'
+description: 'Share your love story with beautiful images and engaging narratives'
+icon: 'heart'
+---
+
+The Couple Story page is the heart of your wedding website, where you share your journey together with guests. It combines biographical information, photos, and your relationship timeline.
+
+## Overview
+
+This feature page typically includes:
+- Individual bios for bride and groom
+- Photos showcasing each person
+- The story of how you met
+- Engagement details
+- Timeline of your relationship
+- Image galleries of your journey
+
+## Page Structure
+
+The couple story page uses sections to organize different parts of your narrative:
+
+```html
+<article id="main">
+  <header>
+    <h2>The Couple</h2>
+    <h3>Take the Quiz !</h3>
+    <p>
+      We could tell you our story ... or we could see how well you know it. 
+      Find some inside secrets and facts you probably have never heard about 
+      Ankita and Anil.
+    </p>
+  </header>
+  <section class="wrapper style5">
+    <div class="inner">
+      <!-- Content sections go here -->
+    </div>
+  </section>
+</article>
+```
+
+## Individual Bios
+
+<Steps>
+  <Step title="Create Bio Sections">
+    Each person gets their own section with heading and content:
+
+    ```html
+    <section>
+      <h2>The Bride and Groom</h2>
+      <hr />
+      <h3>Ankita</h3>
+      <div class="col-12">
+        <span class="image fit">
+          <img src="../images/ankita_final_1.jpg" alt="" />
+        </span>
+      </div>
+      <p>
+        Ankita loves animals and is obsessed with cats. Her voice becomes 
+        extra squeaky and wild cat calls can be heard to woo little balls 
+        of fur for cuddle time...
+      </p>
+    </section>
+    ```
+  </Step>
+
+  <Step title="Add Inline Images">
+    You can position images left, right, or full-width:
+
+    ```html
+    <!-- Left-aligned image -->
+    <p>
+      <span class="image left">
+        <img src="../images/anil_final_1.jpg" alt="" />
+      </span>
+      Anil was born in Mysore, he spent most of his summer holidays at 
+      his grandparents home...
+    </p>
+
+    <!-- Full-width image -->
+    <div class="col-12">
+      <span class="image fit">
+        <img src="../images/anil_final_2.jpg" alt="" />
+      </span>
+    </div>
+    ```
+  </Step>
+
+  <Step title="Use Blockquotes for Highlights">
+    Emphasize special details or fun facts:
+
+    ```html
+    <blockquote>
+      <b>P.S.</b> Always arrive starving at her home or plan on going to 
+      the gym for about 3 months to digest it. Hosting and cooking being 
+      one of her favorite things to do...
+    </blockquote>
+    ```
+  </Step>
+</Steps>
+
+## Your Love Story
+
+### Photo Grid Layout
+
+Create beautiful image galleries using the grid system:
+
+```html
+<div class="box alt">
+  <div class="row gtr-50 gtr-uniform">
+    <div class="col-4">
+      <span class="image fit">
+        <img src="../images/friends_1.jpg" alt="" />
+      </span>
+    </div>
+    <div class="col-4">
+      <span class="image fit">
+        <img src="../images/friends_2.jpg" alt="" />
+      </span>
+    </div>
+    <div class="col-4">
+      <span class="image fit">
+        <img src="../images/friends_3.jpg" alt="" />
+      </span>
+    </div>
+  </div>
+</div>
+```
+
+<Info>
+  The `gtr-50` class adds 50px gutters between columns, while `gtr-uniform` ensures equal heights for all items in the row.
+</Info>
+
+### Narrative Text
+
+Follow your photo galleries with engaging narrative:
+
+```html
+<section>
+  <h2>Alright ... Here's the Story</h2>
+  <hr />
+  <div class="box alt">
+    <!-- Image gallery here -->
+  </div>
+  <p>
+    In 2016, the two were both wild and running free around Boston's 
+    Seaport and Financial District as most singles do. Yes, we were 
+    just good friends back in Bengaluru...
+  </p>
+</section>
+```
+
+## Image Layout Options
+
+<CardGroup cols={3}>
+  <Card title="Full Width" icon="arrows-left-right">
+    ```html
+    <div class="col-12">
+      <span class="image fit">
+        <img src="image.jpg" alt="" />
+      </span>
+    </div>
+    ```
+  </Card>
+  <Card title="Left Aligned" icon="align-left">
+    ```html
+    <span class="image left">
+      <img src="image.jpg" alt="" />
+    </span>
+    ```
+  </Card>
+  <Card title="Grid Layout" icon="table-cells">
+    ```html
+    <div class="row gtr-50 gtr-uniform">
+      <div class="col-4">...</div>
+      <div class="col-4">...</div>
+      <div class="col-4">...</div>
+    </div>
+    ```
+  </Card>
+</CardGroup>
+
+## Engagement Story
+
+Share the proposal details with your guests:
+
+```html
+<div class="box alt">
+  <div class="row gtr-50 gtr-uniform">
+    <div class="col-4">
+      <span class="image fit">
+        <img src="../images/dress_1.jpg" alt="" />
+      </span>
+    </div>
+    <div class="col-4">
+      <span class="image fit">
+        <img src="../images/engagement.jpg" alt="" />
+      </span>
+    </div>
+    <div class="col-4">
+      <span class="image fit">
+        <img src="../images/dress_2.jpg" alt="" />
+      </span>
+    </div>
+  </div>
+</div>
+<p>
+  Soon Anil found a job in Robotics in Pittsburgh, moving slightly closer 
+  to Ankita. After a day of experiencing the New York City skyline from 
+  the clouds in a helicopter and shopping in Times Square, he popped the 
+  question in Queens, with the midtown Manhattan skyscrapers in the backdrop, 
+  on a chilly fall evening.
+</p>
+<blockquote>
+  Care was taken to plan events at least 15 days apart from other 
+  anniversaries or birthdays of the Bride and Groom. Ankita highly 
+  disapproves of combining celebrations and letting one life event 
+  steal the thunder of another.
+</blockquote>
+```
+
+## Call to Action
+
+End your story with links to other important pages:
+
+```html
+<ul class="alt">
+  <li>That's just the first few chapters of the story, folks.</li>
+  <li>
+    Join them in <a href="schedule.html">Nesara Center for Culture</a> 
+    for the next!
+  </li>
+</ul>
+```
+
+## Customization Tips
+
+<AccordionGroup>
+  <Accordion title="Writing Style">
+    Write in third person for a storytelling feel, or first person for a more intimate tone. Mix humor with heartfelt moments to keep readers engaged.
+  </Accordion>
+
+  <Accordion title="Photo Selection">
+    Choose 8-15 photos that tell your story chronologically:
+    - Individual childhood/young adult photos
+    - Early relationship photos
+    - Travel and adventure photos
+    - Engagement photos
+    - Recent couple photos
+  </Accordion>
+
+  <Accordion title="Section Organization">
+    Break your story into logical sections:
+    1. Individual introductions
+    2. How you met
+    3. Dating/relationship milestones
+    4. Engagement
+    5. Looking forward to the wedding
+  </Accordion>
+
+  <Accordion title="Length Considerations">
+    Aim for 300-500 words per person for bios, and 200-400 words for your relationship story. Keep it engaging but concise.
+  </Accordion>
+</AccordionGroup>
+
+<Warning>
+  Make sure all images are optimized for web (compressed) to ensure fast page loading. Large image files can significantly slow down your site.
+</Warning>
+
+## Responsive Grid System
+
+The template uses a 12-column grid system:
+
+- `col-12` = Full width (100%)
+- `col-6` = Half width (50%)
+- `col-4` = One-third width (33.33%)
+- `col-3` = One-quarter width (25%)
+
+These automatically stack on mobile devices for better readability.
+
+<Tip>
+  Use the `col-4` class for three-column photo galleries, which looks professional and balanced on desktop while remaining mobile-friendly.
+</Tip>

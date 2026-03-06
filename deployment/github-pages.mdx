@@ -1,0 +1,162 @@
+---
+title: Deploy to GitHub Pages
+description: Step-by-step guide to deploy your wedding website to GitHub Pages for free hosting
+---
+
+GitHub Pages provides free hosting for static websites directly from your GitHub repository. This guide will walk you through deploying your wedding website.
+
+## Prerequisites
+
+- A GitHub account (free)
+- Your wedding website files ready to upload
+
+## Deployment Process
+
+<Steps>
+  <Step title="Create a GitHub Repository">
+    1. Log in to [GitHub](https://github.com)
+    2. Click the **+** icon in the top right corner
+    3. Select **New repository**
+    4. Name your repository:
+       - For a personal site: `username.github.io` (e.g., `anilnanki.github.io`)
+       - For a project site: Any name you prefer (e.g., `wedding-website`)
+    5. Make sure the repository is **Public**
+    6. Click **Create repository**
+
+    <Note>
+      Using the format `username.github.io` will make your site available at `https://username.github.io/` directly. Other names will be at `https://username.github.io/repo-name/`.
+    </Note>
+  </Step>
+
+  <Step title="Upload Your Files">
+    You can upload files using Git or directly through the GitHub website.
+
+    ### Option 1: Using Git (Recommended)
+
+    <CodeGroup>
+      ```bash Terminal
+      # Initialize git in your project folder
+      cd your-wedding-website
+      git init
+
+      # Add all files
+      git add .
+
+      # Commit your files
+      git commit -m "Initial commit: Wedding website"
+
+      # Add your GitHub repository as remote
+      git remote add origin https://github.com/username/repo-name.git
+
+      # Push to GitHub
+      git branch -M main
+      git push -u origin main
+      ```
+    </CodeGroup>
+
+    ### Option 2: GitHub Web Interface
+
+    1. Go to your repository on GitHub
+    2. Click **uploading an existing file**
+    3. Drag and drop all your website files
+    4. Click **Commit changes**
+
+    <Warning>
+      Make sure to upload all files including `index.html`, `assets/`, `images/`, and `pages/` folders to maintain the website structure.
+    </Warning>
+  </Step>
+
+  <Step title="Enable GitHub Pages">
+    1. Go to your repository on GitHub
+    2. Click on **Settings** tab
+    3. Scroll down to the **Pages** section in the left sidebar
+    4. Under **Source**, select the branch you want to deploy (usually `main`)
+    5. Keep the folder as **/ (root)**
+    6. Click **Save**
+
+    <Info>
+      GitHub Pages will automatically build and deploy your site. This usually takes 1-2 minutes.
+    </Info>
+  </Step>
+
+  <Step title="Access Your Live Site">
+    After deployment completes:
+
+    1. Your site will be available at:
+       - Personal site format: `https://username.github.io/`
+       - Project site format: `https://username.github.io/repo-name/`
+    2. GitHub will show a green checkmark and the URL in the Pages settings
+    3. Click the URL to view your live wedding website
+
+    <Tip>
+      Bookmark your site URL and share it with your guests!
+    </Tip>
+  </Step>
+</Steps>
+
+## Example Repository
+
+This template is based on the repository: [anilnanki/anilnanki.github.io](https://github.com/anilnanki/anilnanki.github.io)
+
+You can view it live and use it as a reference for your own deployment.
+
+## Updating Your Site
+
+After the initial deployment, updating your site is simple:
+
+<CodeGroup>
+  ```bash Git
+  # Make your changes to the files
+  
+  # Add and commit changes
+  git add .
+  git commit -m "Update website content"
+  
+  # Push to GitHub
+  git push
+  ```
+</CodeGroup>
+
+GitHub Pages will automatically rebuild and deploy your updated site within 1-2 minutes.
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="Site not loading after deployment">
+    - Wait 2-5 minutes for the initial deployment to complete
+    - Check that GitHub Pages is enabled in Settings > Pages
+    - Verify that your repository contains an `index.html` file in the root
+    - Check the Actions tab for any build errors
+  </Accordion>
+
+  <Accordion title="CSS/Images not loading">
+    - Ensure all file paths use relative paths (e.g., `./assets/css/style.css`)
+    - Check that files are uploaded with correct capitalization
+    - Verify folder structure matches your HTML references
+    - For project sites, you may need to adjust paths to include `/repo-name/`
+  </Accordion>
+
+  <Accordion title="Changes not appearing">
+    - Clear your browser cache (Ctrl+Shift+R or Cmd+Shift+R)
+    - Wait a few minutes for GitHub Pages to rebuild
+    - Check the Actions tab to see if the deployment succeeded
+    - Verify your changes were pushed to the correct branch
+  </Accordion>
+
+  <Accordion title="404 Error on pages">
+    - Ensure all HTML files are in the correct directories
+    - Check that links in your navigation use correct paths
+    - Verify file names match exactly (case-sensitive)
+  </Accordion>
+</AccordionGroup>
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card title="Custom Domain" icon="globe" href="./custom-domain">
+    Set up a custom domain name for your wedding website
+  </Card>
+  <Card title="Testing" icon="check-circle" href="./testing">
+    Test your website before sharing with guests
+  </Card>
+</CardGroup>

@@ -1,0 +1,285 @@
+---
+title: HTML Structure
+description: Understanding the overall HTML5 structure and page layout of the wedding website template
+---
+
+## Overview
+
+The wedding website template uses a clean, semantic HTML5 structure built on the Spectral theme by HTML5 UP. The template is designed to be responsive and accessible across all devices.
+
+## Document Structure
+
+Every page follows a consistent HTML5 structure:
+
+```html
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>Ankita & Anil</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+    <link href="images/favicon.png" rel="icon">
+    <link href="images/favicon_apple.png" rel="apple-touch-icon">
+  </head>
+  <body class="landing is-preload">
+    <!-- Page content -->
+  </body>
+</html>
+```
+
+<Note>
+The `viewport` meta tag ensures proper responsive behavior on mobile devices. The `is-preload` class is removed by JavaScript once the page loads.
+</Note>
+
+## Page Wrapper
+
+All page content is wrapped in a `#page-wrapper` div:
+
+```html
+<div id="page-wrapper">
+  <!-- Header -->
+  <header id="header" class="alt"></header>
+  
+  <!-- Banner -->
+  <section id="banner"></section>
+  
+  <!-- Content Sections -->
+  <section id="one"></section>
+  <section id="two"></section>
+  <section id="three"></section>
+  
+  <!-- Call to Action -->
+  <section id="cta"></section>
+  
+  <!-- Footer -->
+  <footer id="footer"></footer>
+</div>
+```
+
+## Main Page Sections
+
+<Accordion title="Header Section">
+The header contains the site title and navigation menu:
+
+```html
+<header id="header" class="alt">
+  <h1><a href="index.html">Ankita & Anil</a></h1>
+  <nav id="nav">
+    <ul>
+      <li class="special">
+        <a href="#menu" class="menuToggle"><span>Menu</span></a>
+        <div id="menu">
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="pages/live_stream.html">Live Stream</a></li>
+            <!-- More menu items -->
+          </ul>
+        </div>
+      </li>
+    </ul>
+  </nav>
+</header>
+```
+
+The `alt` class creates an alternate header style used on the landing page.
+</Accordion>
+
+<Accordion title="Banner Section">
+The banner is the hero section with the main announcement:
+
+```html
+<section id="banner">
+  <div class="inner">
+    <h2>We're Getting Married!</h2> <br />
+    <h3>May 5 & 6, 2022</h3> <br />
+    <p>
+      At <a href="http://www.thenesara.com/">Nesara Centre For Culture</a> <br />
+      <br />
+      Parking available on premises. <br />
+      Scroll down for more details. <br />
+    </p>
+    <ul class="actions special">
+      <li><a href="#" class="button primary">Link to Google Maps</a></li>
+    </ul>
+    <ul class="actions special">
+      <li><a href="pages/live_stream.html" class="button">Live Stream Link</a></li>
+    </ul>
+  </div>
+  <a href="#one" class="more scrolly">Celebrate with us !</a>
+</section>
+```
+
+The `scrolly` class enables smooth scrolling to the next section.
+</Accordion>
+
+<Accordion title="Content Sections">
+Content sections use various wrapper styles:
+
+```html
+<!-- Single column centered content -->
+<section id="one" class="wrapper style1 special">
+  <div class="inner">
+    <header class="major">
+      <h2>Section Title</h2>
+    </header>
+    <!-- Content -->
+  </div>
+</section>
+
+<!-- Alternating spotlight sections -->
+<section id="two" class="wrapper alt style2">
+  <section class="spotlight">
+    <div class="image"><img src="images/photo.jpg" alt="" /></div>
+    <div class="content">
+      <h2>Title</h2>
+      <p>Description</p>
+    </div>
+  </section>
+</section>
+
+<!-- Multi-column feature grid -->
+<section id="three" class="wrapper style3 special">
+  <div class="inner">
+    <ul class="features">
+      <li class="icon fa-building">
+        <h3>Feature Title</h3>
+        <p>Feature description</p>
+      </li>
+    </ul>
+  </div>
+</section>
+```
+</Accordion>
+
+<Accordion title="Call to Action Section">
+The CTA section appears before the footer:
+
+```html
+<section id="cta" class="wrapper style4">
+  <div class="inner">
+    <header>
+      <h2>Let the Celebration Begin!</h2>
+      <h3>Best regards from Kulkarni and Rao family.</h3>
+      <p>Thank you for your blessings...</p>
+    </header>
+    <ul class="actions stacked">
+      <li><a href="#banner" class="button fit primary">Back to top</a></li>
+      <li><a href="pages/faqs.html" class="button fit">FAQs</a></li>
+    </ul>
+  </div>
+</section>
+```
+</Accordion>
+
+<Accordion title="Footer Section">
+The footer contains social icons and copyright information:
+
+```html
+<footer id="footer">
+  <ul class="icons">
+    <li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+    <li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+    <li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+    <li><a href="mailto:example@email.com" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
+    <li><a href="tel:+1234567890" class="icon solid fa-phone"><span class="label">Phone</span></a></li>
+  </ul>
+  <ul class="copyright">
+    <li>&copy; Your Name</li>
+    <li>Design: <a href="#">Your Website</a></li>
+  </ul>
+</footer>
+```
+</Accordion>
+
+## Inner Page Structure
+
+Inner pages use an `<article>` element instead of multiple sections:
+
+```html
+<div id="page-wrapper">
+  <header id="header">
+    <h1><a href="../index.html">Ankita & Anil</a></h1>
+    <nav id="nav"><!-- Navigation --></nav>
+  </header>
+
+  <article id="main">
+    <header>
+      <h2>Page Title</h2>
+      <p>Page description</p>
+    </header>
+    <section class="wrapper style5">
+      <div class="inner">
+        <!-- Page content -->
+      </section>
+    </section>
+  </article>
+
+  <footer id="footer"><!-- Footer --></footer>
+</div>
+```
+
+<Info>
+Inner pages use relative paths (`../`) to reference assets and the home page since they're located in the `pages/` subdirectory.
+</Info>
+
+## Required Scripts
+
+All pages load these JavaScript files at the end of the body:
+
+```html
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/jquery.scrollex.min.js"></script>
+<script src="assets/js/jquery.scrolly.min.js"></script>
+<script src="assets/js/browser.min.js"></script>
+<script src="assets/js/breakpoints.min.js"></script>
+<script src="assets/js/util.js"></script>
+<script src="assets/js/main.js"></script>
+```
+
+<Warning>
+The template requires jQuery and specific plugins for the menu toggle, smooth scrolling, and responsive behavior. Don't remove these scripts unless you're replacing their functionality.
+</Warning>
+
+## CSS Classes Reference
+
+<CardGroup cols={2}>
+  <Card title="Wrapper Styles" icon="palette">
+    - `wrapper style1` - Light background
+    - `wrapper style2` - Medium background
+    - `wrapper style3` - Dark background
+    - `wrapper style4` - Accent background
+    - `wrapper style5` - White background
+  </Card>
+  
+  <Card title="Modifiers" icon="sliders">
+    - `special` - Centered content
+    - `alt` - Alternating pattern
+    - `fit` - Full width button
+    - `primary` - Primary button style
+    - `stacked` - Vertical button layout
+  </Card>
+</CardGroup>
+
+## Body Classes
+
+- `landing` - Used on the home page for full-screen banner
+- `is-preload` - Initial loading state, removed when page loads
+- No class - Used on inner pages for standard layout
+
+## Next Steps
+
+<CardGroup cols={3}>
+  <Card title="Navigation Menu" icon="bars" href="/components/navigation-menu">
+    Learn how to customize the navigation menu
+  </Card>
+  
+  <Card title="Event Cards" icon="image" href="/components/event-cards">
+    Create spotlight sections for events
+  </Card>
+  
+  <Card title="Forms" icon="file-lines" href="/components/forms">
+    Add Google Forms to your pages
+  </Card>
+</CardGroup>

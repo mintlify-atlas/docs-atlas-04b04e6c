@@ -1,0 +1,350 @@
+---
+title: Event Cards
+description: Creating spotlight sections and event display cards for your wedding website
+---
+
+## Overview
+
+Event cards in this template use a spotlight section pattern with alternating image-text layouts. These sections are perfect for showcasing different wedding events, venues, or important information.
+
+## Spotlight Section Structure
+
+The template uses `spotlight` sections within an alternating wrapper:
+
+```html
+<section id="two" class="wrapper alt style2">
+  <section class="spotlight">
+    <div class="image"><img src="images/the_couple.jpg" alt="" /></div>
+    <div class="content">
+      <h2>The Couple</h2>
+      <h3>Take the quiz !</h3>
+      <p>
+        We could tell you our story ... or we could see how well you know it.
+      </p>
+      <ul class="actions">
+        <a href="pages/the_couple.html" class="button primary fit">Challenge Accepted !</a>
+      </ul>
+    </div>
+  </section>
+</section>
+```
+
+<Note>
+The `wrapper alt style2` class creates the alternating left-right pattern. Each spotlight automatically switches sides as you add more sections.
+</Note>
+
+## Complete Multi-Event Layout
+
+Here's the full pattern used on the home page to display multiple events:
+
+```html
+<section id="two" class="wrapper alt style2">
+  <!-- Event 1: The Couple -->
+  <section class="spotlight">
+    <div class="image"><img src="images/the_couple.jpg" alt="" /></div>
+    <div class="content">
+      <h2>The Couple</h2>
+      <h3>Take the quiz !</h3>
+      <p>
+        We could tell you our story ... or we could see how well you know it.
+        Find some inside secrets and facts you probably have never heard about.
+        <ul class="actions">
+          <a href="pages/the_couple.html" class="button primary fit">Challenge Accepted !</a>
+        </ul>
+      </p>
+    </div>
+  </section>
+
+  <!-- Event 2: Schedule -->
+  <section class="spotlight">
+    <div class="image"><img src="images/schedule.jpg" alt="" /></div>
+    <div class="content">
+      <h2>Schedule</h2>
+      <h3>Here's what we have in store</h3>
+      <p>
+        Find the detailed list of events, location inside the venue and hints on the dress code.
+        <ul class="actions">
+          <a href="pages/schedule.html" class="button primary fit">Let's have some fun!</a>
+        </ul>
+      </p>
+    </div>
+  </section>
+
+  <!-- Event 3: Encomium -->
+  <section class="spotlight">
+    <div class="image"><img src="images/encomium.jpg" alt="" /></div>
+    <div class="content">
+      <h2>Encomium</h2>
+      <h3>An ode to memories that last forever</h3>
+      <p>
+        The greatest storytellers, heroes, source of unconditional love and the keepers of traditions.
+        <ul class="actions">
+          <a href="pages/encomium.html" class="button primary fit">A trip down memory lane !</a>
+        </ul>
+      </p>
+    </div>
+  </section>
+</section>
+```
+
+## Spotlight Patterns
+
+<Steps>
+  <Step title="First Spotlight">
+    Image on the left, content on the right
+  </Step>
+  
+  <Step title="Second Spotlight">
+    Image on the right, content on the left
+  </Step>
+  
+  <Step title="Third Spotlight">
+    Image on the left, content on the right
+  </Step>
+  
+  <Step title="Pattern Continues">
+    The alternating pattern continues automatically for each additional spotlight section
+  </Step>
+</Steps>
+
+## Spotlight with Multiple Buttons
+
+You can add multiple call-to-action buttons in a single spotlight:
+
+```html
+<section class="spotlight">
+  <div class="image"><img src="images/travel_and_accomadation.jpg" alt="" /></div>
+  <div class="content">
+    <h2>Travel and Accommodation</h2>
+    <h3>One stop shop to make your attendance a breeze</h3>
+    <p>
+      Are you traveling from out of station and need help booking a room?
+      Want tips on best route to the venue?
+      Fear not, we have got you covered.
+    </p>
+    <ul class="actions">
+      <a href="pages/travel_and_accommodation.html#Accommodation Form" class="button primary fit">Take me to the form !</a>
+      <a href="pages/travel_and_accommodation.html#Tips" class="button">Give me tips !</a>
+    </ul>
+  </div>
+</section>
+```
+
+<Info>
+The first button uses `button primary fit` for emphasis, while the second uses just `button` for a secondary action. Both use the `fit` class to span the full width.
+</Info>
+
+## Anchor Links in Buttons
+
+Notice how buttons can link to specific sections on a page using hash anchors:
+
+```html
+<a href="pages/travel_and_accommodation.html#Accommodation Form" class="button primary fit">
+  Take me to the form !
+</a>
+```
+
+This links to a section with `id="Accommodation Form"` on the target page.
+
+## Alternative: Centered Event Section
+
+For single-column centered content, use the `style1 special` wrapper:
+
+```html
+<section id="one" class="wrapper style1 special">
+  <div class="inner">
+    <header class="major">
+      <h2>Happily married since</h2>
+      <div class="countdown">
+        <h2 class="days">Time</h2>
+        <h2>Days |</h2>
+        <h2 class="hours">Time</h2>
+        <h2>Hours |</h2>
+        <h2 class="minutes">Time</h2>
+        <h2>Minutes |</h2>
+        <h2 class="seconds">Time</h2>
+        <h2>Seconds</h2>
+      </div>
+    </header>
+    <ul class="icons major">
+      <li><span class="icon fa-gem major style1"><span class="label">Lorem</span></span></li>
+      <li><span class="icon solid fa-heart major style2"><span class="label">Ipsum</span></span></li>
+      <li><span class="icon solid fa-ring major style3"><span class="label">Dolor</span></span></li>
+      <li><span class="icon solid fa-clock major style4"><span class="label">Dolor</span></span></li>
+    </ul>
+    <section>
+      <p>
+        Click the button below to <b>confirm</b> your attendance for <i>all</i> or <i>specific events.</i>
+      </p>
+      <ul class="actions">
+        <a href="pages/confirm_attendance.html#Confirm Attendance" class="button primary fit">Confirm Attendance / RSVP</a>
+      </ul>
+    </section>
+  </div>
+</section>
+```
+
+<Warning>
+This centered layout is best for call-to-action sections or important announcements, not for multiple alternating events.
+</Warning>
+
+## Feature Grid Layout
+
+For displaying multiple items in a grid (like vendors or thank-you section), use the features list:
+
+```html
+<section id="three" class="wrapper style3 special">
+  <div class="inner">
+    <header class="major">
+      <h2>A heartfelt thanks to everyone involved</h2>
+      <p>This is a token of appreciation and gratitude.</p>
+    </header>
+    <ul class="features">
+      <li class="icon fa-building">
+        <h3><a href="http://www.thenesara.com/">Nesara Center For Culture</a></h3>
+        <p>
+          Set in an idyllic locale on the outskirts of Bangalore, Nesara is stunningly landscaped.
+        </p>
+      </li>
+      <li class="icon solid fa-camera-retro">
+        <h3><a href="https://pixelenastudio.com/">Pixelena Studio</a></h3>
+        <p>
+          Specializing in wedding photography, they capture the very essence of your wedding day.
+        </p>
+      </li>
+      <li class="icon solid fa-video">
+        <h3><a href="https://pixelstream.in/">Pixel Stream</a></h3>
+        <p>
+          One of the leading production houses incorporating passionate Photographers & Videographers.
+        </p>
+      </li>
+      <li class="icon solid fa-utensils">
+        <h3><a href="#">Rao Caterers</a></h3>
+        <p>
+          Best known for their traditional South Indian delicacies and customer satisfaction.
+        </p>
+      </li>
+    </ul>
+  </div>
+</section>
+```
+
+<Note>
+The features grid automatically arranges items in rows based on screen size - 2 columns on tablets, 3-4 on desktop.
+</Note>
+
+## Image Guidelines
+
+<Accordion title="Image Specifications">
+- **Recommended Size**: 1200x800 pixels for spotlight images
+- **Aspect Ratio**: 3:2 works best for consistency
+- **Format**: JPG for photos, PNG for graphics with transparency
+- **Optimization**: Compress images to keep file sizes under 500KB
+- **Alt Text**: Leave empty (`alt=""`) for decorative images, add descriptive text for meaningful images
+</Accordion>
+
+<Accordion title="Image Paths">
+```html
+<!-- From home page -->
+<div class="image"><img src="images/the_couple.jpg" alt="" /></div>
+
+<!-- From pages subdirectory -->
+<div class="image"><img src="../images/the_couple.jpg" alt="" /></div>
+```
+
+Remember to adjust the path based on the page location.
+</Accordion>
+
+## Button Styles
+
+<CodeGroup>
+```html Primary Button
+<a href="#" class="button primary fit">Primary Action</a>
+```
+
+```html Secondary Button
+<a href="#" class="button fit">Secondary Action</a>
+```
+
+```html Primary Small
+<a href="#" class="button primary">Small Primary</a>
+```
+
+```html Special Style (for banner)
+<a href="#" class="button primary">Special Action</a>
+```
+</CodeGroup>
+
+## Button Classes Reference
+
+- `button` - Base button style
+- `primary` - Primary color (accent color)
+- `fit` - Full width button
+- `special` - Used in banner/hero sections for extra emphasis
+
+## Best Practices
+
+<CardGroup cols={2}>
+  <Card title="Content Balance" icon="balance-scale">
+    Keep text concise in spotlight sections. Aim for 2-3 sentences maximum to maintain visual balance with the image.
+  </Card>
+  
+  <Card title="Clear Hierarchy" icon="list">
+    Use h2 for the main title, h3 for subtitle, and paragraph text for description. This creates a clear content hierarchy.
+  </Card>
+  
+  <Card title="Consistent Images" icon="images">
+    Use images with similar style, quality, and aspect ratios throughout your spotlight sections for a cohesive look.
+  </Card>
+  
+  <Card title="Action-Oriented" icon="hand-pointer">
+    Every spotlight should have at least one clear call-to-action button guiding users to the next step.
+  </Card>
+</CardGroup>
+
+## Customization Examples
+
+<Accordion title="Three Events Only">
+If you only need three event spotlights, simply include three `<section class="spotlight">` blocks:
+
+```html
+<section id="two" class="wrapper alt style2">
+  <section class="spotlight"><!-- Event 1 --></section>
+  <section class="spotlight"><!-- Event 2 --></section>
+  <section class="spotlight"><!-- Event 3 --></section>
+</section>
+```
+</Accordion>
+
+<Accordion title="Six Events">
+For more events, keep adding spotlight sections:
+
+```html
+<section id="two" class="wrapper alt style2">
+  <section class="spotlight"><!-- Event 1 --></section>
+  <section class="spotlight"><!-- Event 2 --></section>
+  <section class="spotlight"><!-- Event 3 --></section>
+  <section class="spotlight"><!-- Event 4 --></section>
+  <section class="spotlight"><!-- Event 5 --></section>
+  <section class="spotlight"><!-- Event 6 --></section>
+</section>
+```
+
+The alternating pattern continues automatically.
+</Accordion>
+
+## Next Steps
+
+<CardGroup cols={3}>
+  <Card title="HTML Structure" icon="code" href="/components/html-structure">
+    Learn about the overall page structure
+  </Card>
+  
+  <Card title="Forms" icon="file-lines" href="/components/forms">
+    Add RSVP and contact forms
+  </Card>
+  
+  <Card title="Styling" icon="paint-brush" href="/customization/styling">
+    Customize colors and fonts
+  </Card>
+</CardGroup>

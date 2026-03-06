@@ -1,0 +1,386 @@
+---
+title: 'Updating Content'
+description: 'Change text, images, and information across all pages'
+---
+
+This guide walks you through updating all the content on your wedding website, from couple names to venue details.
+
+## Content Structure Overview
+
+Your wedding site consists of several HTML pages:
+
+<CardGroup cols={2}>
+  <Card title="Homepage" icon="house">
+    `index.html` - Main landing page with countdown
+  </Card>
+  <Card title="Core Pages" icon="file">
+    All pages in the `pages/` directory
+  </Card>
+</CardGroup>
+
+### Available Pages
+
+```bash
+pages/
+├── confirm_attendance.html     # RSVP form
+├── the_couple.html            # Couple's story
+├── schedule.html              # Event timeline
+├── encomium.html              # Tributes & memories
+├── live_stream.html           # Virtual attendance
+├── travel_and_accommodation.html
+├── parking_and_transportation.html
+└── faqs.html                  # Frequently asked questions
+```
+
+## Homepage Content Updates
+
+The homepage (`index.html`) contains your primary wedding information:
+
+### Couple Names and Wedding Date
+
+<Steps>
+  <Step title="Update the Page Title">
+    ```html
+    <head>
+      <title>Your Names</title>
+    </head>
+    ```
+    Replace `Ankita & Anil` with your names
+  </Step>
+  
+  <Step title="Update Header">
+    ```html
+    <header id="header" class="alt">
+      <h1><a href="index.html">Your Names</a></h1>
+    </header>
+    ```
+  </Step>
+  
+  <Step title="Update Banner Section">
+    ```html
+    <section id="banner">
+      <div class="inner">
+        <h2>We're Getting Married!</h2>
+        <h3>May 5 & 6, 2022</h3>
+        <p>
+          At <a href="http://www.venue-website.com/">Your Venue Name</a> <br />
+          <br />
+          Parking available on premises. <br />
+          Scroll down for more details. <br />
+        </p>
+      </div>
+    </section>
+    ```
+  </Step>
+</Steps>
+
+### Venue Information
+
+Update the venue details and Google Maps link:
+
+```html
+<section id="banner">
+  <div class="inner">
+    <p>
+      At <a href="http://www.your-venue.com/">Your Venue Name</a> <br />
+      <br />
+      Additional details about parking, accessibility, etc. <br />
+    </p>
+    <ul class="actions special">
+      <li>
+        <a href="https://www.google.com/maps/place/YOUR_VENUE_ADDRESS" 
+           class="button primary">
+          Link to Google Maps
+        </a>
+      </li>
+    </ul>
+  </div>
+</section>
+```
+
+<Note>
+Get your Google Maps link by searching for your venue on Google Maps and clicking the "Share" button.
+</Note>
+
+## Navigation Menu Updates
+
+Update the navigation menu consistently across all pages:
+
+```html
+<nav id="nav">
+  <ul>
+    <li class="special">
+      <a href="#menu" class="menuToggle"><span>Menu</span></a>
+      <div id="menu">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="pages/live_stream.html">Live Stream</a></li>
+          <li><a href="pages/the_couple.html">The Couple</a></li>
+          <li><a href="pages/schedule.html">Schedule</a></li>
+          <li><a href="pages/encomium.html">Encomium</a></li>
+          <li><a href="https://your-photo-gallery-url.com/">Photos</a></li>
+          <li><a href="pages/travel_and_accommodation.html">Travel & Accommodation</a></li>
+          <li><a href="pages/parking_and_transportation.html">Parking & Transportation</a></li>
+          <li><a href="pages/confirm_attendance.html">Confirm Attendance / RSVP</a></li>
+          <li><a href="pages/faqs.html">FAQs</a></li>
+        </ul>
+      </div>
+    </li>
+  </ul>
+</nav>
+```
+
+<Warning>
+Update the navigation menu in **every HTML file** to maintain consistency across your site.
+</Warning>
+
+## Countdown Timer Text
+
+Customize the countdown section text:
+
+```html
+<section id="one" class="wrapper style1 special">
+  <div class="inner">
+    <header class="major">
+      <h2>Happily married since</h2>
+      <!-- OR before the wedding: -->
+      <h2>Getting married in</h2>
+      
+      <div class="countdown">
+        <h2 class="days">Time</h2>
+        <h2>Days |</h2>
+        <h2 class="hours">Time</h2>
+        <h2>Hours |</h2>
+        <h2 class="minutes">Time</h2>
+        <h2>Minutes |</h2>
+        <h2 class="seconds">Time</h2>
+        <h2>Seconds</h2>
+      </div>
+    </header>
+  </div>
+</section>
+```
+
+## Content Sections on Homepage
+
+The homepage features spotlight sections for each major page:
+
+### The Couple Section
+
+```html
+<section class="spotlight">
+  <div class="image"><img src="images/the_couple.jpg" alt="" /></div>
+  <div class="content">
+    <h2>The Couple</h2>
+    <h3>Take the quiz!</h3>
+    <p>
+      We could tell you our story ... or we could see how well you know it. 
+      Find some inside secrets and facts you probably have never heard about us. 
+      The story of how we met, the engagement and why we decided to get married!<br />
+      <ul class="actions">
+        <a href="pages/the_couple.html" class="button primary fit">
+          Challenge Accepted!
+        </a>
+      </ul>
+    </p>
+  </div>
+</section>
+```
+
+<Tip>
+Customize the description text to match your personality and wedding style.
+</Tip>
+
+### Schedule Section
+
+```html
+<section class="spotlight">
+  <div class="image"><img src="images/schedule.jpg" alt="" /></div>
+  <div class="content">
+    <h2>Schedule</h2>
+    <h3>Here's what we have in store</h3>
+    <p>
+      Find the detailed list of events, location inside the venue and hints 
+      on the dress code. Plan your arrival and make the most of it with fun 
+      activities for all throughout every event.<br />
+      <ul class="actions">
+        <a href="pages/schedule.html" class="button primary fit">
+          Let's have some fun!
+        </a>
+      </ul>
+    </p>
+  </div>
+</section>
+```
+
+## Updating Individual Pages
+
+Each page follows a similar structure. Here's how to update common elements:
+
+### Page Header Structure
+
+```html
+<article id="main">
+  <header>
+    <h2>Page Title</h2>
+    <p>Page description or tagline</p>
+  </header>
+  <section class="wrapper style5">
+    <div class="inner">
+      <!-- Page content goes here -->
+    </div>
+  </section>
+</article>
+```
+
+<Steps>
+  <Step title="Locate the Page">
+    Open the specific page HTML file in the `pages/` directory
+  </Step>
+  
+  <Step title="Update Header">
+    Change the `<h2>` title and `<p>` description in the header section
+  </Step>
+  
+  <Step title="Modify Content">
+    Update the text, links, and images within the `.inner` div
+  </Step>
+  
+  <Step title="Update Navigation">
+    Ensure the navigation menu reflects any page name changes
+  </Step>
+</Steps>
+
+## Footer Updates
+
+Update contact information and social links in the footer:
+
+```html
+<footer id="footer">
+  <ul class="icons">
+    <li>
+      <a href="https://twitter.com/yourusername" 
+         class="icon brands fa-twitter">
+        <span class="label">Twitter</span>
+      </a>
+    </li>
+    <li>
+      <a href="https://www.facebook.com/yourpage" 
+         class="icon brands fa-facebook-f">
+        <span class="label">Facebook</span>
+      </a>
+    </li>
+    <li>
+      <a href="https://www.instagram.com/yourusername" 
+         class="icon brands fa-instagram">
+        <span class="label">Instagram</span>
+      </a>
+    </li>
+    <li>
+      <a href="mailto:your-email@example.com?subject=Wedding%20Inquiry" 
+         class="icon solid fa-envelope">
+        <span class="label">Email</span>
+      </a>
+    </li>
+    <li>
+      <a href="tel:+1-XXX-XXX-XXXX" 
+         class="icon solid fa-phone">
+        <span class="label">Phone</span>
+      </a>
+    </li>
+  </ul>
+  <ul class="copyright">
+    <li>&copy; Your Names</li>
+    <li>Design: <a href="https://your-website.com">Your Name</a></li>
+  </ul>
+</footer>
+```
+
+## Images and Media
+
+### Updating Images
+
+Replace images in the `images/` directory:
+
+<Steps>
+  <Step title="Prepare Your Images">
+    Optimize images for web (recommended: JPG format, under 500KB each)
+  </Step>
+  
+  <Step title="Use Same Filenames">
+    Replace existing images with your photos using the same filenames:
+    - `the_couple.jpg`
+    - `schedule.jpg`
+    - `encomium.jpg`
+    - `travel_and_accomadation.jpg`
+  </Step>
+  
+  <Step title="Update HTML References">
+    If using different filenames, update the `src` attribute:
+    ```html
+    <img src="images/your-new-image.jpg" alt="Description" />
+    ```
+  </Step>
+</Steps>
+
+### Adding Favicon
+
+```html
+<head>
+  <link href="images/favicon.png" rel="icon">
+  <link href="images/favicon_apple.png" rel="apple-touch-icon">
+</head>
+```
+
+Replace `favicon.png` and `favicon_apple.png` in the `images/` directory with your custom icons.
+
+## Content Update Checklist
+
+<Steps>
+  <Step title="Update All Names">
+    Search and replace couple names across all HTML files
+  </Step>
+  
+  <Step title="Update Dates">
+    Change wedding date and event dates throughout the site
+  </Step>
+  
+  <Step title="Update Venue Information">
+    Change venue name, address, and Google Maps links
+  </Step>
+  
+  <Step title="Update Navigation">
+    Ensure all menu items are consistent across pages
+  </Step>
+  
+  <Step title="Update Contact Information">
+    Change email, phone, and social media links in footer
+  </Step>
+  
+  <Step title="Replace Images">
+    Add your personal photos and update image references
+  </Step>
+  
+  <Step title="Customize Page Content">
+    Update descriptions, stories, and details on each page
+  </Step>
+  
+  <Step title="Test All Links">
+    Click through every link to ensure they work correctly
+  </Step>
+</Steps>
+
+<Note>
+Use a text editor's "Find and Replace" feature to quickly update repeated content like names across multiple files.
+</Note>
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card title="Configure Forms" icon="clipboard" href="/customization/forms">
+    Set up RSVP and contact forms
+  </Card>
+  <Card title="Style Customization" icon="palette" href="/customization/styling">
+    Customize colors and fonts
+  </Card>
+</CardGroup>

@@ -1,0 +1,430 @@
+---
+title: 'Photo Gallery'
+description: 'Showcase engagement photos and wedding memories with external gallery links'
+icon: 'images'
+---
+
+The Photo Gallery feature allows you to share engagement photos, pre-wedding shoots, and eventually wedding day photos with your guests through external gallery hosting services.
+
+## Overview
+
+While this template doesn't include a built-in gallery viewer, it integrates seamlessly with external gallery services. The navigation menu includes a direct link to your hosted photo gallery:
+
+```html
+<li>
+  <a href="https://603de94bdc7d27-95255343.gallery.photo/gallery/anil---ankita/">
+    Photos
+  </a>
+</li>
+```
+
+## Why Use External Gallery Hosting?
+
+<CardGroup cols={2}>
+  <Card title="Storage Efficiency" icon="database">
+    Photo hosting services handle:
+    - Large file storage
+    - Image optimization
+    - Bandwidth management
+    - No impact on your site speed
+  </Card>
+  
+  <Card title="Professional Features" icon="camera">
+    Gallery services provide:
+    - Beautiful presentation
+    - Download options
+    - Slideshow modes
+    - Mobile-optimized viewing
+  </Card>
+  
+  <Card title="Easy Management" icon="sliders">
+    Benefits include:
+    - Upload photos directly
+    - Organize into albums
+    - Add/remove photos anytime
+    - Privacy controls
+  </Card>
+  
+  <Card title="Guest Interaction" icon="heart">
+    Engagement features:
+    - Favorites/likes
+    - Comments on photos
+    - Guest photo uploads
+    - Photo ordering
+  </Card>
+</CardGroup>
+
+## Recommended Gallery Services
+
+### Gallery.photo
+
+This is what the template example uses:
+
+```html
+<li>
+  <a href="https://603de94bdc7d27-95255343.gallery.photo/gallery/anil---ankita/">
+    Photos
+  </a>
+</li>
+```
+
+**Features:**
+- Clean, modern interface
+- Password protection options
+- Download controls
+- Mobile responsive
+
+### Google Photos
+
+**Best for:** Free hosting with unlimited storage (at compressed quality)
+
+<Steps>
+  <Step title="Create an Album">
+    1. Go to photos.google.com
+    2. Click "Create" → "Album"
+    3. Add photos to your album
+    4. Name it (e.g., "Ankita & Anil Wedding")
+  </Step>
+
+  <Step title="Get Shareable Link">
+    1. Open the album
+    2. Click the share icon
+    3. Toggle "Create shared album"
+    4. Copy the link
+  </Step>
+
+  <Step title="Add to Your Website">
+    ```html
+    <li>
+      <a href="https://photos.app.goo.gl/YOUR_ALBUM_ID" 
+         target="_blank">
+        Photos
+      </a>
+    </li>
+    ```
+  </Step>
+</Steps>
+
+### SmugMug
+
+**Best for:** Professional photographers, high-quality display
+
+```html
+<li>
+  <a href="https://yourname.smugmug.com/Wedding" target="_blank">
+    Photos
+  </a>
+</li>
+```
+
+**Pricing:** $55-$330/year
+
+**Features:**
+- Unlimited storage (full resolution)
+- Custom domains
+- Sell prints
+- Password protection
+- Advanced privacy controls
+
+### Flickr
+
+**Best for:** Free tier available, photography community
+
+```html
+<li>
+  <a href="https://www.flickr.com/photos/username/albums/72157XXXXXXXXXX" 
+     target="_blank">
+    Photos
+  </a>
+</li>
+```
+
+**Features:**
+- 1,000 photos free
+- Organized albums
+- Privacy settings
+- EXIF data display
+
+## Integration Approaches
+
+### Navigation Menu Link (Recommended)
+
+The simplest approach used in the template:
+
+```html
+<nav id="nav">
+  <ul>
+    <li class="special">
+      <a href="#menu" class="menuToggle"><span>Menu</span></a>
+      <div id="menu">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="pages/live_stream.html">Live Stream</a></li>
+          <li><a href="pages/the_couple.html">The Couple</a></li>
+          <li><a href="pages/schedule.html">Schedule</a></li>
+          <li>
+            <a href="https://YOUR-GALLERY-URL" target="_blank">
+              Photos
+            </a>
+          </li>
+        </ul>
+      </div>
+    </li>
+  </ul>
+</nav>
+```
+
+<Note>
+  Adding `target="_blank"` opens the gallery in a new tab, keeping your wedding website open in the background.
+</Note>
+
+### Dedicated Gallery Page
+
+Create a page that explains the gallery before linking:
+
+```html
+<article id="main">
+  <header>
+    <h2>Photo Gallery</h2>
+    <p>Browse our engagement photos and pre-wedding memories</p>
+  </header>
+  <section class="wrapper style5">
+    <div class="inner">
+      <section>
+        <h2>Our Photo Collection</h2>
+        <p>
+          We've compiled our favorite engagement photos and moments 
+          leading up to the big day. After the wedding, we'll add 
+          ceremony and reception photos here too!
+        </p>
+        
+        <div class="gallery-preview">
+          <div class="row gtr-50 gtr-uniform">
+            <div class="col-4">
+              <span class="image fit">
+                <img src="../images/preview1.jpg" alt="" />
+              </span>
+            </div>
+            <div class="col-4">
+              <span class="image fit">
+                <img src="../images/preview2.jpg" alt="" />
+              </span>
+            </div>
+            <div class="col-4">
+              <span class="image fit">
+                <img src="../images/preview3.jpg" alt="" />
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <ul class="actions">
+          <li>
+            <a href="https://YOUR-GALLERY-URL" 
+               class="button primary large" 
+               target="_blank">
+              View Full Gallery
+            </a>
+          </li>
+        </ul>
+      </section>
+    </div>
+  </section>
+</article>
+```
+
+### Embedded Gallery Widget
+
+Some services provide embed codes:
+
+```html
+<section class="wrapper style5">
+  <div class="inner">
+    <h2>Photo Gallery</h2>
+    
+    <!-- Google Photos embed example -->
+    <div class="gallery-embed">
+      <iframe 
+        src="https://photos.google.com/share/YOUR_SHARE_KEY/embed" 
+        width="100%" 
+        height="600" 
+        frameborder="0">
+      </iframe>
+    </div>
+  </div>
+</section>
+```
+
+## Using Grid Layouts for Preview
+
+Show a preview grid on your homepage linking to the full gallery:
+
+```html
+<section id="two" class="wrapper alt style2">
+  <section class="spotlight">
+    <div class="image">
+      <img src="images/gallery_preview.jpg" alt="" />
+    </div>
+    <div class="content">
+      <h2>Photo Gallery</h2>
+      <p>
+        Check out our engagement photos, pre-wedding celebrations, 
+        and favorite moments together. More photos will be added 
+        after the wedding!
+      </p>
+      <ul class="actions">
+        <li>
+          <a href="https://YOUR-GALLERY-URL" 
+             class="button" 
+             target="_blank">
+            View Photos
+          </a>
+        </li>
+      </ul>
+    </div>
+  </section>
+</section>
+```
+
+## Password Protection
+
+Most gallery services offer password protection:
+
+<AccordionGroup>
+  <Accordion title="Google Photos">
+    Google Photos shared albums are automatically unlisted (only people with the link can view). No password option, but links are hard to guess.
+  </Accordion>
+
+  <Accordion title="Gallery.photo">
+    1. Open your gallery settings
+    2. Enable "Password Protection"
+    3. Set a custom password
+    4. Share the password with guests
+    
+    Display on your website:
+    ```html
+    <p>
+      <strong>Gallery Password:</strong> weddingday2022
+    </p>
+    <a href="https://YOUR-GALLERY-URL" target="_blank">
+      View Photos
+    </a>
+    ```
+  </Accordion>
+
+  <Accordion title="SmugMug">
+    SmugMug offers multiple privacy levels:
+    - **Public**: Anyone can view
+    - **Unlisted**: Only people with the link
+    - **Password**: Requires password to view
+    - **Private**: Only you can view
+  </Accordion>
+</AccordionGroup>
+
+<Warning>
+  If using password protection, make sure the password is clearly displayed on your website so guests don't get frustrated trying to access photos.
+</Warning>
+
+## Adding Photos in Sections
+
+You can integrate photos directly into your couple story using the grid system (see [Couple Story](/features/couple-story) page):
+
+```html
+<div class="box alt">
+  <div class="row gtr-50 gtr-uniform">
+    <div class="col-4">
+      <span class="image fit">
+        <img src="../images/friends_1.jpg" alt="" />
+      </span>
+    </div>
+    <div class="col-4">
+      <span class="image fit">
+        <img src="../images/friends_2.jpg" alt="" />
+      </span>
+    </div>
+    <div class="col-4">
+      <span class="image fit">
+        <img src="../images/friends_3.jpg" alt="" />
+      </span>
+    </div>
+  </div>
+</div>
+```
+
+## Guest Photo Uploads
+
+Some services let guests upload their own photos:
+
+<CardGroup cols={2}>
+  <Card title="Google Photos" icon="upload">
+    Enable "Collaboration" on your shared album:
+    1. Open album
+    2. Share options
+    3. Toggle "Collaborate"
+    
+    Guests can now add photos directly.
+  </Card>
+  
+  <Card title="Wedpics" icon="mobile">
+    Free app specifically for wedding photo sharing:
+    - Guests download the app
+    - Enter your event code
+    - Upload photos during/after wedding
+    - You get all photos in one place
+  </Card>
+</CardGroup>
+
+## Post-Wedding Updates
+
+After your wedding:
+
+<Steps>
+  <Step title="Add Professional Photos">
+    Once you receive photos from your photographer:
+    1. Create a new album or update existing
+    2. Organize by ceremony, reception, portraits
+    3. Select the best 100-200 photos (don't overwhelm guests)
+  </Step>
+
+  <Step title="Update Website">
+    Add a notice to your site:
+    ```html
+    <div class="update-notice">
+      <p>
+        <strong>New!</strong> Wedding ceremony and reception photos 
+        have been added to the gallery. Thanks for celebrating with us!
+      </p>
+      <a href="https://YOUR-GALLERY-URL" target="_blank">
+        View Wedding Photos
+      </a>
+    </div>
+    ```
+  </Step>
+
+  <Step title="Send Notifications">
+    Email guests with:
+    - Gallery link
+    - Password (if applicable)
+    - Thank you message
+    - Deadline for viewing (if temporary)
+  </Step>
+</Steps>
+
+## Best Practices
+
+<Tip>
+  **Curate Your Gallery**: Don't upload every single photo. Choose 150-300 of the best shots that tell the story of your wedding day. Quality over quantity keeps guests engaged.
+</Tip>
+
+<Info>
+  **Organize into Albums**: Create separate albums for:
+  - Engagement photos
+  - Pre-wedding events (bridal shower, bachelor/bachelorette)
+  - Ceremony
+  - Reception
+  - Candid moments
+</Info>
+
+<Note>
+  **Photo Rights**: Make sure your photographer contract allows you to share photos online. Most do, but it's worth confirming before uploading to public galleries.
+</Note>

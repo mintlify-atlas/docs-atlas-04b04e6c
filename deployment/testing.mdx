@@ -1,0 +1,414 @@
+---
+title: Testing Your Website
+description: Comprehensive guide to testing your wedding website before sharing with guests
+---
+
+Before sharing your wedding website with guests, it's crucial to test everything thoroughly. This guide covers all aspects of testing to ensure a smooth experience for your visitors.
+
+## Pre-Deployment Testing
+
+Test your website locally before deploying to catch issues early.
+
+### Local Testing
+
+<Steps>
+  <Step title="Open Files Locally">
+    Navigate to your project folder and open `index.html` in a web browser:
+
+    <CodeGroup>
+      ```bash macOS
+      open index.html
+      ```
+
+      ```bash Windows
+      start index.html
+      ```
+
+      ```bash Linux
+      xdg-open index.html
+      ```
+    </CodeGroup>
+  </Step>
+
+  <Step title="Use a Local Server">
+    For better testing (especially for JavaScript), use a local server:
+
+    <CodeGroup>
+      ```bash Python 3
+      python -m http.server 8000
+      ```
+
+      ```bash Python 2
+      python -m SimpleHTTPServer 8000
+      ```
+
+      ```bash Node.js (npx)
+      npx http-server -p 8000
+      ```
+
+      ```bash VS Code
+      # Install "Live Server" extension
+      # Right-click index.html > Open with Live Server
+      ```
+    </CodeGroup>
+
+    Then visit `http://localhost:8000` in your browser.
+
+    <Tip>
+      Using a local server prevents issues with cross-origin requests and provides a more accurate preview.
+    </Tip>
+  </Step>
+</Steps>
+
+## Testing Checklist
+
+Use this comprehensive checklist to ensure everything works correctly:
+
+<AccordionGroup>
+  <Accordion title="Content Testing" icon="text">
+    Verify all text content is accurate and error-free:
+
+    - [ ] Names are spelled correctly throughout the site
+    - [ ] Wedding date and time are correct
+    - [ ] Venue addresses are accurate
+    - [ ] Contact information is correct
+    - [ ] No placeholder text remains (Lorem ipsum, etc.)
+    - [ ] All grammar and spelling is correct
+    - [ ] Event schedule times are accurate
+    - [ ] RSVP deadline is correct
+
+    <Warning>
+      Double-check date and time information. Errors here can cause guests to miss your wedding!
+    </Warning>
+  </Accordion>
+
+  <Accordion title="Navigation Testing" icon="bars">
+    Test all navigation elements:
+
+    - [ ] All menu links work correctly
+    - [ ] Mobile menu opens and closes properly
+    - [ ] Smooth scrolling works (if enabled)
+    - [ ] Back to top button functions
+    - [ ] All internal page links navigate correctly
+    - [ ] Active menu states highlight properly
+    - [ ] Navigation is accessible via keyboard (Tab key)
+
+    <CodeGroup>
+      ```txt Test Pages
+      ✓ Home page
+      ✓ Our Story
+      ✓ Events/Schedule
+      ✓ Gallery
+      ✓ RSVP
+      ✓ Registry
+      ✓ FAQ
+      ✓ Contact
+      ```
+    </CodeGroup>
+  </Accordion>
+
+  <Accordion title="Image Testing" icon="image">
+    Verify all images load and display correctly:
+
+    - [ ] All images load without errors
+    - [ ] Images have appropriate alt text
+    - [ ] Images are properly sized (not too large)
+    - [ ] Image quality is good (not pixelated)
+    - [ ] Gallery images open in lightbox/modal
+    - [ ] Thumbnail images load quickly
+    - [ ] Background images display correctly
+    - [ ] Images are optimized for web (< 500KB each)
+
+    <Tip>
+      Open browser DevTools (F12) and check the Console tab for any 404 errors indicating missing images.
+    </Tip>
+  </Accordion>
+
+  <Accordion title="Form Testing" icon="check-square">
+    Test all forms thoroughly:
+
+    ### RSVP Form
+    - [ ] All form fields accept input
+    - [ ] Required fields are properly validated
+    - [ ] Email validation works
+    - [ ] Phone number formatting works
+    - [ ] Guest count selector functions
+    - [ ] Dietary restrictions field works
+    - [ ] Submit button is functional
+    - [ ] Success/error messages display
+    - [ ] Form data is sent to correct email/service
+
+    ### Contact Form
+    - [ ] Name and email fields work
+    - [ ] Message text area accepts input
+    - [ ] Form submits successfully
+    - [ ] Confirmation message appears
+
+    <Warning>
+      Submit test RSVPs to verify form functionality. Use your own email for testing, not guest addresses.
+    </Warning>
+  </Accordion>
+
+  <Accordion title="External Links" icon="link">
+    Verify all external links work:
+
+    - [ ] Google Maps links open correctly
+    - [ ] Registry links (Amazon, Target, etc.) work
+    - [ ] Social media links function
+    - [ ] Accommodation booking links work
+    - [ ] External links open in new tab
+    - [ ] Calendar download links work
+    - [ ] PDF/document downloads function
+
+    <CodeGroup>
+      ```bash Check All Links
+      # Using online link checker
+      # Visit: https://validator.w3.org/checklink
+      # Or use browser extension
+      ```
+    </CodeGroup>
+  </Accordion>
+</AccordionGroup>
+
+## Browser Compatibility Testing
+
+Test your website in multiple browsers to ensure consistent experience:
+
+<CardGroup cols={2}>
+  <Card title="Desktop Browsers" icon="desktop">
+    Test on:
+    - Google Chrome
+    - Mozilla Firefox
+    - Safari (macOS)
+    - Microsoft Edge
+  </Card>
+  <Card title="Mobile Browsers" icon="mobile">
+    Test on:
+    - Chrome (Android)
+    - Safari (iOS)
+    - Samsung Internet
+    - Firefox Mobile
+  </Card>
+</CardGroup>
+
+### Testing Tools
+
+<CardGroup cols={2}>
+  <Card title="BrowserStack" icon="browsers">
+    Test on real devices and browsers
+    
+    Free trial available
+  </Card>
+  <Card title="LambdaTest" icon="flask">
+    Cross-browser testing platform
+    
+    Free plan available
+  </Card>
+  <Card title="Browser DevTools" icon="code">
+    Built-in device emulation
+    
+    Press F12 > Device toolbar
+  </Card>
+  <Card title="Responsive Viewer" icon="window-restore">
+    Browser extension for testing
+    
+    Multiple viewports at once
+  </Card>
+</CardGroup>
+
+## Mobile Responsiveness Testing
+
+Ensure your site looks great on all device sizes:
+
+### Test These Device Sizes
+
+<CodeGroup>
+  ```txt Common Breakpoints
+  Mobile Portrait:     320px - 480px
+  Mobile Landscape:    481px - 767px
+  Tablet Portrait:     768px - 1024px
+  Tablet Landscape:    1025px - 1280px
+  Desktop:             1281px+
+  ```
+</CodeGroup>
+
+### Mobile Checklist
+
+- [ ] Text is readable without zooming
+- [ ] Buttons are large enough to tap (min 44x44px)
+- [ ] Images scale properly
+- [ ] Navigation menu works on mobile
+- [ ] Forms are easy to fill on mobile
+- [ ] No horizontal scrolling required
+- [ ] Touch interactions work smoothly
+- [ ] Page loads quickly on mobile networks
+
+<Info>
+  Use Chrome DevTools Device Mode (F12 > Toggle device toolbar) to test different screen sizes quickly.
+</Info>
+
+## Performance Testing
+
+Ensure your website loads quickly:
+
+### Speed Testing Tools
+
+<Steps>
+  <Step title="Google PageSpeed Insights">
+    Visit [PageSpeed Insights](https://pagespeed.web.dev) and test your URL:
+
+    - Aim for score > 90 for mobile
+    - Check Core Web Vitals
+    - Follow optimization suggestions
+  </Step>
+
+  <Step title="GTmetrix">
+    Use [GTmetrix](https://gtmetrix.com) for detailed analysis:
+
+    - Check page load time (< 3 seconds)
+    - Review waterfall chart
+    - Optimize largest files
+  </Step>
+
+  <Step title="WebPageTest">
+    Test with [WebPageTest](https://www.webpagetest.org):
+
+    - Test from multiple locations
+    - Check different connection speeds
+    - Review filmstrip view
+  </Step>
+</Steps>
+
+### Performance Optimization Tips
+
+<CardGroup cols={2}>
+  <Card title="Optimize Images" icon="compress">
+    - Compress images (use TinyPNG, ImageOptim)
+    - Use appropriate formats (WebP, JPEG)
+    - Resize images to display size
+    - Lazy load images below fold
+  </Card>
+  <Card title="Minimize Code" icon="code">
+    - Minify CSS and JavaScript
+    - Remove unused code
+    - Combine files where possible
+    - Use browser caching
+  </Card>
+  <Card title="Reduce Requests" icon="download">
+    - Limit number of external resources
+    - Use CSS sprites for icons
+    - Inline critical CSS
+    - Defer non-critical scripts
+  </Card>
+  <Card title="Enable Compression" icon="file-zipper">
+    - GitHub Pages enables gzip automatically
+    - Verify compression in DevTools Network tab
+    - Check response headers
+  </Card>
+</CardGroup>
+
+## Accessibility Testing
+
+Make your website accessible to all guests:
+
+### Accessibility Checklist
+
+- [ ] All images have alt text
+- [ ] Color contrast is sufficient (4.5:1 minimum)
+- [ ] Site is navigable by keyboard only
+- [ ] Form labels are properly associated
+- [ ] Heading hierarchy is logical (h1, h2, h3)
+- [ ] Links have descriptive text (avoid "click here")
+- [ ] Focus indicators are visible
+- [ ] ARIA labels are used where appropriate
+
+### Testing Tools
+
+<CardGroup cols={2}>
+  <Card title="WAVE" icon="universal-access">
+    Browser extension for accessibility testing
+    
+    [wave.webaim.org](https://wave.webaim.org)
+  </Card>
+  <Card title="Lighthouse" icon="lighthouse">
+    Built into Chrome DevTools
+    
+    Includes accessibility audit
+  </Card>
+  <Card title="axe DevTools" icon="shield">
+    Browser extension by Deque
+    
+    Free accessibility testing
+  </Card>
+  <Card title="Keyboard Navigation" icon="keyboard">
+    Test manually with Tab key
+    
+    Ensure all features work
+  </Card>
+</CardGroup>
+
+## Final Pre-Launch Checklist
+
+Before sharing with guests:
+
+<Steps>
+  <Step title="Content Review">
+    - [ ] All information is accurate and up-to-date
+    - [ ] No typos or grammatical errors
+    - [ ] All placeholder content replaced
+    - [ ] Privacy settings configured (if applicable)
+  </Step>
+
+  <Step title="Functionality Test">
+    - [ ] All links work correctly
+    - [ ] Forms submit successfully
+    - [ ] Images load properly
+    - [ ] Site works on mobile and desktop
+  </Step>
+
+  <Step title="Cross-Device Testing">
+    - [ ] Tested on iOS device
+    - [ ] Tested on Android device
+    - [ ] Tested on desktop (Windows/Mac)
+    - [ ] Tested in 3+ different browsers
+  </Step>
+
+  <Step title="Performance Check">
+    - [ ] Page loads in under 3 seconds
+    - [ ] Images are optimized
+    - [ ] No console errors
+    - [ ] HTTPS is enabled
+  </Step>
+
+  <Step title="Guest Testing">
+    - [ ] Ask 2-3 friends to test the site
+    - [ ] Submit a test RSVP yourself
+    - [ ] Verify you receive form submissions
+    - [ ] Check site on their devices
+  </Step>
+</Steps>
+
+## Ongoing Monitoring
+
+After launch, continue monitoring:
+
+- Check form submissions regularly
+- Monitor website analytics (if installed)
+- Test site periodically
+- Be responsive to guest feedback
+- Keep content updated as plans change
+
+<Tip>
+  Set a calendar reminder to check your website weekly in the months leading up to your wedding.
+</Tip>
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card title="Deploy to GitHub Pages" icon="upload" href="./github-pages">
+    Ready to launch? Deploy your tested site
+  </Card>
+  <Card title="Custom Domain Setup" icon="globe" href="./custom-domain">
+    Configure a memorable domain name
+  </Card>
+</CardGroup>

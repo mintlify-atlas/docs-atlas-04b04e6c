@@ -1,0 +1,332 @@
+---
+title: 'RSVP System'
+description: 'Collect guest attendance confirmations with embedded forms'
+icon: 'envelope'
+---
+
+The RSVP system allows guests to confirm their attendance for your wedding events. This template uses embedded Google Forms, but you can integrate any form service.
+
+## Overview
+
+The RSVP (Répondez s'il vous plaît - French for "please respond") page provides:
+- A clear call to action for guests to confirm attendance
+- Embedded form for easy response without leaving the site
+- Ability to track responses for specific events
+- Help with headcount for catering and services
+
+## Basic Implementation
+
+The confirm attendance page has a simple structure with an embedded iframe:
+
+```html
+<article id="main">
+  <header>
+    <h2>Confirm Attendance / RSVP</h2>
+    <p>
+      Please complete the form below to confirm your attendance for 
+      all or specific events
+    </p>
+  </header>
+  <section class="wrapper style5">
+    <div class="inner">
+      <section id="Confirm Attendance">
+        <h2>We can't wait to meet you !</h2>
+        <p>
+          <blockquote>
+            This form is to help us get a head count to arrange for 
+            food, beverages and other services for all events.
+          </blockquote>
+          <!-- Embedded form goes here -->
+        </p>
+      </section>
+    </div>
+  </section>
+</article>
+```
+
+## Embedding Google Forms
+
+<Steps>
+  <Step title="Create Your Google Form">
+    1. Go to Google Forms (forms.google.com)
+    2. Create a new form with fields like:
+       - Guest name(s)
+       - Email address
+       - Number of guests attending
+       - Which events they'll attend
+       - Dietary restrictions
+       - Special requests or messages
+  </Step>
+
+  <Step title="Get the Embed Code">
+    1. In your Google Form, click the **Send** button
+    2. Click the **< >** (embed) icon
+    3. Copy the iframe code provided
+  </Step>
+
+  <Step title="Embed in Your Page">
+    Paste the iframe code into your HTML:
+
+    ```html
+    <iframe 
+      src="https://docs.google.com/forms/d/e/YOUR_FORM_ID/viewform?embedded=true" 
+      width="100%" 
+      height="1100" 
+      frameborder="0" 
+      marginheight="0" 
+      marginwidth="0">
+      Loading…
+    </iframe>
+    ```
+  </Step>
+
+  <Step title="Adjust the Height">
+    Set the `height` attribute based on your form length:
+    - Short forms (5-6 fields): `height="800"`
+    - Medium forms (8-10 fields): `height="1100"`
+    - Long forms (12+ fields): `height="1400"`
+  </Step>
+</Steps>
+
+## Complete Example from Source
+
+```html
+<section class="wrapper style5">
+  <div class="inner">
+    <section id="Confirm Attendance">
+      <h2>We can't wait to meet you !</h2>
+      <p>
+        <blockquote>
+          This form is to help us get a head count to arrange for food, 
+          beverages and other services for all events.
+        </blockquote>
+        <iframe 
+          src="https://docs.google.com/forms/d/e/1FAIpQLSeWuYI3M7yymeYlfO38AJlt_fPu1Y26_VlHixqq3D_PmJt73g/viewform?embedded=true" 
+          width="100%" 
+          height="1100" 
+          frameborder="0" 
+          marginheight="0" 
+          marginwidth="0">
+          Loading…
+        </iframe>
+      </p>
+      <h3>
+        <a href="schedule.html#Sign Up Sheet">
+          <i><u>Click here to take me to Sangeeth performance sign up 
+          sheet and make the Bride and Groom's day !</u></i>
+        </a>
+      </h3>
+    </section>
+  </div>
+</section>
+```
+
+<Note>
+  The example includes a link to an additional signup sheet for the Sangeeth performance, showing how you can cross-link related forms and pages.
+</Note>
+
+## Alternative Form Services
+
+<CardGroup cols={2}>
+  <Card title="Typeform" icon="clipboard">
+    Modern, conversational forms with beautiful UI
+    
+    ```html
+    <div data-tf-widget="YOUR_FORM_ID" 
+         data-tf-opacity="100" 
+         data-tf-iframe-props="title=RSVP" 
+         style="width:100%;height:500px;">
+    </div>
+    <script src="//embed.typeform.com/next/embed.js"></script>
+    ```
+  </Card>
+  
+  <Card title="JotForm" icon="file-lines">
+    Feature-rich forms with payment options
+    
+    ```html
+    <iframe 
+      id="JotFormIFrame" 
+      src="https://form.jotform.com/YOUR_FORM_ID" 
+      width="100%" 
+      height="539" 
+      frameborder="0" 
+      scrolling="no">
+    </iframe>
+    ```
+  </Card>
+  
+  <Card title="Microsoft Forms" icon="microsoft">
+    Free with Microsoft account, good Office 365 integration
+    
+    ```html
+    <iframe 
+      width="100%" 
+      height="800px" 
+      src="https://forms.office.com/Pages/ResponsePage.aspx?id=YOUR_ID" 
+      frameborder="0" 
+      marginwidth="0" 
+      marginheight="0" 
+      allowfullscreen>
+    </iframe>
+    ```
+  </Card>
+  
+  <Card title="Formspree" icon="paper-plane">
+    Backend for HTML forms, no iframe needed
+    
+    ```html
+    <form action="https://formspree.io/f/YOUR_ID" method="POST">
+      <input type="text" name="name" placeholder="Your Name" />
+      <input type="email" name="email" placeholder="Email" />
+      <button type="submit">Send RSVP</button>
+    </form>
+    ```
+  </Card>
+</CardGroup>
+
+## Form Field Recommendations
+
+<AccordionGroup>
+  <Accordion title="Essential Fields">
+    Every RSVP form should include:
+    - **Full name(s)**: Include all guests in their party
+    - **Email address**: For confirmation and updates
+    - **Will you attend?**: Yes/No radio buttons
+    - **Number of guests**: Dropdown or number input
+  </Accordion>
+
+  <Accordion title="Event-Specific Fields">
+    For multi-day weddings:
+    - **Which events will you attend?**: Checkboxes for each event
+    - **Accommodation needed?**: Yes/No for hotel block
+    - **Transportation**: Need pickup or have own vehicle
+  </Accordion>
+
+  <Accordion title="Catering Information">
+    Important for meal planning:
+    - **Dietary restrictions**: Text field or checkboxes
+    - **Food allergies**: Free text field
+    - **Meal preference**: If offering options (vegetarian, vegan, etc.)
+  </Accordion>
+
+  <Accordion title="Optional Fields">
+    Nice to have but not required:
+    - **Song requests**: For DJ/music
+    - **Special requests**: General text field
+    - **How did you meet the couple?**: Fun categorization
+    - **Message to the couple**: Well wishes
+  </Accordion>
+</AccordionGroup>
+
+## Styling the Form Container
+
+You can add custom styling around the embedded form:
+
+```html
+<style>
+.rsvp-container {
+  background: #f5f5f5;
+  padding: 30px;
+  border-radius: 8px;
+  margin: 20px 0;
+}
+
+.rsvp-container blockquote {
+  border-left: 4px solid #25a186;
+  padding-left: 20px;
+  font-style: italic;
+}
+
+.rsvp-container iframe {
+  border-radius: 4px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+</style>
+
+<div class="rsvp-container">
+  <blockquote>
+    This form is to help us get a head count to arrange for food, 
+    beverages and other services for all events.
+  </blockquote>
+  <iframe src="YOUR_FORM_URL" width="100%" height="1100"></iframe>
+</div>
+```
+
+## Deadline Reminders
+
+Add a deadline to encourage timely responses:
+
+```html
+<section id="Confirm Attendance">
+  <h2>We can't wait to meet you!</h2>
+  <div class="deadline-notice">
+    <p><strong>Please respond by April 15, 2022</strong></p>
+    <p>This helps us provide an accurate headcount to our caterers and venue.</p>
+  </div>
+  <!-- Form here -->
+</section>
+```
+
+<Warning>
+  **Set a Clear RSVP Deadline**: Choose a date 2-3 weeks before your wedding to give yourself time to finalize arrangements with vendors.
+</Warning>
+
+## Linking from Homepage
+
+Make the RSVP easily accessible from your homepage:
+
+```html
+<section>
+  <p>
+    Click the button below to <b>confirm</b> your attendance for 
+    <i>all</i> or <i>specific events.</i>
+  </p>
+  <a href="pages/confirm_attendance.html#Confirm Attendance" 
+     class="button primary fit">
+    Confirm Attendance / RSVP
+  </a>
+</section>
+```
+
+<Tip>
+  Use an anchor link (`#Confirm Attendance`) to scroll directly to the form section when guests click from other pages.
+</Tip>
+
+## Mobile Responsiveness
+
+The `width="100%"` attribute ensures forms adapt to mobile screens. Test on various devices:
+
+```html
+<!-- Responsive iframe wrapper -->
+<div class="iframe-container">
+  <iframe src="YOUR_FORM_URL" width="100%" height="1100"></iframe>
+</div>
+
+<style>
+.iframe-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+@media screen and (max-width: 736px) {
+  .iframe-container iframe {
+    height: 1200px; /* Slightly taller on mobile */
+  }
+}
+</style>
+```
+
+## Form Response Management
+
+<Info>
+  Google Forms automatically collects responses in a Google Sheet, making it easy to track RSVPs, export guest lists, and analyze responses for your planning.
+</Info>
+
+### Accessing Responses
+
+1. Open your Google Form
+2. Click the "Responses" tab
+3. Click the Google Sheets icon to create a spreadsheet
+4. Use the spreadsheet for vendor coordination and seating charts

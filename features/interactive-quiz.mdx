@@ -1,0 +1,554 @@
+---
+title: 'Interactive Quiz'
+description: 'Engage guests with a fun quiz about the couple using custom JavaScript'
+icon: 'circle-question'
+---
+
+The Interactive Quiz is a fun feature that lets guests test their knowledge about the couple. This template includes a complete JavaScript quiz system embedded in the couple story page.
+
+## Overview
+
+The quiz system features:
+- Multiple choice questions
+- Real-time answer validation
+- Score tracking
+- Visual feedback (correct/incorrect indicators)
+- Results display with percentage
+- Restart functionality
+- Responsive design
+
+## Basic Structure
+
+The quiz consists of three main parts:
+1. **HTML container** - Where the quiz renders
+2. **CSS styling** - Inline styles for quiz appearance
+3. **JavaScript** - Quiz logic and interactivity
+
+## Implementation
+
+<Steps>
+  <Step title="Add the Quiz Container">
+    Create a div where the quiz will be rendered:
+
+    ```html
+    <article id="main">
+      <header>
+        <h2>The Couple</h2>
+        <h3>Take the Quiz !</h3>
+        <p>
+          We could tell you our story ... or we could see how well 
+          you know it. Find some inside secrets and facts you probably 
+          have never heard about Ankita and Anil.
+        </p>
+      </header>
+      <section class="wrapper style5">
+        <div class="inner">
+          <!-- Quiz container -->
+          <div id='quiz_container'></div>
+        </div>
+      </section>
+    </article>
+    ```
+  </Step>
+
+  <Step title="Add Quiz Styling">
+    The template includes comprehensive CSS for quiz styling:
+
+    ```html
+    <style>
+    .question-container {
+      max-width: 1024px;
+      background: #d5d5d5;
+      margin: 0 auto;
+      border-radius: 8px;
+      width: 100%;
+      font-size: 20px;
+    }
+
+    .question-container .inner-container {
+      padding: 30px;
+    }
+
+    .question-container .option {
+      margin-bottom: 3px;
+      background: #FFF;
+      padding: 10px;
+      border-radius: 3px;
+    }
+
+    .question-container .enabled .option:hover {
+      background: #25a186;
+      color: #FFF;
+      cursor: pointer;
+    }
+
+    .question-container .disabled .correct .right {
+      color: green;
+      animation: correctAnim 0.5s 0s 2 both;
+      animation-direction: alternate;
+      transform: scale(2);
+    }
+
+    .question-container .disabled .incorrect .wrong {
+      color: red;
+      transform: scale(1.5);
+    }
+    </style>
+    ```
+  </Step>
+
+  <Step title="Define Your Questions">
+    Create a JavaScript array with your quiz questions:
+
+    ```javascript
+    var data = [
+      {
+        "type": "radio",
+        "question": "How long have they been together?",
+        "explanation": "",
+        "options": [
+          {
+            "value": "4 years",
+            "right": false,
+            "selected": false
+          },
+          {
+            "value": "5 years",
+            "right": true,
+            "selected": false
+          },
+          {
+            "value": "6 years",
+            "right": false,
+            "selected": false
+          },
+          {
+            "value": "An eternity. Seriously, what took them so long?",
+            "right": false,
+            "selected": false
+          }
+        ],
+        "selected": "1"
+      },
+      {
+        "type": "radio",
+        "question": "Which was their first concert together?",
+        "explanation": "",
+        "options": [
+          {
+            "value": "Maroon 5",
+            "right": true,
+            "selected": false
+          },
+          {
+            "value": "Arijith Singh",
+            "right": false,
+            "selected": false
+          },
+          {
+            "value": "Linkin Park",
+            "right": false,
+            "selected": false
+          },
+          {
+            "value": "A.R. Rahman",
+            "right": false,
+            "selected": false
+          }
+        ],
+        "selected": "0"
+      }
+    ];
+    ```
+  </Step>
+
+  <Step title="Initialize the Quiz">
+    Create a new Quiz instance with your data:
+
+    ```javascript
+    var quiz = new Quiz({
+      quizQuestions: data,
+      elementId: 'quiz_container',
+      showAnswersBtn: true,
+      showResetBtn: true
+    });
+    ```
+  </Step>
+</Steps>
+
+## Example Questions from Source
+
+Here are some real questions from the template:
+
+<AccordionGroup>
+  <Accordion title="Question 1: Favorite Activity">
+    ```javascript
+    {
+      "question": "What was their favourite thing to do while hanging out as friends?",
+      "options": [
+        {
+          "value": "Go to latest kannada/hindi movies",
+          "right": false
+        },
+        {
+          "value": "Shop and eat in banashankari BDA complex",
+          "right": false
+        },
+        {
+          "value": "Find and eat dosa in best or new resturants/eateries in bangalore",
+          "right": true
+        },
+        {
+          "value": "Hang out in 4th block Jayanagar",
+          "right": false
+        }
+      ]
+    }
+    ```
+  </Accordion>
+
+  <Accordion title="Question 2: Special Interests">
+    ```javascript
+    {
+      "question": "What's the one thing Anil loves but Ankita wishes didn't exist?",
+      "options": [
+        {
+          "value": "Adventure sports",
+          "right": false
+        },
+        {
+          "value": "Camera tripods",
+          "right": false
+        },
+        {
+          "value": "Playstation",
+          "right": true
+        },
+        {
+          "value": "Amusement parks",
+          "right": false
+        }
+      ]
+    }
+    ```
+  </Accordion>
+
+  <Accordion title="Question 3: Celebrity Crush">
+    ```javascript
+    {
+      "question": "Who was Ankita's favorite celebrity crush growing up? P.S. she still secretly loves him!",
+      "options": [
+        {
+          "value": "Aamir Khan",
+          "right": false
+        },
+        {
+          "value": "Hrithik Roshan",
+          "right": true
+        },
+        {
+          "value": "Shahid Kapoor",
+          "right": false
+        },
+        {
+          "value": "Shahrukh Khan",
+          "right": false
+        }
+      ]
+    }
+    ```
+  </Accordion>
+</AccordionGroup>
+
+## Quiz JavaScript Logic
+
+The template uses a custom quiz library. Here's the initialization pattern:
+
+```javascript
+<script>
+  // Quiz questions data array
+  var data = [
+    // Your questions here
+  ];
+
+  // Initialize quiz
+  var quiz = new Quiz({
+    quizQuestions: data,
+    elementId: 'quiz_container',
+    showAnswersBtn: true,
+    showResetBtn: true
+  });
+</script>
+```
+
+## Configuration Options
+
+<CardGroup cols={2}>
+  <Card title="quizQuestions" icon="clipboard-question">
+    **Required**: Array of question objects
+    
+    Contains all your quiz questions and answers in the data structure shown above.
+  </Card>
+  
+  <Card title="elementId" icon="hashtag">
+    **Required**: String
+    
+    The ID of the HTML element where the quiz should render. In the template: `'quiz_container'`
+  </Card>
+  
+  <Card title="showAnswersBtn" icon="eye">
+    **Optional**: Boolean (default: `true`)
+    
+    Shows a "Show Answers" button at the end that reveals all correct answers.
+  </Card>
+  
+  <Card title="showResetBtn" icon="rotate">
+    **Optional**: Boolean (default: `true`)
+    
+    Shows a "Try Again" button that resets the quiz so users can retake it.
+  </Card>
+</CardGroup>
+
+## Question Object Structure
+
+Each question follows this format:
+
+```javascript
+{
+  "type": "radio",              // Question type (currently only 'radio' supported)
+  "question": "Question text?",  // The question to ask
+  "explanation": "",            // Optional explanation (not displayed in this version)
+  "options": [                  // Array of answer options
+    {
+      "value": "Answer text",   // The answer option text
+      "right": true,            // Whether this is the correct answer
+      "selected": false         // Initial selection state
+    }
+  ],
+  "selected": "0"               // Index of correct answer (as string)
+}
+```
+
+<Note>
+  The `"right": true` property indicates the correct answer. Only one option per question should have this set to `true`.
+</Note>
+
+## Visual Feedback
+
+The quiz provides instant visual feedback:
+
+- **Hover effect**: Options highlight in green (#25a186) when you hover
+- **Correct answer**: Green checkmark (✓) appears and animates
+- **Wrong answer**: Red X appears on your selection, correct answer shows in green
+- **Navigation**: "Next" button becomes clickable after selecting an answer
+
+```css
+/* Hover effect */
+.question-container .enabled .option:hover {
+  background: #25a186;
+  color: #FFF;
+  cursor: pointer;
+}
+
+/* Correct answer animation */
+@keyframes correctAnim {
+  0% {
+    color: green;
+    transform: scale(2);
+  }
+  100% {
+    color: green;
+    transform: scale(5);
+  }
+}
+```
+
+## Results Screen
+
+After completing all questions, users see:
+
+- **Score**: Number of correct answers out of total
+- **Percentage**: Score as a percentage
+- **Show Answers button**: Review correct answers
+- **Try Again button**: Restart the quiz
+
+The results are calculated and displayed automatically:
+
+```javascript
+// Results display
+document.getElementById('remarks').innerHTML = remark;
+document.getElementById('grade-percentage').innerHTML = playerGrade;
+document.getElementById('wrong-answers').innerHTML = wrongAttempt;
+document.getElementById('right-answers').innerHTML = playerScore;
+```
+
+## Customization Ideas
+
+<CardGroup cols={2}>
+  <Card title="Question Categories" icon="layer-group">
+    Organize questions by themes:
+    - "How They Met"
+    - "Favorite Things"
+    - "Travel Adventures"
+    - "Future Plans"
+  </Card>
+  
+  <Card title="Difficulty Levels" icon="chart-line">
+    Mix question types:
+    - Easy: Basic facts everyone knows
+    - Medium: Details close friends know
+    - Hard: Inside jokes and secrets
+  </Card>
+  
+  <Card title="Personalized Results" icon="award">
+    Customize result messages:
+    - 90-100%: "You're practically family!"
+    - 70-89%: "Great job! You know us well!"
+    - 50-69%: "Not bad! Learn more on our story page."
+    - 0-49%: "Looks like we have some catching up to do!"
+  </Card>
+  
+  <Card title="Social Sharing" icon="share-nodes">
+    Add share buttons to results:
+    - Share score on social media
+    - Challenge friends to beat your score
+    - Tag the couple in results
+  </Card>
+</CardGroup>
+
+## Mobile Responsiveness
+
+The quiz includes mobile-friendly styling:
+
+```css
+@media only screen and (max-width: 600px) {
+  .question-container .next input[type='button'] {
+    width: 100%;
+    margin: 0;
+    margin-top: 20px;
+  }
+}
+```
+
+This ensures the "Next" button spans full width on mobile devices for easy tapping.
+
+## Placement Options
+
+<AccordionGroup>
+  <Accordion title="Couple Story Page (Template Default)">
+    Place the quiz at the top of your couple story page:
+    
+    ```html
+    <header>
+      <h2>The Couple</h2>
+      <h3>Take the Quiz!</h3>
+      <p>See how well you know us...</p>
+    </header>
+    <div id='quiz_container'></div>
+    <!-- Story content below -->
+    ```
+    
+    This engages visitors before they read your full story.
+  </Accordion>
+
+  <Accordion title="Dedicated Quiz Page">
+    Create a separate page just for the quiz:
+    
+    ```html
+    <article id="main">
+      <header>
+        <h2>How Well Do You Know Us?</h2>
+        <p>Test your knowledge and see your score!</p>
+      </header>
+      <section class="wrapper style5">
+        <div class="inner">
+          <div id='quiz_container'></div>
+        </div>
+      </section>
+    </article>
+    ```
+  </Accordion>
+
+  <Accordion title="After the Story">
+    Place it at the end of your couple story:
+    
+    ```html
+    <!-- Story sections -->
+    <section>
+      <h2>Alright ... Here's the Story</h2>
+      <!-- Story content -->
+    </section>
+    
+    <!-- Quiz at the end -->
+    <section>
+      <h2>Now Test Your Knowledge!</h2>
+      <div id='quiz_container'></div>
+    </section>
+    ```
+  </Accordion>
+</AccordionGroup>
+
+## Best Practices
+
+<Warning>
+  **Question Count**: Aim for 8-15 questions. Too few feels too quick, too many loses engagement. The template example has 12 questions, which is a good sweet spot.
+</Warning>
+
+<Tip>
+  **Mix Easy and Hard**: Start with 2-3 easy questions to build confidence, include some medium difficulty in the middle, and end with 1-2 challenging questions for fun.
+</Tip>
+
+<Info>
+  **Answer Length**: Keep answer options concise. Long text in multiple choice options becomes hard to scan and compare. Aim for 5-10 words per option.
+</Info>
+
+## Alternative Quiz Solutions
+
+If you want different features, consider these alternatives:
+
+<CardGroup cols={2}>
+  <Card title="Typeform" icon="file-lines">
+    Beautiful, conversational quiz interface
+    
+    **Pros:**
+    - Professional design
+    - Logic jumps
+    - Analytics
+    - Easy to create
+    
+    **Cons:**
+    - Requires external service
+    - Free tier limited
+  </Card>
+  
+  <Card title="Google Forms" icon="square-check">
+    Self-grading quiz mode available
+    
+    **Pros:**
+    - Completely free
+    - Auto-grading
+    - Response collection
+    - Easy setup
+    
+    **Cons:**
+    - Less visual appeal
+    - Leaves your site
+  </Card>
+</CardGroup>
+
+## Quiz Ideas
+
+Here are question categories to inspire your own quiz:
+
+1. **How They Met**: First meeting, first date, where they lived
+2. **Favorites**: Food, movies, music, vacation spots
+3. **Firsts**: First concert, first trip, first "I love you"
+4. **Quirks**: Pet peeves, hidden talents, funny habits
+5. **Relationship Milestones**: How long together, engagement details
+6. **Personal Facts**: Childhood stories, career paths, hobbies
+7. **Future Plans**: Honeymoon destination, dream home, family goals
+8. **Inside Jokes**: Stories only close friends would know
+
+<Tip>
+  Include at least one "fun fact" question that even close friends might not know - it makes the quiz more interesting and gives guests new insights about you!
+</Tip>

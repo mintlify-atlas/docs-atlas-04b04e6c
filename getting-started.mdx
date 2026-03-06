@@ -1,0 +1,341 @@
+---
+title: "Getting Started"
+description: "Set up your wedding website in just a few steps"
+---
+
+## Quick Start Guide
+
+Get your wedding website up and running in less than 30 minutes with this step-by-step guide.
+
+<Steps>
+  <Step title="Download or Clone the Repository">
+    Get the template files from GitHub.
+
+    **Option 1: Download ZIP**
+    1. Visit the [GitHub repository](https://github.com/anilnanki/anilnanki.github.io)
+    2. Click the green "Code" button
+    3. Select "Download ZIP"
+    4. Extract the ZIP file to your computer
+
+    **Option 2: Clone with Git**
+    ```bash
+    git clone https://github.com/anilnanki/anilnanki.github.io.git
+    cd anilnanki.github.io
+    ```
+
+    <Note>
+      If you're planning to host on GitHub Pages, you may want to fork the repository instead 
+      and rename it to `your-username.github.io`.
+    </Note>
+  </Step>
+
+  <Step title="Understand the File Structure">
+    Familiarize yourself with the template's organization.
+
+    ```
+    anilnanki.github.io/
+    ├── index.html              # Main landing page
+    ├── CNAME                   # Custom domain configuration (optional)
+    ├── LICENSE                 # CC0-1.0 license file
+    ├── README.md               # Project documentation
+    ├── assets/                 # Static assets
+    │   ├── css/
+    │   │   ├── main.css        # Compiled CSS (use this for quick changes)
+    │   │   ├── noscript.css    # Fallback styles
+    │   │   └── fontawesome-all.min.css
+    │   ├── js/
+    │   │   ├── main.js         # Main JavaScript
+    │   │   ├── timer.js        # Countdown timer
+    │   │   ├── quiz.js         # Interactive quiz
+    │   │   └── jquery.min.js   # jQuery library
+    │   └── sass/               # SASS source files
+    │       ├── main.scss       # Main SASS file
+    │       └── libs/           # SASS utilities and variables
+    ├── pages/                  # Additional HTML pages
+    │   ├── the_couple.html
+    │   ├── schedule.html
+    │   ├── faqs.html
+    │   ├── confirm_attendance.html
+    │   ├── live_stream.html
+    │   ├── travel_and_accommodation.html
+    │   ├── parking_and_transportation.html
+    │   └── encomium.html
+    └── images/                 # Image assets
+        ├── favicon.png
+        ├── banner.jpg
+        └── [various event/couple photos]
+    ```
+
+    <Info>
+      The **assets/css/main.css** file is compiled from SASS. You can edit this directly 
+      for quick styling changes, or modify the SASS files if you prefer.
+    </Info>
+  </Step>
+
+  <Step title="Basic Customization">
+    Update the essential information to personalize your website.
+
+    ### 1. Change Couple Names and Wedding Date
+
+    Open `index.html` and update the banner section:
+
+    ```html index.html
+    <section id="banner">
+      <div class="inner">
+        <h2>We're Getting Married!</h2> <br />
+        <h3>May 5 & 6, 2022</h3> <br />
+        <p>
+          At <a href="http://www.thenesara.com/">Nesara Centre For Culture</a> <br />
+          <br />
+          Parking available on premises. <br />
+          Scroll down for more details. <br />
+        </p>
+      </div>
+    </section>
+    ```
+
+    **What to change:**
+    - **Wedding date**: Update `May 5 & 6, 2022` to your dates
+    - **Venue name and link**: Replace "Nesara Centre For Culture" and URL
+    - **Venue details**: Update parking and location information
+
+    ### 2. Update the Countdown Timer
+
+    Edit `assets/js/timer.js` to set your wedding date:
+
+    ```javascript timer.js
+    const countdown = () => {
+        // Specify the date and time we are counting down to.
+        const countDate = new Date("May 6, 2022 09:15:00").getTime();
+        const now = new Date().getTime();
+        const timeFrom = now - countDate;
+        // ... rest of countdown logic
+    };
+    ```
+
+    Change `"May 6, 2022 09:15:00"` to your ceremony date and time.
+
+    <Warning>
+      The date format must be: `"Month Day, Year HH:MM:SS"` (e.g., "June 15, 2024 15:30:00"). 
+      Use 24-hour format for the time.
+    </Warning>
+
+    ### 3. Update Navigation Menu
+
+    The navigation appears on every page. Update it in both `index.html` (for the home page) 
+    and each file in the `pages/` directory.
+
+    ```html
+    <nav id="nav">
+      <ul>
+        <li class="special">
+          <a href="#menu" class="menuToggle"><span>Menu</span></a>
+          <div id="menu">
+            <ul>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="pages/live_stream.html">Live Stream</a></li>
+              <li><a href="pages/the_couple.html">The Couple</a></li>
+              <li><a href="pages/schedule.html">Schedule</a></li>
+              <!-- Add or remove menu items as needed -->
+            </ul>
+          </div>
+        </li>
+      </ul>
+    </nav>
+    ```
+
+    <Tip>
+      You can remove pages you don't need from the menu. Just delete the corresponding 
+      `<li>` entries and the HTML files from the `pages/` directory.
+    </Tip>
+
+    ### 4. Replace Images
+
+    Replace the placeholder images with your own photos:
+
+    1. Add your photos to the `images/` directory
+    2. Update image references in HTML files:
+
+    ```html
+    <div class="image"><img src="images/your-photo.jpg" alt="Description" /></div>
+    ```
+
+    **Recommended image formats:**
+    - Banner images: 1920x1080px (Full HD landscape)
+    - Couple photos: 800x800px or larger (square or portrait)
+    - Event photos: 1200x800px (landscape)
+    - Favicon: 32x32px PNG
+
+    ### 5. Update Contact Information
+
+    Find and update contact links in the footer (appears on all pages):
+
+    ```html
+    <footer id="footer">
+      <ul class="icons">
+        <li><a href="https://twitter.com/yourusername" class="icon brands fa-twitter">
+          <span class="label">Twitter</span></a></li>
+        <li><a href="mailto:your-email@example.com" class="icon solid fa-envelope">
+          <span class="label">Email</span></a></li>
+        <li><a href="tel:+1234567890" class="icon solid fa-phone">
+          <span class="label">Phone</span></a></li>
+      </ul>
+    </footer>
+    ```
+  </Step>
+
+  <Step title="Test Locally">
+    Preview your website before deploying it online.
+
+    ### Simple Option: Open in Browser
+
+    1. Navigate to your template folder
+    2. Double-click `index.html`
+    3. Your default browser will open the page
+
+    <Note>
+      Some features (like Google Forms) may not work perfectly when opened directly. 
+      Use a local server for full functionality testing.
+    </Note>
+
+    ### Better Option: Use a Local Server
+
+    **Python (built into macOS/Linux):**
+    ```bash
+    # Python 3
+    python3 -m http.server 8000
+
+    # Python 2
+    python -m SimpleHTTPServer 8000
+    ```
+
+    **Node.js (if you have it installed):**
+    ```bash
+    npx serve
+    ```
+
+    **VS Code (if using Visual Studio Code):**
+    1. Install the "Live Server" extension
+    2. Right-click `index.html`
+    3. Select "Open with Live Server"
+
+    Then open `http://localhost:8000` in your browser.
+
+    ### What to Test
+
+    - ✅ All navigation links work correctly
+    - ✅ Images load properly
+    - ✅ Countdown timer displays and updates
+    - ✅ Responsive design works on mobile (use browser dev tools)
+    - ✅ Forms are accessible (embedded iframes load)
+    - ✅ All pages have correct content
+  </Step>
+
+  <Step title="Deploy Your Website">
+    Make your wedding website live on the internet.
+
+    <CardGroup cols={2}>
+      <Card title="GitHub Pages (Free)" icon="github" href="/deployment/github-pages">
+        Host for free with GitHub Pages - great for static sites
+      </Card>
+      <Card title="Custom Domain" icon="link" href="/deployment/custom-domain">
+        Set up a personalized domain like yournames.com
+      </Card>
+    </CardGroup>
+
+    See our [deployment guides](/deployment/github-pages) for detailed instructions.
+  </Step>
+</Steps>
+
+## Quick Customization Checklist
+
+Use this checklist to ensure you've updated all the essential information:
+
+<Accordion title="Essential Updates">
+  - [ ] Couple names in page titles and headers
+  - [ ] Wedding date in banner and countdown timer
+  - [ ] Venue name and address
+  - [ ] Google Maps link to venue
+  - [ ] Contact email and phone number
+  - [ ] Social media links in footer
+  - [ ] Favicon in browser tab
+  - [ ] All placeholder images replaced
+</Accordion>
+
+<Accordion title="Content Updates">
+  - [ ] Couple story and bios on "The Couple" page
+  - [ ] Complete event schedule with times
+  - [ ] Quiz questions customized for your relationship
+  - [ ] FAQ page with relevant Q&A
+  - [ ] Travel and accommodation information
+  - [ ] Parking and transportation details
+</Accordion>
+
+<Accordion title="Forms and Integration">
+  - [ ] RSVP Google Form created and embedded
+  - [ ] Accommodation request form (if needed)
+  - [ ] Transportation booking form (if needed)
+  - [ ] Performance sign-up form (if needed)
+  - [ ] Live stream link added (when available)
+  - [ ] Photo gallery link or widget embedded
+</Accordion>
+
+<Accordion title="Testing">
+  - [ ] Tested on desktop browser
+  - [ ] Tested on mobile phone
+  - [ ] All links work correctly
+  - [ ] Forms submit successfully
+  - [ ] Countdown displays correct time
+  - [ ] Images load quickly
+  - [ ] No console errors in browser dev tools
+</Accordion>
+
+## Common First-Time Issues
+
+<Warning>
+**Relative Path Problems**: If you're opening files directly in the browser, some links might not work. 
+Make sure you're using `../` to go up one directory from the `pages/` folder to reach assets.
+</Warning>
+
+<Warning>
+**Countdown Shows Negative Numbers**: This happens when the date has passed. Update the date in 
+`timer.js` to a future date, or modify the logic to show "Married for X days" instead.
+</Warning>
+
+<Warning>
+**Google Forms Not Loading**: Ensure your iframe `src` URL is correct and the form is set to 
+"Accept responses". Check that your form is not restricted by organization settings.
+</Warning>
+
+## Next Steps
+
+Now that you have the basics set up, explore more advanced customization:
+
+<CardGroup cols={2}>
+  <Card title="Customize Styling" icon="palette" href="/customization/styling">
+    Change colors, fonts, and layout to match your theme
+  </Card>
+  <Card title="Add Features" icon="star" href="/features/event-schedule">
+    Learn about all available features and how to use them
+  </Card>
+  <Card title="Optimize Content" icon="file-lines" href="/customization/content">
+    Write compelling copy and organize your content effectively
+  </Card>
+  <Card title="Test Thoroughly" icon="vial" href="/deployment/testing">
+    Comprehensive testing guide before going live
+  </Card>
+</CardGroup>
+
+## Need Help?
+
+If you run into issues:
+
+1. Check the [FAQ page examples](/components/html-structure) for common questions
+2. Review the [component documentation](/components/html-structure) for HTML structure
+3. Visit the [GitHub repository](https://github.com/anilnanki/anilnanki.github.io) for updates
+4. Search for similar wedding website tutorials online
+
+<Tip>
+  Save backups frequently as you customize! Use Git to track changes or manually copy the folder 
+  before making major modifications.
+</Tip>

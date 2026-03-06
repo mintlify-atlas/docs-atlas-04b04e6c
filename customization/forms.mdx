@@ -1,0 +1,484 @@
+---
+title: 'Google Forms Integration'
+description: 'Set up and embed RSVP forms using Google Forms'
+---
+
+This wedding template uses Google Forms for guest RSVPs and contact collection. Learn how to create and customize forms for your website.
+
+## Why Google Forms?
+
+<CardGroup cols={3}>
+  <Card title="Free & Easy" icon="gift">
+    No cost, no setup complexity
+  </Card>
+  <Card title="Automatic Collection" icon="database">
+    Responses saved to Google Sheets
+  </Card>
+  <Card title="Customizable" icon="sliders">
+    Add any questions you need
+  </Card>
+</CardGroup>
+
+## Current Implementation
+
+The template includes a Google Form embedded in the RSVP page (`confirm_attendance.html`):
+
+```html
+<section id="Confirm Attendance">
+  <h2>We can't wait to meet you!</h2>
+  <p>
+    <blockquote>
+      This form is to help us get a head count to arrange for food, 
+      beverages and other services for all events.
+    </blockquote>
+    <iframe 
+      src="https://docs.google.com/forms/d/e/1FAIpQLSeWuYI3M7yymeYlfO38AJlt_fPu1Y26_VlHixqq3D_PmJt73g/viewform?embedded=true" 
+      width="100%" 
+      height="1100" 
+      frameborder="0" 
+      marginheight="0" 
+      marginwidth="0">
+      Loading…
+    </iframe>
+  </p>
+</section>
+```
+
+<Note>
+The template uses an iframe to embed the form directly into your wedding website, providing a seamless experience for guests.
+</Note>
+
+## Creating Your Google Form
+
+<Steps>
+  <Step title="Go to Google Forms">
+    Navigate to [forms.google.com](https://forms.google.com) and sign in with your Google account
+  </Step>
+  
+  <Step title="Create a Blank Form">
+    Click the **+ Blank** button to start a new form
+  </Step>
+  
+  <Step title="Add Form Title and Description">
+    ```
+    Title: Wedding RSVP - [Your Names]
+    Description: Please confirm your attendance for our wedding celebration
+    ```
+  </Step>
+  
+  <Step title="Add Your Questions">
+    Click **+** to add questions. See recommended questions below.
+  </Step>
+  
+  <Step title="Customize Theme">
+    Click the palette icon to match your wedding colors
+  </Step>
+</Steps>
+
+## Recommended RSVP Questions
+
+Here are essential questions to include in your RSVP form:
+
+### Basic Information
+
+<Tabs>
+  <Tab title="Guest Details">
+    ```
+    Question Type: Short answer (Required)
+    Question: Full Name(s)
+    
+    Question Type: Short answer (Required)
+    Question: Email Address
+    
+    Question Type: Short answer
+    Question: Phone Number
+    ```
+  </Tab>
+  
+  <Tab title="Attendance">
+    ```
+    Question Type: Multiple choice (Required)
+    Question: Will you be attending?
+    Options:
+    ○ Yes, I'll be there!
+    ○ No, I can't make it
+    ○ Maybe (please specify below)
+    
+    Question Type: Number
+    Question: Number of guests attending
+    (Including yourself)
+    ```
+  </Tab>
+  
+  <Tab title="Event Selection">
+    ```
+    Question Type: Checkboxes
+    Question: Which events will you attend?
+    Options:
+    ☐ Welcome Dinner (May 5, 6:00 PM)
+    ☐ Wedding Ceremony (May 6, 10:00 AM)
+    ☐ Reception (May 6, 6:00 PM)
+    ☐ Brunch (May 7, 11:00 AM)
+    ```
+  </Tab>
+</Tabs>
+
+### Additional Information
+
+```
+Question Type: Paragraph
+Question: Dietary Restrictions or Allergies
+Description: Please let us know if you have any dietary requirements
+
+Question Type: Multiple choice
+Question: Will you need transportation from the hotel?
+Options:
+○ Yes
+○ No
+
+Question Type: Paragraph
+Question: Song Requests
+Description: Any songs you'd like to hear at the reception?
+
+Question Type: Paragraph
+Question: Special Accommodations
+Description: Is there anything we can do to make your visit more comfortable?
+```
+
+<Tip>
+Make only essential questions required. Keep optional fields for additional information to avoid overwhelming guests.
+</Tip>
+
+## Getting the Embed Code
+
+Once your form is ready, get the embed code to add to your website:
+
+<Steps>
+  <Step title="Open Your Form">
+    In Google Forms, open the form you created
+  </Step>
+  
+  <Step title="Click Send">
+    Click the **Send** button in the top right corner
+  </Step>
+  
+  <Step title="Select Embed Option">
+    Click the **< >** (embed HTML) icon in the send dialog
+  </Step>
+  
+  <Step title="Customize Size">
+    Adjust the width and height values:
+    ```html
+    Width: 100%
+    Height: 1100 (or adjust based on form length)
+    ```
+  </Step>
+  
+  <Step title="Copy the Code">
+    Click **Copy** to get the iframe embed code
+  </Step>
+</Steps>
+
+## Embedding Your Form
+
+Replace the existing form in `pages/confirm_attendance.html`:
+
+```html
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>Your Names - RSVP</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="../assets/css/main.css" />
+  </head>
+  <body class="is-preload">
+    <div id="page-wrapper">
+      
+      <!-- Navigation header goes here -->
+      
+      <article id="main">
+        <header>
+          <h2>Confirm Attendance / RSVP</h2>
+          <p>
+            Please complete the form below to confirm your attendance 
+            for all or specific events
+          </p>
+        </header>
+        
+        <section class="wrapper style5">
+          <div class="inner">
+            <section id="Confirm Attendance">
+              <h2>We can't wait to see you!</h2>
+              <p>
+                <blockquote>
+                  This form helps us arrange food, beverages, and services 
+                  for all events.
+                </blockquote>
+                
+                <!-- PASTE YOUR GOOGLE FORM EMBED CODE HERE -->
+                <iframe 
+                  src="https://docs.google.com/forms/d/e/YOUR_FORM_ID/viewform?embedded=true" 
+                  width="100%" 
+                  height="1100" 
+                  frameborder="0" 
+                  marginheight="0" 
+                  marginwidth="0">
+                  Loading…
+                </iframe>
+                
+              </p>
+            </section>
+          </div>
+        </section>
+      </article>
+      
+      <!-- Footer goes here -->
+      
+    </div>
+  </body>
+</html>
+```
+
+<Warning>
+Replace `YOUR_FORM_ID` with your actual Google Form embed code. Test the form after embedding to ensure it works correctly.
+</Warning>
+
+## Adjusting Form Height
+
+The iframe height may need adjustment based on your form length:
+
+```html
+<!-- Short form (3-5 questions) -->
+<iframe height="800" ...></iframe>
+
+<!-- Medium form (6-10 questions) -->
+<iframe height="1100" ...></iframe>
+
+<!-- Long form (10+ questions) -->
+<iframe height="1500" ...></iframe>
+```
+
+<Tip>
+Test your form on mobile devices to ensure the height is appropriate and guests don't need excessive scrolling.
+</Tip>
+
+## Viewing Form Responses
+
+<Steps>
+  <Step title="Open Your Form">
+    Go to [forms.google.com](https://forms.google.com) and select your form
+  </Step>
+  
+  <Step title="Click Responses Tab">
+    View all submissions in the **Responses** tab
+  </Step>
+  
+  <Step title="Create Spreadsheet">
+    Click the Google Sheets icon to create a connected spreadsheet:
+    - Automatic updates when guests submit
+    - Easy sorting and filtering
+    - Export to CSV for other tools
+  </Step>
+  
+  <Step title="Set Up Notifications">
+    Click the three dots menu > **Get email notifications** to receive alerts for new responses
+  </Step>
+</Steps>
+
+## Multiple Forms Setup
+
+You may want separate forms for different purposes:
+
+<CardGroup cols={2}>
+  <Card title="RSVP Form" icon="calendar-check">
+    Main attendance confirmation
+  </Card>
+  <Card title="Travel Assistance" icon="plane">
+    For guests needing accommodation help
+  </Card>
+  <Card title="Performance Sign-up" icon="music">
+    For guests wanting to perform at events
+  </Card>
+  <Card title="Contact Form" icon="envelope">
+    General inquiries and questions
+  </Card>
+</CardGroup>
+
+### Adding a Travel Form
+
+Create a second form for travel assistance and embed it in `travel_and_accommodation.html`:
+
+```html
+<section class="wrapper style5">
+  <div class="inner">
+    <h2>Need Help with Travel?</h2>
+    <p>
+      Fill out this form and we'll help you find the best 
+      accommodation and travel options.
+    </p>
+    
+    <iframe 
+      src="https://docs.google.com/forms/d/e/YOUR_TRAVEL_FORM_ID/viewform?embedded=true" 
+      width="100%" 
+      height="900" 
+      frameborder="0">
+      Loading…
+    </iframe>
+  </div>
+</section>
+```
+
+## Form Styling Tips
+
+### Matching Your Wedding Theme
+
+In Google Forms settings:
+
+<Steps>
+  <Step title="Choose Theme Color">
+    Click the palette icon and select a color matching your wedding palette
+  </Step>
+  
+  <Step title="Add Header Image">
+    Add a banner image at the top of your form (recommended size: 1600x400px)
+  </Step>
+  
+  <Step title="Select Font Style">
+    Choose a font that complements your website typography
+  </Step>
+</Steps>
+
+### Custom Confirmation Message
+
+Set a custom message after form submission:
+
+<Steps>
+  <Step title="Go to Settings">
+    Click the gear icon in your form
+  </Step>
+  
+  <Step title="Edit Confirmation Message">
+    Under **Presentation**, customize the message:
+    ```
+    Thank you for your RSVP! We're so excited to celebrate with you.
+    You'll receive a confirmation email shortly.
+    ```
+  </Step>
+  
+  <Step title="Add Link to Site">
+    Include a link back to your main site:
+    ```
+    Return to our website: https://your-wedding-site.com
+    ```
+  </Step>
+</Steps>
+
+## Testing Your Forms
+
+<Steps>
+  <Step title="Submit Test Response">
+    Fill out the form yourself to test all questions
+  </Step>
+  
+  <Step title="Check Response Collection">
+    Verify responses appear in Google Forms and Sheets
+  </Step>
+  
+  <Step title="Test on Mobile">
+    Open the form on a phone to ensure mobile responsiveness
+  </Step>
+  
+  <Step title="Verify Email Notifications">
+    Confirm you receive notification emails for new submissions
+  </Step>
+  
+  <Step title="Delete Test Data">
+    Remove test responses before going live
+  </Step>
+</Steps>
+
+<Note>
+Always test your embedded forms across different browsers (Chrome, Safari, Firefox) to ensure compatibility.
+</Note>
+
+## Privacy and Settings
+
+### Restricting Responses
+
+```
+Settings > Responses:
+☐ Collect email addresses (optional)
+☐ Limit to 1 response (prevents duplicate RSVPs)
+☐ Allow response editing (lets guests update their RSVP)
+```
+
+### Closing the Form
+
+Once your RSVP deadline passes:
+
+<Steps>
+  <Step title="Open Form Settings">
+    Click the gear icon in your form
+  </Step>
+  
+  <Step title="Stop Accepting Responses">
+    Toggle off **Accepting responses**
+  </Step>
+  
+  <Step title="Add Closure Message">
+    Set a message: "RSVP deadline has passed. Please contact us directly."
+  </Step>
+</Steps>
+
+## Troubleshooting
+
+### Form Not Displaying
+
+<Tabs>
+  <Tab title="Check Embed Code">
+    - Ensure you copied the complete iframe code
+    - Verify the form URL is correct
+    - Check for any missing quote marks or brackets
+  </Tab>
+  
+  <Tab title="Browser Issues">
+    - Clear browser cache and refresh
+    - Try a different browser
+    - Check if JavaScript is enabled
+  </Tab>
+  
+  <Tab title="Mobile Display">
+    - Reduce iframe height for better mobile viewing
+    - Test on actual mobile device, not just desktop resizing
+  </Tab>
+</Tabs>
+
+### Form Showing Scrollbars
+
+Increase the iframe height:
+
+```html
+<iframe height="1500" ...></iframe>
+```
+
+Or use responsive sizing:
+
+```html
+<iframe style="min-height: 1100px; height: 100vh;" ...></iframe>
+```
+
+<Warning>
+Ensure your form is set to "Anyone with the link" can respond, otherwise guests may encounter permission errors.
+</Warning>
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card title="Countdown Timer" icon="clock" href="/customization/countdown-timer">
+    Set up your wedding countdown
+  </Card>
+  <Card title="Deploy Your Site" icon="rocket" href="/deployment/github-pages">
+    Publish your website online
+  </Card>
+</CardGroup>

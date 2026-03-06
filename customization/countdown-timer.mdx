@@ -1,0 +1,490 @@
+---
+title: 'Countdown Timer Setup'
+description: 'Configure and customize the wedding countdown timer'
+---
+
+The wedding countdown timer displays the time remaining until (or since) your wedding day. This guide shows you how to customize it for your event.
+
+## How the Timer Works
+
+The countdown timer is powered by JavaScript that calculates the difference between the current time and your wedding date:
+
+<CardGroup cols={2}>
+  <Card title="Before Wedding" icon="hourglass-start">
+    Shows countdown to the big day
+  </Card>
+  <Card title="After Wedding" icon="heart">
+    Shows time since you got married
+  </Card>
+</CardGroup>
+
+## Timer Code Overview
+
+The timer JavaScript is located in `assets/js/timer.js`:
+
+```javascript
+const countdown = () => {
+  // Specify the date and time we are counting down to.
+  const countDate = new Date("May 6, 2022 09:15:00").getTime();
+  const now = new Date().getTime();
+  const timeFrom = now - countDate;
+
+  const seconds = 1000;
+  const minutes = seconds * 60;
+  const hours = minutes * 60;
+  const days = hours * 24;
+
+  const textdays = Math.floor(timeFrom / days);
+  const texthours = Math.floor((timeFrom % days) / hours);
+  const textminutes = Math.floor((timeFrom % hours) / minutes);
+  const textseconds = Math.floor((timeFrom % minutes) / seconds);
+
+  document.querySelector(".days").innerText = textdays > 0 ? textdays : 0;
+  document.querySelector(".hours").innerText = texthours > 0 ? texthours : 0;
+  document.querySelector(".minutes").innerText = textminutes > 0 ? textminutes : 0;
+  document.querySelector(".seconds").innerText = textseconds > 0 ? textseconds : 0;
+};
+
+// should use 500 as setInterval won't always run on time.
+setInterval(countdown, 500);
+```
+
+<Note>
+The timer updates every 500 milliseconds (twice per second) for smooth, accurate counting.
+</Note>
+
+## Changing the Wedding Date
+
+The most important customization is setting your wedding date and time:
+
+<Steps>
+  <Step title="Open timer.js">
+    Navigate to `assets/js/timer.js` in your project
+  </Step>
+  
+  <Step title="Locate the Date Line">
+    Find this line:
+    ```javascript
+    const countDate = new Date("May 6, 2022 09:15:00").getTime();
+    ```
+  </Step>
+  
+  <Step title="Update to Your Wedding Date">
+    Replace with your wedding date and ceremony time:
+    ```javascript
+    const countDate = new Date("June 15, 2024 14:30:00").getTime();
+    ```
+  </Step>
+  
+  <Step title="Save and Test">
+    Save the file and refresh your website to see the updated countdown
+  </Step>
+</Steps>
+
+### Date Format Requirements
+
+The date must follow this format:
+
+```javascript
+"Month Day, Year Hour:Minute:Second"
+
+// Examples:
+"December 25, 2024 18:00:00"  // 6:00 PM
+"July 4, 2025 13:30:00"       // 1:30 PM
+"March 20, 2024 10:00:00"     // 10:00 AM
+```
+
+<Warning>
+Use 24-hour format for the time (13:00 for 1 PM, 18:00 for 6 PM). Use 2-digit format for minutes and seconds.
+</Warning>
+
+## Timer Display HTML
+
+The timer display is shown in the HTML with this structure (in `index.html`):
+
+```html
+<section id="one" class="wrapper style1 special">
+  <div class="inner">
+    <header class="major">
+      <h2>Happily married since</h2>
+      <!-- OR before wedding: Getting married in -->
+      
+      <div class="countdown">
+        <h2 class="days">Time</h2>
+        <h2>Days |</h2>
+        <h2 class="hours">Time</h2>
+        <h2>Hours |</h2>
+        <h2 class="minutes">Time</h2>
+        <h2>Minutes |</h2>
+        <h2 class="seconds">Time</h2>
+        <h2>Seconds</h2>
+      </div>
+    </header>
+  </div>
+</section>
+```
+
+### Customizing Timer Text
+
+<Tabs>
+  <Tab title="Before Wedding">
+    ```html
+    <h2>Getting married in</h2>
+    <!-- or -->
+    <h2>Countdown to our wedding</h2>
+    <!-- or -->
+    <h2>The big day in</h2>
+    ```
+  </Tab>
+  
+  <Tab title="After Wedding">
+    ```html
+    <h2>Happily married since</h2>
+    <!-- or -->
+    <h2>Married for</h2>
+    <!-- or -->
+    <h2>Our journey together</h2>
+    ```
+  </Tab>
+  
+  <Tab title="Custom Labels">
+    ```html
+    <div class="countdown">
+      <h2 class="days">0</h2>
+      <h2>Days and</h2>
+      <h2 class="hours">0</h2>
+      <h2>Hours and</h2>
+      <h2 class="minutes">0</h2>
+      <h2>Minutes and</h2>
+      <h2 class="seconds">0</h2>
+      <h2>Seconds!</h2>
+    </div>
+    ```
+  </Tab>
+</Tabs>
+
+## Adding the Timer to Other Pages
+
+You can display the countdown on multiple pages:
+
+<Steps>
+  <Step title="Include timer.js Script">
+    Add the script reference before the closing `</body>` tag:
+    ```html
+    <script src="../assets/js/timer.js"></script>
+    ```
+  </Step>
+  
+  <Step title="Add Timer HTML">
+    Paste the countdown HTML structure where you want it to appear
+  </Step>
+  
+  <Step title="Verify Class Names">
+    Ensure the element classes match: `.days`, `.hours`, `.minutes`, `.seconds`
+  </Step>
+</Steps>
+
+## Styling the Timer
+
+Customize the timer appearance with CSS:
+
+### Basic Styling
+
+```css
+.countdown {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5em;
+  flex-wrap: wrap;
+}
+
+.countdown h2 {
+  margin: 0;
+  padding: 0;
+}
+
+/* Number styling */
+.countdown .days,
+.countdown .hours,
+.countdown .minutes,
+.countdown .seconds {
+  font-size: 2em;
+  font-weight: 800;
+  color: #21b2a6;
+}
+```
+
+### Box-Style Timer
+
+```css
+.countdown {
+  display: flex;
+  gap: 1em;
+  justify-content: center;
+}
+
+.countdown .time-box {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  padding: 1em;
+  min-width: 100px;
+  text-align: center;
+}
+
+.countdown .number {
+  font-size: 3em;
+  font-weight: 800;
+  display: block;
+  color: #fff;
+}
+
+.countdown .label {
+  font-size: 0.8em;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: rgba(255, 255, 255, 0.7);
+}
+```
+
+With updated HTML:
+
+```html
+<div class="countdown">
+  <div class="time-box">
+    <span class="number days">0</span>
+    <span class="label">Days</span>
+  </div>
+  <div class="time-box">
+    <span class="number hours">0</span>
+    <span class="label">Hours</span>
+  </div>
+  <div class="time-box">
+    <span class="number minutes">0</span>
+    <span class="label">Minutes</span>
+  </div>
+  <div class="time-box">
+    <span class="number seconds">0</span>
+    <span class="label">Seconds</span>
+  </div>
+</div>
+```
+
+<Tip>
+Use CSS to make the timer responsive on mobile by adjusting font sizes with media queries.
+</Tip>
+
+## Advanced Customizations
+
+### Hiding Seconds on Mobile
+
+```css
+@media screen and (max-width: 736px) {
+  .countdown .seconds,
+  .countdown h2:last-child {
+    display: none;
+  }
+}
+```
+
+### Adding Animation
+
+```css
+.countdown .days,
+.countdown .hours,
+.countdown .minutes,
+.countdown .seconds {
+  animation: pulse 1s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+```
+
+### Countdown vs Count-Up Logic
+
+Modify the JavaScript to change behavior after the wedding date:
+
+```javascript
+const countdown = () => {
+  const countDate = new Date("June 15, 2024 14:30:00").getTime();
+  const now = new Date().getTime();
+  
+  // Calculate time difference (can be negative before wedding)
+  const timeDiff = now - countDate;
+  
+  // Use absolute value to show countdown before and count-up after
+  const timeValue = Math.abs(timeDiff);
+
+  const seconds = 1000;
+  const minutes = seconds * 60;
+  const hours = minutes * 60;
+  const days = hours * 24;
+
+  const textdays = Math.floor(timeValue / days);
+  const texthours = Math.floor((timeValue % days) / hours);
+  const textminutes = Math.floor((timeValue % hours) / minutes);
+  const textseconds = Math.floor((timeValue % minutes) / seconds);
+
+  document.querySelector(".days").innerText = textdays;
+  document.querySelector(".hours").innerText = texthours;
+  document.querySelector(".minutes").innerText = textminutes;
+  document.querySelector(".seconds").innerText = textseconds;
+  
+  // Optional: Update heading text based on date
+  const heading = document.querySelector("#one h2");
+  if (timeDiff < 0) {
+    heading.innerText = "Getting married in";
+  } else {
+    heading.innerText = "Happily married for";
+  }
+};
+
+setInterval(countdown, 500);
+```
+
+<Note>
+This advanced version automatically switches the heading text from countdown to count-up after your wedding date passes.
+</Note>
+
+## Multiple Countdowns
+
+For multi-day weddings, you can create countdowns for each event:
+
+```javascript
+const countdownToCeremony = () => {
+  const ceremonyDate = new Date("June 15, 2024 14:00:00").getTime();
+  updateTimer(ceremonyDate, "ceremony");
+};
+
+const countdownToReception = () => {
+  const receptionDate = new Date("June 15, 2024 19:00:00").getTime();
+  updateTimer(receptionDate, "reception");
+};
+
+const updateTimer = (targetDate, prefix) => {
+  const now = new Date().getTime();
+  const timeValue = Math.abs(now - targetDate);
+  
+  const seconds = 1000;
+  const minutes = seconds * 60;
+  const hours = minutes * 60;
+  const days = hours * 24;
+
+  const textdays = Math.floor(timeValue / days);
+  const texthours = Math.floor((timeValue % days) / hours);
+  const textminutes = Math.floor((timeValue % hours) / minutes);
+  const textseconds = Math.floor((timeValue % minutes) / seconds);
+
+  document.querySelector(`.${prefix}-days`).innerText = textdays;
+  document.querySelector(`.${prefix}-hours`).innerText = texthours;
+  document.querySelector(`.${prefix}-minutes`).innerText = textminutes;
+  document.querySelector(`.${prefix}-seconds`).innerText = textseconds;
+};
+
+setInterval(() => {
+  countdownToCeremony();
+  countdownToReception();
+}, 500);
+```
+
+With corresponding HTML:
+
+```html
+<h3>Ceremony</h3>
+<div class="countdown">
+  <h2 class="ceremony-days">0</h2>
+  <h2>Days |</h2>
+  <h2 class="ceremony-hours">0</h2>
+  <h2>Hours</h2>
+</div>
+
+<h3>Reception</h3>
+<div class="countdown">
+  <h2 class="reception-days">0</h2>
+  <h2>Days |</h2>
+  <h2 class="reception-hours">0</h2>
+  <h2>Hours</h2>
+</div>
+```
+
+## Troubleshooting
+
+### Timer Not Working
+
+<Steps>
+  <Step title="Check Script Loading">
+    Ensure `timer.js` is included before `</body>`:
+    ```html
+    <script src="assets/js/timer.js"></script>
+    ```
+  </Step>
+  
+  <Step title="Verify Date Format">
+    Check the date string format is correct
+  </Step>
+  
+  <Step title="Check Element Classes">
+    Ensure HTML elements have the correct classes: `.days`, `.hours`, `.minutes`, `.seconds`
+  </Step>
+  
+  <Step title="Console Errors">
+    Open browser console (F12) and check for JavaScript errors
+  </Step>
+</Steps>
+
+### Timer Showing Wrong Values
+
+<Tabs>
+  <Tab title="Timezone Issues">
+    The JavaScript Date object uses the visitor's local timezone. Your date string is interpreted in their timezone, which may cause discrepancies.
+    
+    For precise control, use UTC:
+    ```javascript
+    const countDate = Date.UTC(2024, 5, 15, 14, 30, 0); // June is month 5 (0-indexed)
+    ```
+  </Tab>
+  
+  <Tab title="Negative Values">
+    If showing negative numbers, check the date calculation:
+    ```javascript
+    const textdays = Math.floor(timeFrom / days);
+    // Change to:
+    const textdays = Math.floor(Math.abs(timeFrom) / days);
+    ```
+  </Tab>
+</Tabs>
+
+### Timer Not Updating
+
+If the timer displays but doesn't count:
+
+```javascript
+// Check that setInterval is called
+setInterval(countdown, 500);
+
+// Also call once immediately on load
+countdown();
+setInterval(countdown, 500);
+```
+
+<Warning>
+Always test the timer before your wedding date AND after to ensure it handles both countdown and count-up correctly.
+</Warning>
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card title="Style Customization" icon="palette" href="/customization/styling">
+    Customize timer colors and fonts
+  </Card>
+  <Card title="Deploy Your Site" icon="rocket" href="/deployment/github-pages">
+    Publish your wedding website
+  </Card>
+</CardGroup>

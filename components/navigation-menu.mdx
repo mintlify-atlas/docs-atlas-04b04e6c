@@ -1,0 +1,269 @@
+---
+title: Navigation Menu
+description: Implementing and customizing the responsive navigation menu
+---
+
+## Overview
+
+The wedding website template uses a mobile-friendly navigation menu that toggles on smaller screens. The menu is consistently structured across all pages with smooth animations and responsive behavior.
+
+## Basic Navigation Structure
+
+The navigation is contained within the header and uses a special list structure:
+
+```html
+<header id="header" class="alt">
+  <h1><a href="index.html">Ankita & Anil</a></h1>
+  <nav id="nav">
+    <ul>
+      <li class="special">
+        <a href="#menu" class="menuToggle"><span>Menu</span></a>
+        <div id="menu">
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="pages/live_stream.html">Live Stream</a></li>
+            <li><a href="pages/the_couple.html">The Couple</a></li>
+            <li><a href="pages/schedule.html">Schedule</a></li>
+            <li><a href="pages/encomium.html">Encomium</a></li>
+            <li><a href="https://example.com/photos">Photos</a></li>
+            <li><a href="pages/travel_and_accommodation.html">Travel & Accommodation</a></li>
+            <li><a href="pages/parking_and_transportation.html">Parking & Transportation</a></li>
+            <li><a href="pages/confirm_attendance.html">Confirm Attendance / RSVP</a></li>
+            <li><a href="pages/faqs.html">FAQs</a></li>
+          </ul>
+        </div>
+      </li>
+    </ul>
+  </nav>
+</header>
+```
+
+<Note>
+The `special` class is required for the menu toggle functionality to work properly. The `#menu` div is hidden by default and revealed when the toggle is clicked.
+</Note>
+
+## Menu Toggle Button
+
+The menu toggle button is created with this structure:
+
+```html
+<a href="#menu" class="menuToggle"><span>Menu</span></a>
+```
+
+<Steps>
+  <Step title="Desktop Behavior">
+    On desktop screens, the menu is always visible and displayed horizontally in the header.
+  </Step>
+  
+  <Step title="Mobile Behavior">
+    On mobile screens, the menu is hidden behind a toggle button (typically a hamburger icon).
+  </Step>
+  
+  <Step title="Toggle Action">
+    Clicking the toggle button adds/removes the `active` class to show/hide the menu panel.
+  </Step>
+</Steps>
+
+## Header Variants
+
+<Accordion title="Landing Page Header (with 'alt' class)">
+Used on the home page with a transparent background that becomes solid on scroll:
+
+```html
+<header id="header" class="alt">
+  <h1><a href="index.html">Ankita & Anil</a></h1>
+  <nav id="nav">
+    <!-- Navigation structure -->
+  </nav>
+</header>
+```
+
+The `alt` class creates a transparent header that overlays the banner section.
+</Accordion>
+
+<Accordion title="Inner Page Header (no 'alt' class)">
+Used on all inner pages with a solid background:
+
+```html
+<header id="header">
+  <h1><a href="../index.html">Ankita & Anil</a></h1>
+  <nav id="nav">
+    <!-- Navigation structure -->
+  </nav>
+</header>
+```
+
+Note the relative path (`../`) used to link back to the home page from subdirectory pages.
+</Accordion>
+
+## Customizing Menu Items
+
+### Adding a New Menu Item
+
+To add a new page to the menu, add a new `<li>` element inside the `#menu` div:
+
+```html
+<div id="menu">
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <!-- existing items -->
+    <li><a href="pages/your-new-page.html">Your New Page</a></li>
+  </ul>
+</div>
+```
+
+<Warning>
+Make sure to add the new menu item to ALL pages in your site to maintain consistency. The menu structure should be identical across every page.
+</Warning>
+
+### External Links
+
+You can link to external sites by using full URLs:
+
+```html
+<li><a href="https://603de94bdc7d27-95255343.gallery.photo/gallery/anil---ankita/">Photos</a></li>
+```
+
+### Anchor Links
+
+To link to sections within the same page, use anchor links:
+
+```html
+<li><a href="#schedule">Jump to Schedule</a></li>
+```
+
+## JavaScript Functionality
+
+The menu toggle functionality is handled by the `main.js` file. The script:
+
+1. Listens for clicks on elements with the `menuToggle` class
+2. Toggles the `active` class on the `#menu` element
+3. Toggles the `inactive` class on the `#page-wrapper` for overlay effect
+4. Prevents body scrolling when menu is open
+
+<Info>
+You don't need to write any JavaScript for basic menu functionality - it's all handled by the included `main.js` file. Just ensure the HTML structure matches the expected format.
+</Info>
+
+## Path Considerations
+
+<CodeGroup>
+```html Home Page (index.html)
+<nav id="nav">
+  <ul>
+    <li class="special">
+      <a href="#menu" class="menuToggle"><span>Menu</span></a>
+      <div id="menu">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="pages/schedule.html">Schedule</a></li>
+        </ul>
+      </div>
+    </li>
+  </ul>
+</nav>
+```
+
+```html Inner Pages (pages/*.html)
+<nav id="nav">
+  <ul>
+    <li class="special">
+      <a href="#menu" class="menuToggle"><span>Menu</span></a>
+      <div id="menu">
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="schedule.html">Schedule</a></li>
+        </ul>
+      </div>
+    </li>
+  </ul>
+</nav>
+```
+</CodeGroup>
+
+<Note>
+Notice the path differences:
+- Home page uses `pages/schedule.html`
+- Inner pages use `../index.html` for home and `schedule.html` for sibling pages
+</Note>
+
+## Styling Considerations
+
+### Active Menu State
+
+When the menu is toggled open, these classes are applied:
+
+- `#menu` gets the `active` class
+- `#page-wrapper` gets the `inactive` class
+- `body` gets overflow hidden to prevent scrolling
+
+### Responsive Breakpoints
+
+The menu automatically switches between desktop and mobile modes based on screen width. The breakpoint is defined in `breakpoints.js` and applied through CSS.
+
+## Complete Example
+
+Here's a complete header with navigation for an inner page:
+
+```html
+<header id="header">
+  <h1><a href="../index.html">Ankita & Anil</a></h1>
+  <nav id="nav">
+    <ul>
+      <li class="special">
+        <a href="#menu" class="menuToggle"><span>Menu</span></a>
+        <div id="menu">
+          <ul>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="live_stream.html">Live Stream</a></li>
+            <li><a href="the_couple.html">The Couple</a></li>
+            <li><a href="schedule.html">Schedule</a></li>
+            <li><a href="encomium.html">Encomium</a></li>
+            <li><a href="https://example.com/photos">Photos</a></li>
+            <li><a href="travel_and_accommodation.html">Travel & Accommodation</a></li>
+            <li><a href="parking_and_transportation.html">Parking & Transportation</a></li>
+            <li><a href="confirm_attendance.html">Confirm Attendance</a></li>
+            <li><a href="faqs.html">FAQs</a></li>
+          </ul>
+        </div>
+      </li>
+    </ul>
+  </nav>
+</header>
+```
+
+## Best Practices
+
+<CardGroup cols={2}>
+  <Card title="Keep It Consistent" icon="check">
+    Use the exact same menu structure on every page. This ensures a consistent user experience.
+  </Card>
+  
+  <Card title="Clear Labels" icon="tag">
+    Use descriptive, concise labels for menu items. Avoid jargon or overly creative names.
+  </Card>
+  
+  <Card title="Logical Order" icon="list-ol">
+    Arrange menu items in a logical order, typically starting with Home and ending with FAQs or Contact.
+  </Card>
+  
+  <Card title="Test Paths" icon="link">
+    Always test links from both the home page and inner pages to ensure paths are correct.
+  </Card>
+</CardGroup>
+
+## Next Steps
+
+<CardGroup cols={3}>
+  <Card title="HTML Structure" icon="code" href="/components/html-structure">
+    Review the overall page structure
+  </Card>
+  
+  <Card title="Event Cards" icon="image" href="/components/event-cards">
+    Create spotlight sections for events
+  </Card>
+  
+  <Card title="Customization" icon="paint-brush" href="/customization/styling">
+    Learn how to style the navigation
+  </Card>
+</CardGroup>
