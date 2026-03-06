@@ -1,0 +1,397 @@
+---
+title: "Tribute Page (Encomium)"
+description: "Honor loved ones with a dedicated memory and tribute page"
+---
+
+## Overview
+
+The **Encomium** page is a heartfelt tribute section where you can honor special people in your lives - grandparents, parents, mentors, or anyone who played a significant role in your journey. The word "encomium" means a formal expression of high praise, making it perfect for a wedding tribute page.
+
+<Note>
+  The example template includes beautiful tributes to both sides of the family's grandparents, 
+  with personal stories, photos, and memories.
+</Note>
+
+## What is an Encomium Page?
+
+An encomium page serves several purposes:
+
+- **Honor family members** who may not be present at the wedding
+- **Share family history** and stories with guests
+- **Preserve memories** in a public, shareable format
+- **Express gratitude** to those who shaped your lives
+- **Connect generations** by introducing grandparents and ancestors to younger guests
+
+<Tip>
+  This page is especially meaningful for honoring grandparents or parents who have passed away, 
+  allowing them to be spiritually present on your special day.
+</Tip>
+
+## Page Structure
+
+The encomium page (`pages/encomium.html`) follows a clean, section-based layout:
+
+```html encomium.html
+<article id="main">
+    <header>
+        <h2>Encomium</h2>
+        <h3>An ode to memories that last forever</h3>
+        <p>
+            The greatest storytellers, heroes, source of unconditional love 
+            and the keepers of traditions that linger on in our cherished memory. 
+            Let us take you on a ride in our time machine when our smiles were 
+            as wide as an ocean.
+        </p>
+    </header>
+    <section class="wrapper style5">
+        <div class="inner">
+            <section>
+                <h2>Grandparents</h2>
+                <hr />
+                <h3>Kulkarni Family</h3>
+                <!-- Tribute content -->
+                
+                <hr />
+                <h3>Rao Family</h3>
+                <!-- Tribute content -->
+            </section>
+        </section>
+    </article>
+</article>
+```
+
+## Content Layout Patterns
+
+The template demonstrates several effective layout patterns for tribute content:
+
+### Full-Width Images with Text Below
+
+```html
+<div class="col-12">
+    <span class="image fit">
+        <img src="../images/ankita_grandparents_1.jpg" alt="" />
+    </span>
+</div>
+<p>
+    If someone asked me to pick what I was most grateful for in life, 
+    it would be to grow under the shade of you both. Undoubtedly, 
+    the most selfless, pure, unconditional love I have ever experienced.
+</p>
+```
+
+This creates a full-width photo followed by tribute text - ideal for impactful opening images.
+
+### Left-Aligned Image with Wrapped Text
+
+```html
+<p>
+    <span class="image left">
+        <img src="../images/ankita_grandparents_3.jpg" alt="" />
+    </span>
+    My grandmother, a personification of a 4.10 ft care package, 
+    could never stop talking about me or praising me...
+    [long story continues, wrapping around the image]
+</p>
+```
+
+This creates a newspaper-style layout where text wraps around a smaller image on the left.
+
+### Blockquotes for Special Messages
+
+```html
+<blockquote>
+    "The determination with which you waited for my big day makes me hope 
+    that you are both going to be there sitting in the front row and watching 
+    the live telecast in a special way (the photographer said intra realm 
+    live telecast is not offered in the package :-P)"
+</blockquote>
+```
+
+Use blockquotes to highlight particularly meaningful messages or quotes.
+
+## Creating Your Tribute Page
+
+<Steps>
+  <Step title="Plan Your Content">
+    Decide who you want to honor:
+    - Grandparents (maternal and paternal)
+    - Parents
+    - Mentors or guardian figures
+    - Siblings or close family members
+    - Friends who played special roles
+    
+    <Info>
+      The template example honors grandparents from both families, but you can adapt 
+      this to honor any loved ones.
+    </Info>
+  </Step>
+
+  <Step title="Gather Photos">
+    Collect meaningful photos:
+    - Old family photos showing childhood memories
+    - Candid moments that capture personalities
+    - Multi-generational photos
+    - Photos from special occasions
+    
+    **Recommended image specifications:**
+    - Full-width images: 1200px wide minimum
+    - Left/right-aligned images: 400-600px wide
+    - Format: JPG or PNG
+    - Optimize for web to keep page load fast
+  </Step>
+
+  <Step title="Write Personal Tributes">
+    Share authentic stories and memories:
+    - Start with how they influenced your life
+    - Include specific anecdotes and examples
+    - Use conversational, heartfelt language
+    - Don't be afraid to show emotion
+    - Include humor where appropriate
+    
+    <Tip>
+      The best tributes are specific and personal. Instead of "My grandfather was kind," 
+      try "My grandfather climbed the Tirumala hills carrying me in his arms at age 70+."
+    </Tip>
+  </Step>
+
+  <Step title="Structure Your Page">
+    Organize tributes logically:
+    
+    ```html
+    <section>
+        <h2>Grandparents</h2>
+        <hr />
+        
+        <h3>[Family Name] Family</h3>
+        [Tribute content with images]
+        
+        <hr />
+        
+        <h3>[Other Family Name] Family</h3>
+        [Tribute content with images]
+    </section>
+    ```
+    
+    Use `<hr />` to visually separate different people or families.
+  </Step>
+
+  <Step title="Add to Navigation">
+    Make sure the page is included in your site navigation:
+    
+    ```html
+    <li><a href="pages/encomium.html">Encomium</a></li>
+    ```
+    
+    Consider using a more common term like "Tributes" or "In Memory" if "Encomium" 
+    might be unfamiliar to guests.
+  </Step>
+</Steps>
+
+## Writing Tips
+
+### Be Authentic and Specific
+
+**Generic ❌:**
+> My grandmother was a wonderful person who loved me very much.
+
+**Specific ✅:**
+> My grandmother brought lunch boxes to my school every day at 12:30 PM for 10 years, 
+> washed my laundry by hand even when I was 20, and forced me to watch English horror 
+> movies with her while repeatedly asking "where is the devil?"
+
+### Balance Emotion with Readability
+
+The template shows how to write emotionally powerful content that's still easy to read:
+
+- Use **paragraph breaks** to give readers breathing room
+- **Mix longer narratives** with shorter, punchy statements
+- Include both **serious reflections** and **lighter, humorous moments**
+- Use **specific details** (ages, locations, exact quotes) to make stories vivid
+
+### Include Direct Quotes
+
+When appropriate, include things they actually said:
+
+```html
+<blockquote>
+    "No decisions are made in my dad's house without consulting her. 
+    The grip and loyalty she has on everyone around her, especially 
+    ones closest to her is magical yet respected."
+</blockquote>
+```
+
+## Image Placement Best Practices
+
+<Accordion title="Full-Width Images">
+  **When to use:**
+  - Opening image for each section
+  - Particularly important or beautiful photos
+  - Group photos with multiple people
+  
+  **Code:**
+  ```html
+  <div class="col-12">
+      <span class="image fit">
+          <img src="../images/photo.jpg" alt="Description" />
+      </span>
+  </div>
+  ```
+</Accordion>
+
+<Accordion title="Left-Aligned Images">
+  **When to use:**
+  - Alongside longer text blocks
+  - Individual portraits
+  - Creating visual variety
+  
+  **Code:**
+  ```html
+  <p>
+      <span class="image left">
+          <img src="../images/photo.jpg" alt="Description" />
+      </span>
+      Your text continues here and wraps around the image...
+  </p>
+  ```
+  
+  <Note>The image must be inside the `<p>` tag for text wrapping to work correctly.</Note>
+</Accordion>
+
+<Accordion title="Right-Aligned Images">
+  **When to use:**
+  - Alternating with left-aligned images
+  - Visual balance after a left-aligned image
+  
+  **Code:**
+  ```html
+  <span class="image right">
+      <img src="../images/photo.jpg" alt="Description" />
+  </span>
+  ```
+</Accordion>
+
+## Highlighting on Main Page
+
+The encomium page is promoted on the landing page with an attractive spotlight section:
+
+```html index.html
+<section class="spotlight">
+    <div class="image"><img src="images/encomium.jpg" alt="" /></div>
+    <div class="content">
+        <h2>Encomium</h2>
+        <h3>An ode to memories that last forever</h3>
+        <p>
+            The greatest storytellers, heroes, source of unconditional love 
+            and the keepers of traditions that linger on in our cherished memory. 
+            Let us take you on a ride in our time machine when our smiles were 
+            as wide as an ocean.
+        </p>
+        <ul class="actions"></ul>
+            <a href="pages/encomium.html" class="button primary fit">
+                A trip down memory lane!
+            </a>
+        </ul>
+    </div>
+</section>
+```
+
+## Alternative Names for This Page
+
+If "Encomium" feels too formal or unfamiliar, consider these alternatives:
+
+- **"In Loving Memory"** - Classic and immediately understood
+- **"Tributes"** - Simple and clear
+- **"Our Family Story"** - Emphasizes heritage and continuity
+- **"Those Who Shaped Us"** - Personal and meaningful
+- **"Honoring Our Loved Ones"** - Warm and inclusive
+- **"Family Legacy"** - Celebrates multi-generational connection
+
+Update both the page title and navigation menu if you change the name.
+
+## Customization Ideas
+
+<CardGroup cols={2}>
+  <Card title="Video Tributes" icon="video">
+    Embed videos alongside text tributes using HTML5 video tags or YouTube embeds
+  </Card>
+  <Card title="Photo Galleries" icon="images">
+    Create photo grid sections showing multiple memories
+  </Card>
+  <Card title="Timeline Format" icon="timeline">
+    Organize tributes chronologically showing life stages
+  </Card>
+  <Card title="Quotes Collection" icon="quote-left">
+    Feature their favorite sayings or advice they gave you
+  </Card>
+</CardGroup>
+
+## Cultural Considerations
+
+The example page honors Hindu family traditions, but this format works for any culture:
+
+- **Christian weddings**: Honor parents and grandparents who guided your faith
+- **Jewish weddings**: Connect to family heritage and traditions
+- **Secular weddings**: Focus on personal relationships and life lessons
+- **Multicultural weddings**: Honor both families' traditions and ancestors
+
+<Tip>
+  If honoring deceased loved ones, some cultures prefer "In Memory" sections while others 
+  celebrate their ongoing spiritual presence. Adapt the tone to match your cultural context.
+</Tip>
+
+## Sensitivity Considerations
+
+<Warning>
+  This page can be emotionally powerful for both you and your guests. Consider:
+  
+  - **Warning guests** that the page contains emotional content
+  - **Balancing grief and celebration** - it's okay to be both sad and joyful
+  - **Including living relatives** - you can honor people who are still alive
+  - **Being inclusive** - if one partner has complex family relationships, find balance
+</Warning>
+
+## Mobile Responsiveness
+
+The template automatically handles mobile layouts:
+
+- Full-width images stack vertically on mobile
+- Text reflows to fit smaller screens
+- Left/right-aligned images switch to centered on mobile
+- Navigation remains accessible
+
+Test your tribute page on mobile devices to ensure photos and text are readable.
+
+## Example Use Cases
+
+<Accordion title="Honoring Grandparents Who Passed">
+  Share memories and express how they'll be present in spirit. The template example 
+  beautifully demonstrates this with heartfelt stories about grandparents.
+</Accordion>
+
+<Accordion title="Thanking Living Family Members">
+  Express gratitude to parents, siblings, or mentors who supported your relationship 
+  and wedding planning.
+</Accordion>
+
+<Accordion title="Celebrating Family Heritage">
+  Share immigration stories, cultural traditions, or family history that shaped who you are.
+</Accordion>
+
+<Accordion title="Honoring Blended Family Members">
+  Recognize step-parents, foster families, or other non-traditional family structures 
+  that were instrumental in your lives.
+</Accordion>
+
+## Sharing This Page
+
+After the wedding, the encomium page becomes a lasting memorial:
+
+- Share the URL with family members who couldn't attend
+- Print the page as a keepsake for close relatives
+- Include photos from this page in your wedding album
+- Reference these stories in your wedding toast or ceremony
+
+<Info>
+  Many couples keep their wedding website live for years, making the tribute page a 
+  permanent, shareable family memorial.
+</Info>

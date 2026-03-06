@@ -40,7 +40,10 @@
           "features/rsvp-system",
           "features/live-stream",
           "features/photo-gallery",
-          "features/interactive-quiz"
+          "features/interactive-quiz",
+          "features/guest-coordination",
+          "features/tribute-page",
+          "features/faq-page"
         ]
       },
       {

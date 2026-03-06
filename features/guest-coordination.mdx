@@ -1,0 +1,334 @@
+---
+title: "Guest Coordination"
+description: "Help guests with travel, accommodation, parking, and transportation logistics"
+---
+
+## Overview
+
+The template includes comprehensive guest coordination features to help out-of-town guests plan their trip to your wedding. These pages collect information through Google Forms and provide helpful resources for travel planning.
+
+<CardGroup cols={2}>
+  <Card title="Travel & Accommodation" icon="hotel">
+    Coordinate hotel bookings and travel plans for guests
+  </Card>
+  <Card title="Parking & Transportation" icon="bus">
+    Manage parking and organize shuttle services
+  </Card>
+</CardGroup>
+
+## Travel and Accommodation Page
+
+The `travel_and_accommodation.html` page helps guests who need overnight accommodation and provides travel information.
+
+### Page Structure
+
+The page is divided into two main sections:
+
+<Steps>
+  <Step title="Accommodation Form">
+    A Google Form to collect accommodation requests from out-of-town guests.
+  </Step>
+  <Step title="Travel Tips">
+    Helpful information about reaching the venue from airports, train stations, and highways.
+  </Step>
+</Steps>
+
+### Accommodation Form
+
+The form collects essential information for coordinating guest accommodations:
+
+```html travel_and_accommodation.html
+<section id="Accommodation Form">
+    <h2>Accommodation</h2>
+    <p>
+        Please fill the form below if you are traveling from out of station 
+        and need accommodation to attend the event. We will provide 
+        transportation from our designated hotel to the event venue
+    </p>
+</section>
+<section>
+    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfHo33Wvl3aUGwHpALwBMv-2FQtz8pfqKTM3mQQxde4rIBCAA/viewform?embedded=true" 
+            width="100%" 
+            height="1200" 
+            frameborder="0" 
+            marginheight="0" 
+            marginwidth="0">
+        Loading…
+    </iframe>
+</section>
+```
+
+**Recommended form fields:**
+- Guest name and contact information
+- Number of guests needing accommodation
+- Preferred check-in and check-out dates
+- Room preferences (single/double/suite)
+- Special requirements (accessibility, dietary needs)
+- Transportation needs to/from venue
+
+<Tip>
+  Consider partnering with 1-2 hotels near your venue to get group rates and simplify coordination.
+</Tip>
+
+### Travel Information Section
+
+The template includes detailed travel information organized by transportation mode:
+
+```html travel_and_accommodation.html
+<section id="Tips">
+    <h2>Travel</h2>
+    <h3>By Air - Kempegowda International Airport (BLR)</h3>
+    <p>
+        <i><a href="https://www.bengaluruairport.com/">Kempegowda International Airport</a></i> 
+        is now "The Gateway to South and Central India". The airport serves 74 domestic 
+        destinations throughout India. Spread over 4,000 acres, it is located about 
+        30 kilometres north of the city.
+    </p>
+    <blockquote>
+        Click the links below to help book your transportation to the hotel or venue
+    </blockquote>
+    <p>
+        <b><a href="https://www.bengaluruairport.com/travellers/#/travellers/transport-parking#Airport-VayuVajra">
+            Airport Shuttle - Vayu Vajra</a></b> |
+        <b><a href="https://www.uber.com/">Uber</a></b> |
+        <b><a href="https://www.olacabs.com/">Ola</a></b>
+    </p>
+</section>
+```
+
+**Customize for your location:**
+1. Replace airport/station information with your local airports
+2. Add train station details if applicable
+3. Include highway routes and exit numbers for drivers
+4. Link to local taxi services, Uber, Lyft, etc.
+5. Provide estimated travel times to venue
+
+<Note>
+  The example shows Bangalore, India travel information. Update all location-specific 
+  details to match your wedding venue's location.
+</Note>
+
+## Parking and Transportation Page
+
+The `parking_and_transportation.html` page manages parking logistics and shuttle services.
+
+### Page Features
+
+<Accordion title="Parking Information">
+  Displays parking capacity, location, and any special instructions. The example venue offers parking for 300 cars on a first-come, first-served basis.
+
+  ```html parking_and_transportation.html
+  <p>
+      Parking is available on the premises for upto 300 cars on a 
+      first come first serve basis. There is plenty of street parking too!
+  </p>
+  ```
+</Accordion>
+
+<Accordion title="Shuttle Service Registration">
+  A Google Form for guests to book seats on organized shuttle buses from central locations.
+
+  ```html parking_and_transportation.html
+  <section id="Book My Seat">
+      <h2>Transportation</h2>
+      <p>
+          We are running a planned route bus to pick you up from a common 
+          central location in your locality. Also, shuttles will be available 
+          from the nearest metro station (Silk Institute) to the event location.
+      </p>
+      <p>
+          Please inform us at least 7 days in advance for confirming and 
+          helping us effectively plan common transportation services.
+      </p>
+  </section>
+  ```
+</Accordion>
+
+<Accordion title="Route Maps and Directions">
+  Embedded Google Maps and step-by-step directions from major landmarks or hotels.
+</Accordion>
+
+### Shuttle Coordination Form
+
+**Recommended form fields for shuttle bookings:**
+- Guest name and phone number
+- Pickup location preference
+- Number of seats needed
+- Event(s) attending (if multi-day wedding)
+- Return trip needed (yes/no)
+- Special accessibility requirements
+
+<Warning>
+  Request shuttle RSVPs at least 7-10 days before the wedding to allow time for route 
+  planning and vehicle booking.
+</Warning>
+
+## Customizing Guest Coordination Pages
+
+### Step 1: Create Google Forms
+
+<Steps>
+  <Step title="Create Accommodation Form">
+    1. Go to [Google Forms](https://forms.google.com)
+    2. Create a new form titled "Wedding Accommodation Request"
+    3. Add fields for guest information, dates, and preferences
+    4. Enable response collection
+    5. Get the embed code (File → Embed)
+  </Step>
+  
+  <Step title="Create Transportation Form">
+    Create a separate form for shuttle/transportation bookings with pickup locations and timing.
+  </Step>
+  
+  <Step title="Embed Forms in Your Pages">
+    Replace the iframe `src` URLs in the HTML files with your form URLs:
+    
+    ```html
+    <iframe src="YOUR_GOOGLE_FORM_EMBED_URL" 
+            width="100%" 
+            height="1200" 
+            frameborder="0">
+    </iframe>
+    ```
+  </Step>
+</Steps>
+
+### Step 2: Update Travel Information
+
+Replace the example Bangalore travel information with details for your venue:
+
+```html
+<h3>By Air - Your Airport Name</h3>
+<p>
+    [Airport description and distance to venue]
+</p>
+
+<h3>By Train - Your Train Station</h3>
+<p>
+    [Train station information and transportation options]
+</p>
+
+<h3>By Car - Driving Directions</h3>
+<p>
+    [Highway information, exit numbers, and GPS coordinates]
+</p>
+```
+
+### Step 3: Add Google Maps
+
+Embed a map showing your venue and nearby hotels:
+
+```html
+<iframe src="https://www.google.com/maps/embed?pb=YOUR_MAP_EMBED_CODE"
+        width="100%" 
+        height="450" 
+        style="border:0;" 
+        allowfullscreen="" 
+        loading="lazy">
+</iframe>
+```
+
+Get the embed code from Google Maps:
+1. Search for your venue on Google Maps
+2. Click "Share" → "Embed a map"
+3. Copy the iframe code
+
+<Tip>
+  Create a custom Google Map with pins for your venue, recommended hotels, airports, 
+  and shuttle pickup points. Share the link in your travel page.
+</Tip>
+
+## Managing Responses
+
+### Accommodation Coordination
+
+1. **Review Responses**: Check Google Forms responses regularly
+2. **Hotel Bookings**: Contact hotels with group booking details
+3. **Guest Communication**: Email guests with confirmation and hotel information
+4. **Transportation Planning**: Organize shuttles from hotels to venue
+
+### Shuttle Service Logistics
+
+<Steps>
+  <Step title="Analyze Pickup Locations">
+    Review form responses to identify popular pickup areas
+  </Step>
+  
+  <Step title="Plan Routes">
+    Design efficient shuttle routes with 2-3 stops maximum
+  </Step>
+  
+  <Step title="Book Vehicles">
+    Contact bus/shuttle companies for quotes and bookings
+  </Step>
+  
+  <Step title="Communicate Schedule">
+    Email guests with pickup times, locations, and driver contact info
+  </Step>
+</Steps>
+
+## Best Practices
+
+<CardGroup cols={2}>
+  <Card title="Early Planning" icon="calendar-days">
+    Send out accommodation information 2-3 months before the wedding
+  </Card>
+  <Card title="Clear Deadlines" icon="clock">
+    Set clear deadlines for accommodation and shuttle RSVPs (7-14 days before)
+  </Card>
+  <Card title="Contact Information" icon="phone">
+    Provide a point of contact for last-minute travel questions
+  </Card>
+  <Card title="Backup Plans" icon="triangle-exclamation">
+    Have backup transportation options in case shuttles fill up
+  </Card>
+</CardGroup>
+
+## Linking from Main Page
+
+The guest coordination features are highlighted on the main landing page:
+
+```html index.html
+<section class="spotlight">
+    <div class="image"><img src="images/travel_and_accomadation.jpg" alt="" /></div>
+    <div class="content">
+        <h2>Travel and Accommodation</h2>
+        <h3>One stop shop to make your attendance a breeze</h3>
+        <p>
+            Are you traveling from out of station and need help booking a room?<br />
+            Want tips on best route to the venue?<br />
+            Fear not, we have got you covered.
+        </p>
+        <ul class="actions"></ul>
+            <a href="pages/travel_and_accommodation.html#Accommodation Form" 
+               class="button primary fit">Take me to the form!</a>
+            <a href="pages/travel_and_accommodation.html#Tips" 
+               class="button">Give me tips!</a>
+        </ul>
+    </div>
+</section>
+```
+
+<Info>
+  The template uses anchor links (`#Accommodation Form`, `#Tips`) to jump directly to 
+  specific sections within the page.
+</Info>
+
+## Example Timeline
+
+Here's a suggested timeline for guest coordination:
+
+| Timeline | Action |
+|----------|--------|
+| 3 months before | Send Save the Date with venue location |
+| 2 months before | Add travel page to website with hotel recommendations |
+| 6 weeks before | Open accommodation request form |
+| 4 weeks before | Send reminder emails about accommodation |
+| 3 weeks before | Close accommodation form, finalize hotel bookings |
+| 2 weeks before | Open shuttle booking form |
+| 1 week before | Close shuttle bookings, send final transportation details |
+| 3 days before | Send reminder emails with shuttle times and locations |
+
+<Note>
+  Adjust this timeline based on your wedding size and guest travel patterns.
+</Note>

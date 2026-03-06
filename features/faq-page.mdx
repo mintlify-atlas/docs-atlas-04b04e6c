@@ -1,0 +1,501 @@
+---
+title: "FAQ Page"
+description: "Answer common guest questions with a comprehensive FAQ section"
+---
+
+## Overview
+
+The FAQ (Frequently Asked Questions) page helps guests find answers to common questions about your wedding without having to contact you directly. This saves time for both you and your guests while ensuring everyone has the information they need.
+
+## Page Structure
+
+The `pages/faqs.html` file provides a clean question-and-answer format with navigation links:
+
+```html faqs.html
+<article id="main">
+    <header>
+        <h2>Frequently Asked Questions</h2>
+        <p>Some extra info for folks</p>
+    </header>
+    <section class="wrapper style5">
+        <div class="inner">
+            <section id="Confirm Attendance">
+                <h2>What's the weather like?</h2>
+                <p>
+                    <blockquote>
+                        <b>Hot with a good chance of rain.</b><br />
+                        <i>Average Highs of 91.4°F / 33°C</i><br />
+                        <i>Average Lows of 71.6°F / 22°C</i><br />
+                        All in all, it's pretty darn hot in May, so channel 
+                        your chi by bringing airy, tropics-friendly clothes.
+                    </blockquote>
+                </p>
+                <!-- More questions follow -->
+            </section>
+        </div>
+    </section>
+</article>
+```
+
+## Questions Included in Template
+
+The example template covers these essential topics:
+
+<Accordion title="Weather and Attire">
+  **What's the weather like?**
+  
+  Provides temperature ranges and clothing recommendations:
+  
+  ```html
+  <blockquote>
+      <b>Hot with a good chance of rain.</b><br />
+      <i>Average Highs of 91.4°F / 33°C</i><br />
+      <i>Average Lows of 71.6°F / 22°C</i><br />
+      All in all, it's pretty darn hot in May, so channel your chi 
+      by bringing airy, tropics-friendly clothes.
+  </blockquote>
+  ```
+  
+  <Tip>
+    Include both Fahrenheit and Celsius for international guests.
+  </Tip>
+</Accordion>
+
+<Accordion title="Venue Location and Directions">
+  **How do I get to the venue?**
+  
+  ```html
+  <blockquote>
+      <a href="../index.html">Click here to go back to the home page</a>. 
+      Which will provide you a link via google maps.<br />
+      The full address of the venue is:<br />
+      <strong>
+          Grama panchayat, #97/2, Badekatta(Uttri),<br />
+          Kagalipura, Kanakapura Rd, Uttarahalli Hobli,<br />
+          Bengaluru, Karnataka 560082, India<br />
+      </strong>
+  </blockquote>
+  ```
+  
+  Provides both a link to Google Maps and the full written address.
+</Accordion>
+
+<Accordion title="Parking Information">
+  **Where should guests park? Is parking free?**
+  
+  ```html
+  <blockquote>
+      Parking is available on the premises for upto 300 cars on a 
+      first come first serve basis. There is plenty of street parking too! 
+      Rest assured we got you covered for stress free parking experience.
+  </blockquote>
+  ```
+</Accordion>
+
+<Accordion title="Indoor/Outdoor Venue Details">
+  **Will the ceremony and reception be indoors or outdoors?**
+  
+  ```html
+  <blockquote>
+      All ceremony are in semi-indoor areas. All locations in the venue 
+      has the same design except <u>"Swadista" (The dining hall)</u> 
+      which is completely indoor. There is plenty of space to stretch 
+      your legs and a lush green lawn to keep you kids entertained.
+  </blockquote>
+  ```
+  
+  <Note>
+    This helps guests prepare for weather and choose appropriate attire.
+  </Note>
+</Accordion>
+
+<Accordion title="RSVP Deadline and Methods">
+  **When is the Confirm Attendance deadline? Can I call/text or should I do it online?**
+  
+  ```html
+  <blockquote>
+      We prefer you respond to us online so that its easier to track. 
+      However, don't hesitate to give us a call or shoot be a text 
+      (or WhatsApp) on +1 (970) 825-2230 
+      <a href="#footer">(or click the phone icon in the page footer)</a> 
+      we will make sure your needs are addressed.
+  </blockquote>
+  ```
+  
+  Provides both online and offline contact options.
+</Accordion>
+
+<Accordion title="Dress Code">
+  **Does your wedding have a theme or dress code?**
+  
+  ```html
+  <blockquote>
+      <a href="schedule.html">Click here to take you to the schedule page 
+      which has this information in detail.</a>
+  </blockquote>
+  ```
+  
+  Cross-links to the schedule page where dress codes for each event are specified.
+</Accordion>
+
+<Accordion title="Arrival Time">
+  **What time should I arrive?**
+  
+  ```html
+  <blockquote>
+      We recommend that you arrive at least half an hour before the start 
+      of each event, to make sure everyone is on time and we can get the 
+      events started as scheduled!
+  </blockquote>
+  ```
+</Accordion>
+
+<Accordion title="Accommodation">
+  **Do you have a hotel block for guests? Where do you recommend I stay?**
+  
+  ```html
+  <blockquote>
+      If you are traveling from out of station and need of accommodation, 
+      please <a href="travel_and_accommodation.html">click here to take you 
+      to our form</a>. We will make necessary arrangements based on your schedule.
+  </blockquote>
+  ```
+  
+  Links to the travel and accommodation page.
+</Accordion>
+
+<Accordion title="Accessibility">
+  **Are the event locations wheelchair accessible?**
+  
+  ```html
+  <blockquote>
+      All locations except the Rudraksha (dome) is wheelchair accessible. 
+      There are exactly <u><b>3 steps</b></u> to the main floor. Its not ideal 
+      but should be easy to grip-push with least effort.
+  </blockquote>
+  ```
+  
+  <Warning>
+    Always be honest about accessibility limitations and provide specific details 
+    (like the number of steps) so guests can plan accordingly.
+  </Warning>
+</Accordion>
+
+<Accordion title="Transportation">
+  **Will transportation be provided between to/from the hotel?**
+  
+  ```html
+  <blockquote>
+      Yes. Please <a href="parking_and_transportation.html#Book My Seat">
+      click here to take you to our form</a>, however if you have already filled 
+      the accommodation form we will get in touch with you regardless.
+  </blockquote>
+  ```
+</Accordion>
+
+<Accordion title="Additional Questions">
+  **Any other questions?**
+  
+  ```html
+  <blockquote>
+      <a href="#footer">Click here to contact us via social media, email or 
+      a quick call</a> we will make sure your needs are addressed. We will get 
+      back to you at our earliest convenience.
+  </blockquote>
+  ```
+  
+  Provides a catch-all for questions not covered in the FAQ.
+</Accordion>
+
+## Best Practices for FAQ Content
+
+### Use Blockquotes for Answers
+
+The template uses `<blockquote>` tags to visually distinguish answers from questions:
+
+```html
+<h2>Question goes here?</h2>
+<p>
+    <blockquote>
+        Answer goes here with all relevant details.
+    </blockquote>
+</p>
+```
+
+This creates visual hierarchy and makes the page scannable.
+
+### Include Internal Links
+
+Link to other pages on your site where guests can find more information:
+
+```html
+<a href="schedule.html">Click here to take you to the schedule page</a>
+```
+
+### Provide Multiple Contact Options
+
+```html
+<a href="#footer">Click here to contact us via social media, email or a quick call</a>
+```
+
+The `#footer` anchor link jumps to the footer where all contact information is displayed.
+
+### Be Specific with Details
+
+Instead of vague answers, provide concrete information:
+
+- **Vague**: "The venue has parking"
+- **Specific**: "Parking for 300 cars on first-come, first-served basis plus street parking"
+
+## Common FAQ Categories
+
+Structure your FAQ around these typical guest concerns:
+
+<CardGroup cols={2}>
+  <Card title="Logistics" icon="map-location-dot">
+    Venue address, parking, directions, transportation
+  </Card>
+  <Card title="Timing" icon="clock">
+    Event times, arrival recommendations, duration
+  </Card>
+  <Card title="Attire" icon="shirt">
+    Dress code, weather considerations, indoor/outdoor venue
+  </Card>
+  <Card title="RSVP" icon="envelope">
+    Deadline, how to RSVP, guest count policies
+  </Card>
+  <Card title="Accommodation" icon="hotel">
+    Hotel recommendations, shuttles, travel tips
+  </Card>
+  <Card title="Special Needs" icon="wheelchair">
+    Accessibility, dietary restrictions, child care
+  </Card>
+  <Card title="Ceremony Details" icon="ring">
+    Length, cultural elements, photography policies
+  </Card>
+  <Card title="Reception" icon="champagne-glasses">
+    Food service style, bar options, dance floor
+  </Card>
+</CardGroup>
+
+## Creating Your FAQ Page
+
+<Steps>
+  <Step title="Identify Common Questions">
+    Think about questions you've already received or anticipate:
+    - Review your event details for potential confusion points
+    - Ask friends who've recently married what they were asked
+    - Consider your specific venue's quirks or policies
+    - Think about your guest list's needs (elderly, children, out-of-towners)
+  </Step>
+
+  <Step title="Organize by Category">
+    Group related questions together:
+    
+    ```html
+    <section>
+        <h2>Logistics</h2>
+        <h3>How do I get to the venue?</h3>
+        <!-- Answer -->
+        
+        <h3>Where should guests park?</h3>
+        <!-- Answer -->
+    </section>
+    
+    <section>
+        <h2>What to Expect</h2>
+        <h3>What time should I arrive?</h3>
+        <!-- Answer -->
+        
+        <h3>How long is the ceremony?</h3>
+        <!-- Answer -->
+    </section>
+    ```
+  </Step>
+
+  <Step title="Write Clear, Complete Answers">
+    Each answer should:
+    - Directly address the question
+    - Provide specific details (numbers, times, locations)
+    - Link to relevant pages for more information
+    - Offer alternative options when applicable
+    
+    <Tip>
+      Write answers as if you're explaining to someone who's never been to a wedding 
+      like yours before. Don't assume cultural or local knowledge.
+    </Tip>
+  </Step>
+
+  <Step title="Add Cross-Links">
+    Link to other pages where guests can find related information:
+    
+    ```html
+    For more details, see our 
+    <a href="schedule.html">schedule page</a> or 
+    <a href="travel_and_accommodation.html">travel information</a>.
+    ```
+  </Step>
+</Steps>
+
+## Template Formatting
+
+The template uses consistent formatting for each question-answer pair:
+
+```html
+<h2>Question Title Here?</h2>
+<p>
+    <blockquote>
+        <b>Brief answer or key point in bold.</b><br />
+        Additional details and context here. Can include multiple 
+        paragraphs, links, and formatting.
+    </blockquote>
+</p>
+```
+
+### Formatting Options
+
+<Tabs>
+  <Tab title="Bold Key Points">
+    ```html
+    <blockquote>
+        <b>Hot with a good chance of rain.</b><br />
+        Channel your chi by bringing airy, tropics-friendly clothes.
+    </blockquote>
+    ```
+  </Tab>
+  
+  <Tab title="Italic for Emphasis">
+    ```html
+    <blockquote>
+        <i>Average Highs of 91.4°F / 33°C</i><br />
+        <i>Average Lows of 71.6°F / 22°C</i>
+    </blockquote>
+    ```
+  </Tab>
+  
+  <Tab title="Underline for Specifics">
+    ```html
+    <blockquote>
+        There are exactly <u><b>3 steps</b></u> to the main floor.
+    </blockquote>
+    ```
+  </Tab>
+</Tabs>
+
+## Questions to Consider Adding
+
+Depending on your wedding, you might want to add:
+
+### Children Policy
+```html
+<h2>Are children welcome at the wedding?</h2>
+<p>
+    <blockquote>
+        We love your little ones, but this will be an adults-only celebration. 
+        We hope this gives you a chance to enjoy a kid-free evening!
+    </blockquote>
+</p>
+```
+
+### Gift Registry
+```html
+<h2>Do you have a gift registry?</h2>
+<p>
+    <blockquote>
+        Your presence is the greatest gift! If you wish to give something, 
+        we have registries at [Store Name]. Links are available on our 
+        <a href="registry.html">registry page</a>.
+    </blockquote>
+</p>
+```
+
+### Photography Policy
+```html
+<h2>Can I take photos during the ceremony?</h2>
+<p>
+    <blockquote>
+        We ask that guests refrain from taking photos during the ceremony 
+        so our professional photographer can capture the best moments. 
+        Please feel free to take photos during the reception!
+    </blockquote>
+</p>
+```
+
+### Plus-One Policy
+```html
+<h2>Can I bring a date?</h2>
+<p>
+    <blockquote>
+        Due to space limitations, we're only able to accommodate guests 
+        specifically named on your invitation. If your invitation says 
+        "and guest," you're welcome to bring a plus-one!
+    </blockquote>
+</p>
+```
+
+### Dietary Restrictions
+```html
+<h2>I have dietary restrictions. Will there be options for me?</h2>
+<p>
+    <blockquote>
+        Please note any dietary restrictions when you RSVP. We'll work 
+        with our caterer to accommodate vegetarian, vegan, gluten-free, 
+        and allergy needs.
+    </blockquote>
+</p>
+```
+
+## Mobile Optimization
+
+The FAQ page is mobile-friendly by default:
+
+- Questions use responsive heading sizes
+- Blockquotes have appropriate padding on small screens
+- Links are large enough to tap on mobile
+- Page scrolls smoothly to anchor links
+
+<Info>
+  Test your FAQ page on mobile devices to ensure all links work and text is readable.
+</Info>
+
+## Linking to FAQ from Other Pages
+
+Reference the FAQ page throughout your site:
+
+```html
+<!-- From index.html -->
+<li><a href="pages/faqs.html" class="button fit">FAQs</a></li>
+
+<!-- From footer on any page -->
+For more information, see our <a href="faqs.html">FAQs page</a>.
+```
+
+## Updating FAQs
+
+<Warning>
+  Keep your FAQ page updated as you:
+  - Receive new questions from guests
+  - Make changes to wedding plans
+  - Add or modify venue policies
+  - Update COVID or health protocols
+</Warning>
+
+Set a reminder to review and update your FAQ:
+- When you send invitations
+- One month before the wedding
+- One week before the wedding (for last-minute details)
+
+## Analytics and Tracking
+
+After your wedding, review which questions guests asked most:
+
+- Check Google Forms responses for patterns
+- Note which questions came up in conversations
+- Use website analytics to see which FAQ answers were most viewed
+
+This helps you refine the FAQ for maximum usefulness.
+
+<Tip>
+  The questions guests ask most frequently should be moved to the top of your FAQ 
+  or even highlighted on your homepage.
+</Tip>
